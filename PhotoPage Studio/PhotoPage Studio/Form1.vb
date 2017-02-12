@@ -3,5 +3,16 @@
         Dim welcome As New Welcome
         welcome.MdiParent = Me
         welcome.Show()
+
+        Dim C As Control
+
+        For Each C In Me.Controls
+            If TypeOf C Is MdiClient Then
+                C.BackColor = Color.White
+                Exit For
+            End If
+        Next
+
+        C = Nothing
     End Sub
 End Class
