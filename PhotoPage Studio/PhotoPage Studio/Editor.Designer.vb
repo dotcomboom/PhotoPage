@@ -31,8 +31,6 @@ Partial Class Editor
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.TemplateCheckToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TagsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PageTitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PageDescriptionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,6 +52,8 @@ Partial Class Editor
         Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.TemplateCheckToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -88,56 +88,45 @@ Partial Class Editor
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TagsToolStripMenuItem1, Me.ToolStripSeparator3, Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.ToolStripSeparator2, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator1, Me.SelectAllToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TagsToolStripMenuItem1, Me.ToolStripSeparator7, Me.TemplateCheckToolStripMenuItem, Me.ToolStripSeparator3, Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.ToolStripSeparator2, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.ToolStripSeparator1, Me.SelectAllToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(123, 198)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(150, 226)
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator6, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ToolStripSeparator7, Me.TemplateCheckToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator6, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.NewToolStripMenuItem.Text = "New Template"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Text = "New"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(153, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(149, 6)
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.OpenToolStripMenuItem.Text = "Open Template"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.SaveToolStripMenuItem.Text = "Save Template"
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(153, 6)
-        '
-        'TemplateCheckToolStripMenuItem
-        '
-        Me.TemplateCheckToolStripMenuItem.Name = "TemplateCheckToolStripMenuItem"
-        Me.TemplateCheckToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.TemplateCheckToolStripMenuItem.Text = "Feature Check"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Text = "Save"
         '
         'TagsToolStripMenuItem1
         '
         Me.TagsToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PageTitleToolStripMenuItem, Me.PageDescriptionToolStripMenuItem, Me.FooterTextToolStripMenuItem, Me.ToolStripSeparator4, Me.ContentToolStripMenuItem, Me.ToolStripSeparator5, Me.FontsToolStripMenuItem, Me.BackgroundColorToolStripMenuItem, Me.FontColorToolStripMenuItem})
         Me.TagsToolStripMenuItem1.Name = "TagsToolStripMenuItem1"
-        Me.TagsToolStripMenuItem1.Size = New System.Drawing.Size(122, 22)
+        Me.TagsToolStripMenuItem1.Size = New System.Drawing.Size(149, 22)
         Me.TagsToolStripMenuItem1.Text = "Tags"
         '
         'PageTitleToolStripMenuItem
@@ -195,52 +184,52 @@ Partial Class Editor
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(119, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(146, 6)
         '
         'UndoToolStripMenuItem
         '
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.UndoToolStripMenuItem.Text = "Undo"
         '
         'RedoToolStripMenuItem
         '
         Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.RedoToolStripMenuItem.Text = "Redo"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(119, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(146, 6)
         '
         'CutToolStripMenuItem
         '
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.CutToolStripMenuItem.Text = "Cut"
         '
         'CopyToolStripMenuItem
         '
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.CopyToolStripMenuItem.Text = "Copy"
         '
         'PasteToolStripMenuItem
         '
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(119, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(146, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.SelectAllToolStripMenuItem.Text = "Select All"
         '
         'OpenFileDialog1
@@ -254,6 +243,17 @@ Partial Class Editor
         Me.SaveFileDialog1.DefaultExt = "ppgt"
         Me.SaveFileDialog1.Filter = "PhotoPage Template (*.ppgt)|*.ppgt|HTML Document (*.html)|*.html"
         Me.SaveFileDialog1.Title = "Save Template"
+        '
+        'TemplateCheckToolStripMenuItem
+        '
+        Me.TemplateCheckToolStripMenuItem.Name = "TemplateCheckToolStripMenuItem"
+        Me.TemplateCheckToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.TemplateCheckToolStripMenuItem.Text = "Feature Check"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(146, 6)
         '
         'Editor
         '

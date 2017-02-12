@@ -81,7 +81,7 @@ Public Class Editor
         End If
     End Sub
 
-    Private Sub TemplateCheckToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TemplateCheckToolStripMenuItem.Click
+    Private Sub TemplateCheckToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim msg = "The following features are unused in the template:" & vbNewLine
         Dim yay = True
         If Not FastColoredTextBox1.Text.Contains("[#description#]") Then
