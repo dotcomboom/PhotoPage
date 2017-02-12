@@ -81,10 +81,12 @@ Public Class Editor
     End Sub
 
     Private Sub TemplateCheckToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TemplateCheckToolStripMenuItem.Click
-        Dim msg = "The following features are unused in the template and will be disabled in the PhotoPage application as needed:" & vbNewLine
+        Dim msg = "The following features are unused in the template:" & vbNewLine
         Dim yay = True
-        'If Not checkif(TextBox1, "[#pagetitle#]", My.Computer.FileSystem.ReadAllText(TextBox6.Text)) Then
-        'End If
+        If Not FastColoredTextBox1.Text.Contains("[#description#]") Then
+            msg = msg & vbNewLine & "- Page Title"
+            yay = False
+        End If
         If Not FastColoredTextBox1.Text.Contains("[#description#]") Then
             msg = msg & vbNewLine & "- Page Description"
             yay = False
@@ -93,8 +95,12 @@ Public Class Editor
             msg = msg & vbNewLine & "- Page Footer"
             yay = False
         End If
+        If Not FastColoredTextBox1.Text.Contains("[#content#]") Then
+            msg = msg & vbNewLine & vbNewLine & "- Content/Photos"
+            yay = False
+        End If
         If Not FastColoredTextBox1.Text.Contains("[#fonts#]") Then
-            msg = msg & vbNewLine & "- Font Faces"
+            msg = msg & vbNewLine & vbNewLine & "- Font Faces"
             yay = False
         End If
         If Not FastColoredTextBox1.Text.Contains("[#bgcolor#]") Then

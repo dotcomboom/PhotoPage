@@ -24,4 +24,8 @@
         Label3.Text = ""
         Label2.Text = ""
     End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+        MsgBox("NYI", MsgBoxStyle.Critical, "Guru Meditation")
+    End Sub
 End Class
