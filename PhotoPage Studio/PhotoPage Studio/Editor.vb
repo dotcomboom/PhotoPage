@@ -56,6 +56,7 @@ Public Class Editor
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         FastColoredTextBox1.Text = ""
+        Me.Text = "Template Editor - Untitled"
     End Sub
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
@@ -115,5 +116,9 @@ Public Class Editor
             msg = "All available features are used in the template."
         End If
         MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
+    End Sub
+
+    Private Sub FastColoredTextBox1_Load(sender As Object, e As EventArgs) Handles FastColoredTextBox1.Load
+
     End Sub
 End Class
