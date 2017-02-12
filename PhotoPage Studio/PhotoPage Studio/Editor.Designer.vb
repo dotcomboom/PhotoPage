@@ -61,7 +61,9 @@ Partial Class Editor
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(470, 313)
         Me.Controls.Add(Me.FastColoredTextBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Editor"
+        Me.ShowIcon = False
         Me.Text = "Template Editor"
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
