@@ -8,7 +8,7 @@
 
         For Each C In Me.Controls
             If TypeOf C Is MdiClient Then
-                C.BackColor = Color.White
+                C.BackColor = Me.BackColor
                 Exit For
             End If
         Next
