@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PhotoPage Studio", "PhotoPage Studio\PhotoPage Studio.vbproj", "{45C9801B-C5B5-4EC7-A295-E075E296C04E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45C9801B-C5B5-4EC7-A295-E075E296C04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C9801B-C5B5-4EC7-A295-E075E296C04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C9801B-C5B5-4EC7-A295-E075E296C04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C9801B-C5B5-4EC7-A295-E075E296C04E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://cooltile.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PhotoPage\u0020Studio\\PhotoPage\u0020Studio.vbproj
+		SccProjectName1 = PhotoPage\u0020Studio
+		SccLocalPath1 = PhotoPage\u0020Studio
+	EndGlobalSection
+EndGlobal
