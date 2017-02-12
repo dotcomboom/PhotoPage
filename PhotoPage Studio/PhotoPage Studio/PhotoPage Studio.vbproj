@@ -55,6 +55,9 @@
     <ApplicationIcon>PhotoPage Studio icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\..\..\..\..\Downloads\FastColoredTextBox-master\FastColoredTextBox-master\Binary\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -80,6 +83,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editor.Designer.vb">
+      <DependentUpon>Editor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +119,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
