@@ -1,7 +1,6 @@
-﻿Public Class Editor
-    Private Sub Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+﻿Imports System.IO
 
-    End Sub
+Public Class Editor
 
     Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
         FastColoredTextBox1.Undo()
@@ -60,10 +59,55 @@
     End Sub
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
-        FastColoredTextBox1.OpenFile("test")
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+            Try
+                FastColoredTextBox1.OpenFile(OpenFileDialog1.FileName)
+                Me.Text = "Template Editor - " & OpenFileDialog1.SafeFileName
+            Catch ex As Exception
+                MsgBox("An error occurred while trying to open the template:" & vbNewLine & vbNewLine & ex.ToString(), MsgBoxStyle.Critical, "Guru Meditation")
+            End Try
+        End If
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+        If SaveFileDialog1.ShowDialog = DialogResult.OK Then
+            Try
+                FastColoredTextBox1.SaveToFile(SaveFileDialog1.FileName, System.Text.Encoding.Default)
+                Me.Text = "Template Editor - " & Path.GetFileName(SaveFileDialog1.FileName)
+            Catch ex As Exception
+                MsgBox("An error occurred while trying to save the template:" & vbNewLine & vbNewLine & ex.ToString(), MsgBoxStyle.Critical, "Guru Meditation")
+            End Try
+        End If
+    End Sub
 
+    Private Sub TemplateCheckToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TemplateCheckToolStripMenuItem.Click
+        Dim msg = "The following features are unused in the template and will be disabled in the PhotoPage application as needed:" & vbNewLine
+        Dim yay = True
+        'If Not checkif(TextBox1, "[#pagetitle#]", My.Computer.FileSystem.ReadAllText(TextBox6.Text)) Then
+        'End If
+        If Not FastColoredTextBox1.Text.Contains("[#description#]") Then
+            msg = msg & vbNewLine & "- Page Description"
+            yay = False
+        End If
+        If Not FastColoredTextBox1.Text.Contains("[#footer#]") Then
+            msg = msg & vbNewLine & "- Page Footer"
+            yay = False
+        End If
+        If Not FastColoredTextBox1.Text.Contains("[#fonts#]") Then
+            msg = msg & vbNewLine & "- Font Faces"
+            yay = False
+        End If
+        If Not FastColoredTextBox1.Text.Contains("[#bgcolor#]") Then
+            msg = msg & vbNewLine & "- Background Color"
+            yay = False
+        End If
+        If Not FastColoredTextBox1.Text.Contains("[#color#]") Then
+            msg = msg & vbNewLine & "- Font Color"
+            yay = False
+        End If
+        If yay Then
+            msg = "All available features are used in the template."
+        End If
+        MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
     End Sub
 End Class

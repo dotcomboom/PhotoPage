@@ -53,6 +53,8 @@ Partial Class Editor
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TemplateCheckToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -213,7 +215,7 @@ Partial Class Editor
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator6, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator6, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ToolStripSeparator7, Me.TemplateCheckToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -221,24 +223,24 @@ Partial Class Editor
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.NewToolStripMenuItem.Text = "New Template"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(153, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(157, 6)
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.OpenToolStripMenuItem.Text = "Open Template"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.SaveToolStripMenuItem.Text = "Save Template"
         '
         'OpenFileDialog1
@@ -253,6 +255,17 @@ Partial Class Editor
         Me.SaveFileDialog1.Filter = "PhotoPage Template (*.ppgt)|*.ppgt|HTML Document (*.html)|*.html"
         Me.SaveFileDialog1.Title = "Save Template"
         '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(157, 6)
+        '
+        'TemplateCheckToolStripMenuItem
+        '
+        Me.TemplateCheckToolStripMenuItem.Name = "TemplateCheckToolStripMenuItem"
+        Me.TemplateCheckToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.TemplateCheckToolStripMenuItem.Text = "Feature Check"
+        '
         'Editor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -264,7 +277,7 @@ Partial Class Editor
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Editor"
         Me.ShowIcon = False
-        Me.Text = "Template Editor"
+        Me.Text = "Template Editor - Untitled"
         CType(Me.FastColoredTextBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
@@ -303,4 +316,6 @@ Partial Class Editor
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents TemplateCheckToolStripMenuItem As ToolStripMenuItem
 End Class
