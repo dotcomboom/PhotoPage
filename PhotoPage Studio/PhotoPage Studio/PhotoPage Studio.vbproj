@@ -111,6 +111,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Preview.Designer.vb">
+      <DependentUpon>Preview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Preview.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Welcome.Designer.vb">
       <DependentUpon>Welcome.vb</DependentUpon>
     </Compile>
@@ -130,6 +136,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preview.resx">
+      <DependentUpon>Preview.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.vb</DependentUpon>

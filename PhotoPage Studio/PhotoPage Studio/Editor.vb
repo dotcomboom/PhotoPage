@@ -118,7 +118,10 @@ Public Class Editor
         MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
     End Sub
 
-    Private Sub FastColoredTextBox1_Load(sender As Object, e As EventArgs) Handles FastColoredTextBox1.Load
-
+    Private Sub PreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreviewToolStripMenuItem.Click
+        Dim preview As New Preview
+        preview.MdiParent = Form1
+        preview.WebBrowser1.DocumentText = FastColoredTextBox1.Text
+        preview.Show()
     End Sub
 End Class
