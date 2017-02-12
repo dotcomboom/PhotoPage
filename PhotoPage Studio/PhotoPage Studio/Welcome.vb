@@ -28,4 +28,18 @@
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
         MsgBox("NYI", MsgBoxStyle.Critical, "Guru Meditation")
     End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+            Try
+                Dim editor As New Editor
+                editor.MdiParent = Form1
+                editor.FastColoredTextBox1.OpenFile(OpenFileDialog1.FileName)
+                editor.Text = "Template Editor - " & OpenFileDialog1.SafeFileName
+                editor.Show()
+            Catch ex As Exception
+                MsgBox("An error occurred while trying to open the template:" & vbNewLine & vbNewLine & ex.ToString(), MsgBoxStyle.Critical, "Guru Meditation")
+            End Try
+        End If
+    End Sub
 End Class
