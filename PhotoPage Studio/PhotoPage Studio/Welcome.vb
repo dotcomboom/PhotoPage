@@ -16,7 +16,7 @@
         Label2.Text = "Modify an existing template."
     End Sub
 
-    Private Sub PictureBox4_MouseEnter(sender As Object, e As EventArgs) Handles PictureBox4.MouseEnter
+    Private Sub PictureBox4_MouseEnter(sender As Object, e As EventArgs)
         Label3.Text = "Tutorial"
         Label2.Text = "Learn how to create your own templates."
     End Sub
@@ -26,7 +26,7 @@
         Label2.Text = ""
     End Sub
 
-    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs)
         MsgBox("NYI", MsgBoxStyle.Critical, "Guru Meditation")
     End Sub
 
