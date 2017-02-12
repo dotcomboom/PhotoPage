@@ -842,6 +842,49 @@
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>159, 17</value>
   </metadata>
+  <data name="TextBox1.Text" xml:space="preserve">
+    <value>&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;[#pagetitle#]&lt;/title&gt;
+    &lt;style type="text/css" media="screen"&gt;
+        body {
+            font-family: [#fonts#];
+            margin: 20px;
+            background-color: [#bgcolor#];
+            color: [#color#];
+        }
+        
+        img {
+            opacity: 1.0;
+            -webkit-transition: all 0.5s;
+            /* Safari */
+            transition: all 0.5s;
+            filter: alpha(opacity=100);
+        }
+        
+        img:hover {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+        }
+        
+        .heading {}
+        .paragraph {}
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1 class="pagetitle"&gt;[#pagetitle#]&lt;/h1&gt;
+        &lt;p class="desc"&gt;[#description#]&lt;/p&gt;
+        [#content#]
+        &lt;br&gt;
+        &lt;p class="footer"&gt;[#footer#]&lt;/p&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAAAIABoBAAAZgAAACAgAAAAACAAqBAAAM4EAAAwMAAAAAAgAKglAAB2FQAAQEAAAAAA

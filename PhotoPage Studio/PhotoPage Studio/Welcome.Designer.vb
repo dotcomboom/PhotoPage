@@ -34,6 +34,7 @@ Partial Class Welcome
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,6 +143,15 @@ Partial Class Welcome
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(162, 17)
         Me.ToolStripStatusLabel2.Text = "PhotoPage Studio 20170212.1"
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(285, 315)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 17
+        Me.TextBox1.Text = resources.GetString("TextBox1.Text")
+        Me.TextBox1.Visible = False
+        '
         'Welcome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -149,6 +159,7 @@ Partial Class Welcome
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(400, 363)
         Me.ControlBox = False
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.PictureBox5)
         Me.Controls.Add(Me.Label3)
@@ -187,4 +198,5 @@ Partial Class Welcome
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents TextBox1 As TextBox
 End Class
