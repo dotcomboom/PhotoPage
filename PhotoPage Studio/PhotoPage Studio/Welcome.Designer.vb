@@ -129,7 +129,7 @@ Partial Class Welcome
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(162, 17)
-        Me.ToolStripStatusLabel2.Text = "PhotoPage Studio 20170212.1"
+        Me.ToolStripStatusLabel2.Text = "PhotoPage Studio 20170212.2"
         '
         'TextBox1
         '

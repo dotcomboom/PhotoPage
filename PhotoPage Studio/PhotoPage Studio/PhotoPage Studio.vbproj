@@ -18,6 +18,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
+    <HockeyAppResourceId>5c3a5be9df65493ca2a4a68169a750ec</HockeyAppResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,7 +53,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>PhotoPage Studio icon.ico</ApplicationIcon>
+    <ApplicationIcon>PhotoPage Studio icon2 FINAL.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastColoredTextBox">
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhotoPage Studio icon.ico" />
+    <Content Include="PhotoPage Studio icon2 FINAL.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
