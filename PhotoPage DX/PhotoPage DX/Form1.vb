@@ -52,7 +52,7 @@ Public Class Form1
 
     Private Function Debug()
         DebugInfo.Text = "[#pagetitle#]  " & PageTitleTextBox.TextBoxText & vbNewLine & "[#description#]  " & DescriptionTextBox.TextBoxText & vbNewLine & "[#footer#]  " & FooterTextBox.TextBoxText & vbNewLine & "[#content#]  " & code.Text & vbNewLine & "[#fonts#]  " & genFonts() & vbNewLine & "[#color#]  " & TextColorChooser.Tag & vbNewLine & "[#bgcolor#]  " & BackgroundColorChooser.Tag & vbNewLine & "[#coverphoto#]  " & coverPhoto.Text
-
+        Return True
     End Function
 
     Private Function checkif(control As Object, tag As String, template As String)
@@ -162,10 +162,12 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub CustomTemplateButton_CheckStateChanged(sender As Object, e As EventArgs) Handles CustomTemplateButton.Click
+    Private Sub CustomTemplateButton_Click(sender As Object, e As EventArgs) Handles CustomTemplateButton.Click
         If CustomTemplateButton.Checked Then
-            If OpenTemplateDialog.ShowDialog = DialogResult.OK Then
+            CustomTemplateButton.Checked = False
+            If OpenTemplateDialog.ShowDialog() = DialogResult.OK Then
                 CustomTemplateButton.Tag = OpenTemplateDialog.FileName
+                CustomTemplateButton.Checked = True
                 Try
                     Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
                     Dim yay = True
