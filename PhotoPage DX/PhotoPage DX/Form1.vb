@@ -1,0 +1,593 @@
+﻿Imports System.IO
+
+Public Class Form1
+
+    Public undoing = False
+
+    Private Sub Ribbon1_OrbClicked(sender As Object, e As EventArgs) Handles Ribbon1.OrbClicked
+        Ribbon1.OrbPressed = False
+        OrbMenu.Show(Ribbon1, 0, 47)
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        VersionLabel.Text = Launcher.getVersion()
+        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            If (di.Attributes And FileAttributes.Hidden) <> FileAttributes.Hidden Then
+                di.Attributes = di.Attributes Or FileAttributes.Hidden
+            End If
+        End If
+        AddPhotosDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyPictures
+        AddVideosDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyPictures
+        AddAudioDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyPictures
+        HistoryListBox.Items.Add("")
+        Preview()
+    End Sub
+
+    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", FileIO.DeleteDirectoryOption.DeleteAllContents)
+        End If
+    End Sub
+
+    Private Function Preview()
+        If RealTimePreviewToolStripMenuItem.Checked Then
+            If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+                My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                If (di.Attributes And FileAttributes.Hidden) <> FileAttributes.Hidden Then
+                    di.Attributes = di.Attributes Or FileAttributes.Hidden
+                End If
+            End If
+            If CustomTemplateButton.Checked = False Then
+                My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", template.Text.Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+            Else
+                My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+            End If
+            PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+        End If
+        Return True
+    End Function
+
+    Private Function Debug()
+        DebugInfo.Text = "[#pagetitle#]  " & PageTitleTextBox.TextBoxText & vbNewLine & "[#description#]  " & DescriptionTextBox.TextBoxText & vbNewLine & "[#footer#]  " & FooterTextBox.TextBoxText & vbNewLine & "[#content#]  " & code.Text & vbNewLine & "[#fonts#]  " & genFonts() & vbNewLine & "[#color#]  " & TextColorChooser.Tag & vbNewLine & "[#bgcolor#]  " & BackgroundColorChooser.Tag & vbNewLine & "[#coverphoto#]  " & coverPhoto.Text
+
+    End Function
+
+    Private Function checkif(control As Object, tag As String, template As String)
+        If template.Contains(tag) Then
+            control.Enabled = True
+            Return True
+        Else
+            control.Enabled = False
+            Return False
+        End If
+    End Function
+
+    Private Function genFonts()
+        Dim stack As String = ""
+
+        For Each i As String In FontList.Items
+            'stack = ", '" & i & "'" & stack
+            stack = stack & "'" & i & "', "
+        Next
+
+        stack = stack & "sans-serif"
+
+        Return stack
+    End Function
+
+    Private Function AddtoProject(file As String)
+        StatusLabel.Text = "Adding " & file
+        Me.UseWaitCursor = True
+        Me.Cursor = Cursors.WaitCursor
+        If My.Computer.FileSystem.DirectoryExists(file) Then
+            For Each subfile As String In My.Computer.FileSystem.GetFiles(file)
+                AddtoProject(subfile)
+            Next
+        Else
+            If file.EndsWith(".mp4") Then
+                Try
+                    If code.Text.Replace(vbNewLine, "").EndsWith("</h1>") Or code.Text.Replace(vbNewLine, "").EndsWith("</p>") Then
+                        code.Text = code.Text & videotemplate.Text.Replace("[#video#]", Path.GetFileName(file)) & vbNewLine
+                    Else
+                        code.Text = code.Text & "<br>" & videotemplate.Text.Replace("[#video#]", Path.GetFileName(file)) & vbNewLine
+                    End If
+                    My.Computer.FileSystem.CopyFile(file, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\" & Path.GetFileName(file), True)
+
+                    Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                    Dim filesInfo() As FileInfo = drInfo.GetFiles("*.*", SearchOption.AllDirectories)
+                    Dim fileSize As Long = 0
+                    For Each fileInfo As FileInfo In filesInfo
+                        fileSize += fileInfo.Length
+                    Next
+                    ProjectSizeLabel.Text = Math.Round(fileSize / 1000000, 2) & " MB"
+                Catch ex As Exception
+                    MsgBox("Failed to open " & file & ": " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+                End Try
+            ElseIf file.EndsWith(".mp3") Then
+                Try
+                    If code.Text.Replace(vbNewLine, "").EndsWith("</h1>") Or code.Text.Replace(vbNewLine, "").EndsWith("</p>") Then
+                        code.Text = code.Text & audiotemplate.Text.Replace("[#audio#]", Path.GetFileName(file)) & vbNewLine
+                    Else
+                        code.Text = code.Text & "<br>" & audiotemplate.Text.Replace("[#audio#]", Path.GetFileName(file)) & vbNewLine
+                    End If
+                    My.Computer.FileSystem.CopyFile(file, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\" & Path.GetFileName(file), True)
+
+                    Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                    Dim filesInfo() As FileInfo = drInfo.GetFiles("*.*", SearchOption.AllDirectories)
+                    Dim fileSize As Long = 0
+                    For Each fileInfo As FileInfo In filesInfo
+                        fileSize += fileInfo.Length
+                    Next
+                    ProjectSizeLabel.Text = Math.Round(fileSize / 1000000, 2) & " MB"
+                Catch ex As Exception
+                    MsgBox("Failed to open " & file & ": " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+                End Try
+            Else
+                Try
+                    Dim bitmap = New Bitmap(file, True)
+                    code.Text = code.Text & imgtemplate.Text.Replace("[#img#]", Path.GetFileName(file)).Replace("[#width#]", bitmap.Width * (110 / bitmap.Height)) & vbNewLine
+                    My.Computer.FileSystem.CopyFile(file, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\" & Path.GetFileName(file), True)
+
+                    Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                    Dim filesInfo() As FileInfo = drInfo.GetFiles("*.*", SearchOption.AllDirectories)
+                    Dim fileSize As Long = 0
+                    For Each fileInfo As FileInfo In filesInfo
+                        fileSize += fileInfo.Length
+                    Next
+                    ProjectSizeLabel.Text = Math.Round(fileSize / 1000000, 2) & " MB"
+                Catch ex As Exception
+                    'MsgBox("The file " & file & " could not be identified." & vbNewLine & vbNewLine & ex.ToString & vbNewLine & vbNewLine & "The file has not been added.", MsgBoxStyle.Exclamation, "Notice")
+                End Try
+            End If
+        End If
+        Me.UseWaitCursor = False
+        Me.Cursor = Cursors.Default
+        StatusLabel.Text = ""
+        Return True
+    End Function
+
+    Private Sub PreviewTextBoxes(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged, DescriptionTextBox.TextBoxTextChanged, FooterTextBox.TextBoxTextChanged, FontList.DrawItem, code.TextChanged
+        Debug()
+        Preview()
+    End Sub
+
+    Private Sub RadButtonElement1_Click(sender As Object, e As EventArgs) Handles AddPhotosButton.Click, AddPhotosQAButton.Click, ToolStripMenuItem2.Click
+        If AddPhotosDialog.ShowDialog = DialogResult.OK Then
+            For Each file As [String] In AddPhotosDialog.FileNames
+                AddtoProject(file)
+            Next
+        End If
+    End Sub
+
+    Private Sub CustomTemplateButton_CheckStateChanged(sender As Object, e As EventArgs) Handles CustomTemplateButton.Click
+        If CustomTemplateButton.Checked Then
+            If OpenTemplateDialog.ShowDialog = DialogResult.OK Then
+                CustomTemplateButton.Tag = OpenTemplateDialog.FileName
+                Try
+                    Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
+                    Dim yay = True
+
+                    If Not checkif(DescriptionTextBox, "[#description#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Page Description"
+                        yay = False
+                    End If
+                    If Not checkif(FooterTextBox, "[#footer#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Page Footer"
+                        yay = False
+                    End If
+                    If Not checkif(RibbonPanel6, "[#fonts#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Font Faces"
+                        yay = False
+                    End If
+                    If Not checkif(BackgroundColorChooser, "[#bgcolor#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Background Color"
+                        yay = False
+                    End If
+                    If Not checkif(TextColorChooser, "[#color#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Font Color"
+                        yay = False
+                    End If
+                    If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Cover Photo"
+                        yay = False
+                    End If
+                    If Not yay Then
+                        MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
+                    End If
+                Catch ex As Exception
+                    MsgBox("An error occurred while performing the Feature Check: " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+                End Try
+            Else
+                CustomTemplateButton.Checked = False
+            End If
+        Else
+            Try
+                Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
+                Dim yay = True
+
+                If Not checkif(DescriptionTextBox, "[#description#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Page Description"
+                    yay = False
+                End If
+                If Not checkif(FooterTextBox, "[#footer#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Page Footer"
+                    yay = False
+                End If
+                If Not checkif(RibbonPanel6, "[#fonts#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Font Faces"
+                    yay = False
+                End If
+                If Not checkif(BackgroundColorChooser, "[#bgcolor#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Background Color"
+                    yay = False
+                End If
+                If Not checkif(TextColorChooser, "[#color#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Font Color"
+                    yay = False
+                End If
+                If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                    msg = msg & vbNewLine & "- Cover Photo"
+                    yay = False
+                End If
+                If Not yay Then
+                    MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
+                End If
+            Catch ex As Exception
+                MsgBox("An error occurred while performing the Feature Check: " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+            End Try
+        End If
+        Preview()
+    End Sub
+
+    Private Sub PageTitleTextBox_TextChanged(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged
+        Me.Text = "PhotoPage - " & PageTitleTextBox.TextBoxText
+        If PageTitleTextBox.TextBoxText.Length > 0 Then
+            Me.Text = "PhotoPage - " & PageTitleTextBox.TextBoxText
+        Else
+            Me.Text = "PhotoPage - Untitled"
+        End If
+    End Sub
+
+    Private Sub AddHeadingButton_Click(sender As Object, e As EventArgs) Handles AddHeadingButton.Click, AddHeadingToolStripMenuItem.Click, AddHeadingQAButton.Click
+        Dim input As String
+        input = InputBox("Please enter some text for the heading:", "Add Heading")
+        If input <> "" Then
+            code.Text = code.Text & "<h3 class='heading'>" & input & "</h3>" & vbNewLine
+        End If
+        Refresh()
+    End Sub
+
+    Private Sub AddParagraphButton_Click(sender As Object, e As EventArgs) Handles AddParagraphButton.Click, AddParagraphToolStripMenuItem.Click, AddParagraphQAButton.Click
+        Dim paragraphDialog As New AddParagraph
+        If paragraphDialog.ShowDialog() = DialogResult.OK Then
+            code.Text = code.Text & "<p class='paragraph'>" & paragraphDialog.ParagraphTextBox.Text.Replace(vbNewLine, "<br>") & "</p>" & vbNewLine
+        End If
+        Refresh()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+        End If
+        code.Text = ""
+        ProjectSizeLabel.Text = "0 MB"
+    End Sub
+
+    Private Sub PreviewBrowser_DragDrop(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles Ribbon1.DragDrop
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        For Each file In files
+            AddtoProject(file)
+        Next
+    End Sub
+
+    Private Sub Label1_DragEnter(sender As Object, e As DragEventArgs) Handles Ribbon1.DragEnter
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
+        End If
+    End Sub
+
+    Private Sub RadButtonElement7_Click(sender As Object, e As EventArgs) Handles OpenPresetButton.Click
+        If OpenPresetDialog.ShowDialog = DialogResult.OK Then
+            Try
+                Dim strFileName() As String
+                strFileName = IO.File.ReadAllLines(OpenPresetDialog.FileName)
+                For Each Line In strFileName '// loop thru Arrays.
+                    If Line.StartsWith("[1] ") Then
+                        FontList.Items.Clear()
+                        For Each i As String In Line.Replace("[1] ", "").Replace(", sans-serif", "").Replace(",sans-serif", "").Replace("'", "").Replace(", ", ",").Split(",")
+                            FontList.Items.Add(i)
+                        Next
+                    End If
+                    If Line.StartsWith("[2] ") Then
+                        'BackgroundColorChooser.Tag = Line.Replace("[2] ", "")
+                        BackgroundColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[2] ", ""))
+                    End If
+                    If Line.StartsWith("[3] ") Then
+                        'TextColorChooser.Tag = Line.Replace("[3] ", "")
+                        TextColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[3] ", ""))
+                    End If
+                Next
+            Catch ex As Exception
+            End Try
+        End If
+    End Sub
+
+    Private Sub RadButtonElement8_Click(sender As Object, e As EventArgs) Handles SavePresetButton.Click
+        If SavePresetDialog.ShowDialog = DialogResult.OK Then
+            Try
+                Dim SW As New StreamWriter(SavePresetDialog.FileName)
+                SW.WriteLine("[1] " & genFonts())
+                SW.WriteLine("[2] " & BackgroundColorChooser.Tag)
+                SW.WriteLine("[3] " & TextColorChooser.Tag)
+                SW.Close()
+            Catch ex As Exception
+            End Try
+        End If
+    End Sub
+
+    Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
+        If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
+            PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+        End If
+    End Sub
+
+    Private Sub RadMenuItem1_Click(sender As Object, e As EventArgs) Handles NewProjectToolStripMenuItem.Click
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+        End If
+        ProjectSizeLabel.Text = "0 MB"
+
+        code.Text = ""
+
+        PageTitleTextBox.TextBoxText = ""
+        DescriptionTextBox.TextBoxText = ""
+        FooterTextBox.TextBoxText = ""
+
+        FontList.Items.Clear()
+        FontList.Items.Add("Segoe UI")
+        FontList.Items.Add("Segoe")
+        FontList.Items.Add("Tahoma")
+        FontList.Items.Add("Geneva")
+
+        CustomTemplateButton.Checked = False
+
+        BackgroundColorChooser.Tag = "FFFFFF"
+        TextColorChooser.Tag = "000000"
+
+        BackgroundColorChooser.Color = Color.White
+        TextColorChooser.Color = Color.Black
+    End Sub
+
+    Private Sub RadMenuItem2_Click(sender As Object, e As EventArgs) Handles MyProjectsToolStripMenuItem.Click
+        Process.Start(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects")
+    End Sub
+
+    Private Sub RadMenuItem3_Click(sender As Object, e As EventArgs) Handles BetaCentralToolStripMenuItem.Click
+        Process.Start("https://rink.hockeyapp.net/apps/71b12a2053c44526b47386c53239f6d6/")
+    End Sub
+
+    Private Sub RadMenuItem4_Click(sender As Object, e As EventArgs) Handles PhotoPageStudioToolStripMenuItem.Click, CreateTemplateButton.Click
+        Dim studio As New Studio
+        studio.CodeEditor.Text = template.Text
+        studio.Show()
+    End Sub
+
+    Private Sub FinishButton_Click(sender As Object, e As EventArgs) Handles FinishButton.Click, SaveToMyProjectsToolStripMenuItem.Click, FinishQAButton.Click
+        StatusLabel.Text = "Producing page"
+        If PageTitleTextBox.TextBoxText = "" Then
+            PageTitleTextBox.TextBoxText = "Untitled"
+            Me.Text = "PhotoPage - Untitled"
+        End If
+        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            If (di.Attributes And FileAttributes.Hidden) <> FileAttributes.Hidden Then
+                di.Attributes = di.Attributes Or FileAttributes.Hidden
+            End If
+        End If
+        If CustomTemplateButton.Checked = False Then
+            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", template.Text.Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+        Else
+            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+        End If
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText) Then
+            If MsgBox("A project with that name already exists. Overwrite it?", MsgBoxStyle.YesNo, "Conflict") = MsgBoxResult.Yes Then
+                My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            Else
+                MsgBox("Change the name of the project, then try again.", MsgBoxStyle.Critical, "Guru Meditation")
+                Exit Sub
+            End If
+        End If
+        Dim foldername As String = PageTitleTextBox.TextBoxText
+        If PageTitleTextBox.TextBoxText = "" Then
+            foldername = "Untitled"
+        Else
+            Dim invalid As String = New String(Path.GetInvalidFileNameChars()) & New String(Path.GetInvalidPathChars())
+            For Each c As Char In invalid
+                foldername = foldername.Replace(c.ToString(), "-")
+            Next
+        End If
+        Try
+            My.Computer.FileSystem.CopyDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\", My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\")
+            StatusLabel.Text = ""
+            MsgBox("Successfully produced page!", MsgBoxStyle.Information, "Success")
+            Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\"))
+        Catch ex As Exception
+            StatusLabel.Text = ""
+            MsgBox("Page creation unsuccessful:" & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+        End Try
+    End Sub
+
+    Private Sub AboutPhotoPageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutPhotoPageToolStripMenuItem.Click
+        About.ShowDialog()
+    End Sub
+
+    Private Sub code_TextChanged(sender As Object, e As EventArgs) Handles code.TextChanged
+        If Not undoing Then
+            HistoryListBox.Items.Add(code.Text)
+        End If
+    End Sub
+
+    Private Sub UndoButton_Click(sender As Object, e As EventArgs) Handles UndoButton.Click
+        If HistoryListBox.Items.Count > 1 Then
+            undoing = True
+            HistoryListBox.Items.RemoveAt(HistoryListBox.Items.Count - 1)
+            code.Text = HistoryListBox.Items.Item(HistoryListBox.Items.Count - 1)
+            undoing = False
+            For Each File In Directory.GetFiles(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                If Not File.EndsWith(".html") Then
+                    If Not code.Text.Contains(Path.GetFileName(File)) Then
+                        Try
+                            My.Computer.FileSystem.DeleteFile(File, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+
+                            Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                            Dim filesInfo() As FileInfo = drInfo.GetFiles("*.*", SearchOption.AllDirectories)
+                            Dim fileSize As Long = 0
+                            For Each fileInfo As FileInfo In filesInfo
+                                fileSize += fileInfo.Length
+                            Next
+                            ProjectSizeLabel.Text = Math.Round(fileSize / 1000000, 2) & " MB"
+                        Catch ex As Exception
+                            MsgBox("Unable to delete file (" & File & "):" & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+                        End Try
+                    End If
+                End If
+            Next
+        End If
+    End Sub
+
+    Private Sub AddVideoButton_Click(sender As Object, e As EventArgs) Handles AddVideoButton.Click, ToolStripMenuItem1.Click
+        If AddVideosDialog.ShowDialog = DialogResult.OK Then
+            For Each file As [String] In AddVideosDialog.FileNames
+                AddtoProject(file)
+            Next
+        End If
+    End Sub
+
+    Private Sub AddAudioButton_Click(sender As Object, e As EventArgs) Handles AddAudioButton.Click, AddPhotosToolStripMenuItem.Click
+        If AddAudioDialog.ShowDialog = DialogResult.OK Then
+            For Each file As [String] In AddAudioDialog.FileNames
+                AddtoProject(file)
+            Next
+        End If
+    End Sub
+
+    Private Sub AddFontButton_Click(sender As Object, e As EventArgs) Handles AddFontButton.Click
+        Dim fontDialog As New AddFontDialog
+        If fontDialog.ShowDialog() = DialogResult.OK Then
+            FontList.Items.Insert(0, fontDialog.SelectedFont.Name)
+            Preview()
+        End If
+    End Sub
+
+    Private Sub RemoveFontButton_Click(sender As Object, e As EventArgs) Handles RemoveFontButton.Click
+        FontList.Items.Remove(FontList.SelectedItem)
+        Preview()
+    End Sub
+
+    Private Sub UpFontButton_Click(sender As Object, e As EventArgs) Handles UpFontButton.Click
+        If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
+            Dim newIndex As Integer = FontList.SelectedIndex - 1
+            If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
+                Dim selected As Object = FontList.SelectedItem
+                FontList.Items.Remove(selected)
+                FontList.Items.Insert(newIndex, selected)
+                FontList.SetSelected(newIndex, True)
+            End If
+        End If
+        Preview()
+    End Sub
+
+    Private Sub DownFontButton_Click(sender As Object, e As EventArgs) Handles DownFontButton.Click
+        Try
+            If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
+                Dim newIndex As Integer = FontList.SelectedIndex + 1
+                If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
+                    Dim selected As Object = FontList.SelectedItem
+                    FontList.Items.Remove(selected)
+                    FontList.Items.Insert(newIndex, selected)
+                    FontList.SetSelected(newIndex, True)
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+        Preview()
+    End Sub
+
+    Private Sub BackgroundColorChooser_ColorChanged(sender As Object, e As EventArgs) Handles BackgroundColorChooser.ColorChanged
+        BackgroundColorChooser.Tag = System.Drawing.ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(BackgroundColorChooser.Color.ToArgb())).Replace("#", "")
+        Preview()
+    End Sub
+
+    Private Sub TextColorChooser_ColorChanged(sender As Object, e As EventArgs) Handles TextColorChooser.ColorChanged
+        TextColorChooser.Tag = System.Drawing.ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(TextColorChooser.Color.ToArgb())).Replace("#", "")
+        Preview()
+    End Sub
+
+    Private Sub TextColorPicker_ColorSelected() Handles TextColorPicker.ColorSelected
+        TextColorChooser.CloseDropDown()
+        TextColorChooser.Color = TextColorPicker.Color
+    End Sub
+
+    Private Sub BackgroundColorPicker_ColorSelected() Handles BackgroundColorPicker.ColorSelected
+        BackgroundColorChooser.CloseDropDown()
+        BackgroundColorChooser.Color = BackgroundColorPicker.Color
+    End Sub
+
+    Private Sub FontList_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles FontList.DrawItem
+        If FontList.Items.Count > 0 Then
+            ' Set the DrawMode property to draw fixed sized items.
+            FontList.DrawMode = DrawMode.OwnerDrawFixed
+            ' Draw the background of the ListBox control for each item.
+            e.DrawBackground()
+
+            ' Draw the current item text based on the current Font.
+            e.Graphics.DrawString(FontList.Items(e.Index), New System.Drawing.Font(Me.FontList.Items(e.Index).ToString, 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte)), Brushes.Black, New RectangleF(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height))
+            ' If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle()
+        End If
+    End Sub
+
+    Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintButton.Click, PrintToolStripMenuItem.Click
+        PreviewBrowser.ShowPrintDialog()
+    End Sub
+
+    Private Sub RefreshToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshToolStripMenuItem.Click, RealTimePreviewToolStripMenuItem.Click
+        If Not RealTimePreviewToolStripMenuItem.Checked Then
+            RealTimePreviewToolStripMenuItem.Checked = True
+            Preview()
+            RealTimePreviewToolStripMenuItem.Checked = False
+        Else
+            Preview()
+        End If
+    End Sub
+
+    Private Sub RealTimePreviewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RealTimePreviewToolStripMenuItem.Click
+        Preview()
+    End Sub
+
+    Private Sub CoverPhotoButton_Click(sender As Object, e As EventArgs) Handles CoverPhotoButton.Click
+        Dim coverDialog As New CoverPhoto
+        If coverDialog.ShowDialog() = DialogResult.OK Then
+            coverPhoto.Text = coverDialog.ListBox1.SelectedItem.ToString
+        End If
+        Preview()
+    End Sub
+
+    Private Sub AddSeperatorButton_Click(sender As Object, e As EventArgs) Handles AddSeperatorButton.Click
+        code.Text = code.Text & vbNewLine & "<hr class='seperator'>" & vbNewLine
+    End Sub
+
+    Private Sub OpenInBrowserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenInBrowserToolStripMenuItem.Click
+        Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+    End Sub
+
+    Private Sub DebugButton_Click(sender As Object, e As EventArgs) Handles DebugButton.Click
+        DebugInfo.Visible = DebugButton.Checked
+    End Sub
+End Class
