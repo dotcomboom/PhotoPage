@@ -8,5 +8,6 @@ Public Class CoverPhoto
                 ListBox1.Items.Add(Path.GetFileName(file))
             End If
         Next
+        ListBox1.Items.Add("[ No cover photo ]")
     End Sub
 End Class

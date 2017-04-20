@@ -184,12 +184,12 @@ Public Class Form1
                         msg = msg & vbNewLine & "- Font Faces"
                         yay = False
                     End If
-                    If Not checkif(BackgroundColorChooser, "[#bgcolor#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Background Color"
+                    If Not checkif(TextColorChooser, "[#color#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Color 1"
                         yay = False
                     End If
-                    If Not checkif(TextColorChooser, "[#color#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Font Color"
+                    If Not checkif(BackgroundColorChooser, "[#bgcolor#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
+                        msg = msg & vbNewLine & "- Color 2"
                         yay = False
                     End If
                     If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
@@ -222,12 +222,12 @@ Public Class Form1
                     msg = msg & vbNewLine & "- Font Faces"
                     yay = False
                 End If
-                If Not checkif(BackgroundColorChooser, "[#bgcolor#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Background Color"
+                If Not checkif(TextColorChooser, "[#color#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Color 1"
                     yay = False
                 End If
-                If Not checkif(TextColorChooser, "[#color#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Font Color"
+                If Not checkif(BackgroundColorChooser, "[#bgcolor#]", template.Text) Then
+                    msg = msg & vbNewLine & "- Color 2"
                     yay = False
                 End If
                 If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
@@ -576,7 +576,11 @@ Public Class Form1
     Private Sub CoverPhotoButton_Click(sender As Object, e As EventArgs) Handles CoverPhotoButton.Click
         Dim coverDialog As New CoverPhoto
         If coverDialog.ShowDialog() = DialogResult.OK Then
-            coverPhoto.Text = coverDialog.ListBox1.SelectedItem.ToString
+            If coverDialog.ListBox1.SelectedItem.ToString = "[ No cover photo ]" Then
+                coverPhoto.Text = ""
+            Else
+                coverPhoto.Text = coverDialog.ListBox1.SelectedItem.ToString
+            End If
         End If
         Preview()
     End Sub

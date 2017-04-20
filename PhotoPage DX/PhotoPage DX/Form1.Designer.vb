@@ -618,7 +618,7 @@ Partial Class Form1
         Me.OrbMenu.BackColor = System.Drawing.Color.White
         Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.SaveToMyProjectsToolStripMenuItem, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(170, 176)
+        Me.OrbMenu.Size = New System.Drawing.Size(170, 198)
         '
         'NewProjectToolStripMenuItem
         '

@@ -103,12 +103,16 @@ Public Class Studio
             msg = msg & vbNewLine & vbNewLine & "- Font Faces"
             yay = False
         End If
-        If Not CodeEditor.Text.Contains("[#bgcolor#]") Then
-            msg = msg & vbNewLine & "- Background Color"
+        If Not CodeEditor.Text.Contains("[#color#]") Then
+            msg = msg & vbNewLine & "- Color 1"
             yay = False
         End If
-        If Not CodeEditor.Text.Contains("[#color#]") Then
-            msg = msg & vbNewLine & "- Font Color"
+        If Not CodeEditor.Text.Contains("[#bgcolor#]") Then
+            msg = msg & vbNewLine & "- Color 2"
+            yay = False
+        End If
+        If Not CodeEditor.Text.Contains("[#coverphoto#]") Then
+            msg = msg & vbNewLine & "- Cover Photo"
             yay = False
         End If
         If yay Then
@@ -202,7 +206,6 @@ Public Class Studio
 
     Private Sub AdvancedPreviewButton_Click(sender As Object, e As EventArgs) Handles AdvancedPreviewButton.Click
         PreviewDialog.ShowDialog()
-        Preview()
     End Sub
 
     Private Sub OpenInBrowserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenInBrowserToolStripMenuItem.Click
@@ -221,7 +224,7 @@ Public Class Studio
     End Sub
 
     Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
-        If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
+        If PreviewBrowser.Url.AbsoluteUri.Contains(".png") Then
             Preview()
         End If
     End Sub
