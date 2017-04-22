@@ -533,14 +533,14 @@ Public Class Form1
         Preview()
     End Sub
 
-    Private Sub TextColorPicker_ColorSelected() Handles TextColorPicker.ColorSelected
+    Private Sub TextColorPicker_ColorSelected() Handles Color1Picker.ColorSelected
         TextColorChooser.CloseDropDown()
-        TextColorChooser.Color = TextColorPicker.Color
+        TextColorChooser.Color = Color1Picker.Color
     End Sub
 
-    Private Sub BackgroundColorPicker_ColorSelected() Handles BackgroundColorPicker.ColorSelected
+    Private Sub BackgroundColorPicker_ColorSelected() Handles Color2Picker.ColorSelected
         BackgroundColorChooser.CloseDropDown()
-        BackgroundColorChooser.Color = BackgroundColorPicker.Color
+        BackgroundColorChooser.Color = Color2Picker.Color
     End Sub
 
     Private Sub FontList_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles FontList.DrawItem

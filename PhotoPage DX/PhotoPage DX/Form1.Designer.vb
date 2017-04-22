@@ -66,10 +66,10 @@ Partial Class Form1
         Me.RibbonPanel7 = New System.Windows.Forms.RibbonPanel()
         Me.TextColorChooser = New System.Windows.Forms.RibbonColorChooser()
         Me.TextColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.TextColorPicker = New PhotoPageColorPicker.ColorPicker()
+        Me.Color1Picker = New PhotoPageColorPicker.ColorPicker()
         Me.BackgroundColorChooser = New System.Windows.Forms.RibbonColorChooser()
         Me.BackgroundColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.BackgroundColorPicker = New PhotoPageColorPicker.ColorPicker()
+        Me.Color2Picker = New PhotoPageColorPicker.ColorPicker()
         Me.RibbonPanel8 = New System.Windows.Forms.RibbonPanel()
         Me.OpenPresetButton = New System.Windows.Forms.RibbonButton()
         Me.SavePresetButton = New System.Windows.Forms.RibbonButton()
@@ -460,21 +460,21 @@ Partial Class Form1
         '
         'TextColorPickerHost
         '
-        Me.TextColorPickerHost.HostedControl = Me.TextColorPicker
+        Me.TextColorPickerHost.HostedControl = Me.Color1Picker
         '
-        'TextColorPicker
+        'Color1Picker
         '
-        Me.TextColorPicker.BackColor = System.Drawing.Color.White
-        Me.TextColorPicker.Color = System.Drawing.Color.Empty
-        Me.TextColorPicker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextColorPicker.Location = New System.Drawing.Point(105, 113)
-        Me.TextColorPicker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
-        Me.TextColorPicker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.TextColorPicker.MoreColorsForeColor = System.Drawing.Color.Black
-        Me.TextColorPicker.Name = "TextColorPicker"
-        Me.TextColorPicker.Size = New System.Drawing.Size(119, 147)
-        Me.TextColorPicker.TabIndex = 12
-        Me.TextColorPicker.Visible = False
+        Me.Color1Picker.BackColor = System.Drawing.Color.White
+        Me.Color1Picker.Color = System.Drawing.Color.Empty
+        Me.Color1Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Color1Picker.Location = New System.Drawing.Point(105, 113)
+        Me.Color1Picker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
+        Me.Color1Picker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Color1Picker.MoreColorsForeColor = System.Drawing.Color.Black
+        Me.Color1Picker.Name = "Color1Picker"
+        Me.Color1Picker.Size = New System.Drawing.Size(119, 147)
+        Me.Color1Picker.TabIndex = 12
+        Me.Color1Picker.Visible = False
         '
         'BackgroundColorChooser
         '
@@ -488,21 +488,21 @@ Partial Class Form1
         '
         'BackgroundColorPickerHost
         '
-        Me.BackgroundColorPickerHost.HostedControl = Me.BackgroundColorPicker
+        Me.BackgroundColorPickerHost.HostedControl = Me.Color2Picker
         '
-        'BackgroundColorPicker
+        'Color2Picker
         '
-        Me.BackgroundColorPicker.BackColor = System.Drawing.Color.White
-        Me.BackgroundColorPicker.Color = System.Drawing.Color.Empty
-        Me.BackgroundColorPicker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BackgroundColorPicker.Location = New System.Drawing.Point(221, 113)
-        Me.BackgroundColorPicker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
-        Me.BackgroundColorPicker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.BackgroundColorPicker.MoreColorsForeColor = System.Drawing.Color.Black
-        Me.BackgroundColorPicker.Name = "BackgroundColorPicker"
-        Me.BackgroundColorPicker.Size = New System.Drawing.Size(119, 147)
-        Me.BackgroundColorPicker.TabIndex = 13
-        Me.BackgroundColorPicker.Visible = False
+        Me.Color2Picker.BackColor = System.Drawing.Color.White
+        Me.Color2Picker.Color = System.Drawing.Color.Empty
+        Me.Color2Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Color2Picker.Location = New System.Drawing.Point(221, 113)
+        Me.Color2Picker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
+        Me.Color2Picker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Color2Picker.MoreColorsForeColor = System.Drawing.Color.Black
+        Me.Color2Picker.Name = "Color2Picker"
+        Me.Color2Picker.Size = New System.Drawing.Size(119, 147)
+        Me.Color2Picker.TabIndex = 13
+        Me.Color2Picker.Visible = False
         '
         'RibbonPanel8
         '
@@ -858,8 +858,8 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(590, 378)
         Me.Controls.Add(Me.DebugInfo)
         Me.Controls.Add(Me.coverPhoto)
-        Me.Controls.Add(Me.BackgroundColorPicker)
-        Me.Controls.Add(Me.TextColorPicker)
+        Me.Controls.Add(Me.Color2Picker)
+        Me.Controls.Add(Me.Color1Picker)
         Me.Controls.Add(Me.FontList)
         Me.Controls.Add(Me.StatusBar)
         Me.Controls.Add(Me.PreviewBrowser)
@@ -955,8 +955,8 @@ Partial Class Form1
     Friend WithEvents FontSeparator2 As RibbonSeparator
     Friend WithEvents TextColorPickerHost As RibbonHost
     Friend WithEvents BackgroundColorPickerHost As RibbonHost
-    Friend WithEvents TextColorPicker As PhotoPageColorPicker.ColorPicker
-    Friend WithEvents BackgroundColorPicker As PhotoPageColorPicker.ColorPicker
+    Friend WithEvents Color1Picker As PhotoPageColorPicker.ColorPicker
+    Friend WithEvents Color2Picker As PhotoPageColorPicker.ColorPicker
     Friend WithEvents PrintButton As RibbonButton
     Friend WithEvents PrintToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
