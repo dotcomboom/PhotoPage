@@ -103,6 +103,7 @@ Partial Class Studio
         '
         'Ribbon1
         '
+        Me.Ribbon1.CaptionBarVisible = False
         Me.Ribbon1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Ribbon1.Location = New System.Drawing.Point(0, 0)
         Me.Ribbon1.Minimized = False
@@ -127,12 +128,12 @@ Partial Class Studio
         Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.RedoQAButton)
         Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.RibbonButton1)
         Me.Ribbon1.RibbonTabFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Ribbon1.Size = New System.Drawing.Size(622, 140)
+        Me.Ribbon1.Size = New System.Drawing.Size(622, 115)
         Me.Ribbon1.TabIndex = 0
         Me.Ribbon1.Tabs.Add(Me.RibbonTab1)
         Me.Ribbon1.Tabs.Add(Me.RibbonTab2)
         Me.Ribbon1.Tabs.Add(Me.RibbonTab3)
-        Me.Ribbon1.TabsMargin = New System.Windows.Forms.Padding(12, 26, 20, 0)
+        Me.Ribbon1.TabsMargin = New System.Windows.Forms.Padding(12, 2, 20, 0)
         Me.Ribbon1.Text = "Ribbon1"
         Me.Ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue
         '
@@ -177,6 +178,8 @@ Partial Class Studio
         '
         'RibbonPanel1
         '
+        Me.RibbonPanel1.ButtonMoreEnabled = False
+        Me.RibbonPanel1.ButtonMoreVisible = False
         Me.RibbonPanel1.Items.Add(Me.CutButton)
         Me.RibbonPanel1.Items.Add(Me.CopyButton)
         Me.RibbonPanel1.Items.Add(Me.PasteButton)
@@ -202,6 +205,8 @@ Partial Class Studio
         '
         'RibbonPanel2
         '
+        Me.RibbonPanel2.ButtonMoreEnabled = False
+        Me.RibbonPanel2.ButtonMoreVisible = False
         Me.RibbonPanel2.Items.Add(Me.UndoButton)
         Me.RibbonPanel2.Items.Add(Me.RedoButton)
         Me.RibbonPanel2.Text = "History"
@@ -220,6 +225,8 @@ Partial Class Studio
         '
         'RibbonPanel3
         '
+        Me.RibbonPanel3.ButtonMoreEnabled = False
+        Me.RibbonPanel3.ButtonMoreVisible = False
         Me.RibbonPanel3.Items.Add(Me.FindButton)
         Me.RibbonPanel3.Items.Add(Me.ReplaceButton)
         Me.RibbonPanel3.Items.Add(Me.SelectAllButton)
@@ -245,6 +252,8 @@ Partial Class Studio
         '
         'RibbonPanel4
         '
+        Me.RibbonPanel4.ButtonMoreEnabled = False
+        Me.RibbonPanel4.ButtonMoreVisible = False
         Me.RibbonPanel4.Items.Add(Me.FeatureCheckButton)
         Me.RibbonPanel4.Items.Add(Me.AdvancedPreviewButton)
         Me.RibbonPanel4.Text = "Testing"
@@ -270,6 +279,8 @@ Partial Class Studio
         '
         'RibbonPanel5
         '
+        Me.RibbonPanel5.ButtonMoreEnabled = False
+        Me.RibbonPanel5.ButtonMoreVisible = False
         Me.RibbonPanel5.Items.Add(Me.TitleFeatureButton)
         Me.RibbonPanel5.Items.Add(Me.DescriptionFeatureButton)
         Me.RibbonPanel5.Items.Add(Me.FooterFeatureButton)
@@ -295,6 +306,8 @@ Partial Class Studio
         '
         'RibbonPanel6
         '
+        Me.RibbonPanel6.ButtonMoreEnabled = False
+        Me.RibbonPanel6.ButtonMoreVisible = False
         Me.RibbonPanel6.Items.Add(Me.ContentFeatureButton)
         Me.RibbonPanel6.Items.Add(Me.CoverPhotoFeatureButton)
         Me.RibbonPanel6.Text = "Content"
@@ -314,6 +327,8 @@ Partial Class Studio
         '
         'RibbonPanel7
         '
+        Me.RibbonPanel7.ButtonMoreEnabled = False
+        Me.RibbonPanel7.ButtonMoreVisible = False
         Me.RibbonPanel7.Items.Add(Me.FontsFeatureButton)
         Me.RibbonPanel7.Items.Add(Me.TextColorFeatureButton)
         Me.RibbonPanel7.Items.Add(Me.BackgroundColorFeatureButton)
@@ -345,6 +360,8 @@ Partial Class Studio
         '
         'RibbonPanel10
         '
+        Me.RibbonPanel10.ButtonMoreEnabled = False
+        Me.RibbonPanel10.ButtonMoreVisible = False
         Me.RibbonPanel10.Items.Add(Me.PhotoClassButton)
         Me.RibbonPanel10.Items.Add(Me.VideoClassButton)
         Me.RibbonPanel10.Items.Add(Me.AudioClassButton)
@@ -370,6 +387,8 @@ Partial Class Studio
         '
         'RibbonPanel9
         '
+        Me.RibbonPanel9.ButtonMoreEnabled = False
+        Me.RibbonPanel9.ButtonMoreVisible = False
         Me.RibbonPanel9.Items.Add(Me.HeadingClassButton)
         Me.RibbonPanel9.Items.Add(Me.ParagraphClassButton)
         Me.RibbonPanel9.Items.Add(Me.SeperatorClassButton)
@@ -398,7 +417,7 @@ Partial Class Studio
         Me.SplitContainer1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 140)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 113)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -408,7 +427,7 @@ Partial Class Studio
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.PreviewBrowser)
-        Me.SplitContainer1.Size = New System.Drawing.Size(622, 227)
+        Me.SplitContainer1.Size = New System.Drawing.Size(622, 258)
         Me.SplitContainer1.SplitterDistance = 382
         Me.SplitContainer1.TabIndex = 1
         '
@@ -436,7 +455,7 @@ Partial Class Studio
         Me.CodeEditor.RightBracket2 = Global.Microsoft.VisualBasic.ChrW(41)
         Me.CodeEditor.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CodeEditor.ServiceColors = CType(resources.GetObject("CodeEditor.ServiceColors"), FastColoredTextBoxNS.ServiceColors)
-        Me.CodeEditor.Size = New System.Drawing.Size(382, 227)
+        Me.CodeEditor.Size = New System.Drawing.Size(382, 258)
         Me.CodeEditor.TabIndex = 1
         Me.CodeEditor.Text = resources.GetString("CodeEditor.Text")
         Me.CodeEditor.Zoom = 100
@@ -508,7 +527,7 @@ Partial Class Studio
         Me.PreviewBrowser.MinimumSize = New System.Drawing.Size(20, 20)
         Me.PreviewBrowser.Name = "PreviewBrowser"
         Me.PreviewBrowser.ScriptErrorsSuppressed = True
-        Me.PreviewBrowser.Size = New System.Drawing.Size(236, 227)
+        Me.PreviewBrowser.Size = New System.Drawing.Size(236, 258)
         Me.PreviewBrowser.TabIndex = 0
         '
         'OpenTemplateDialog

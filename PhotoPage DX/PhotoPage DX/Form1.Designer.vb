@@ -29,7 +29,6 @@ Partial Class Form1
         Me.AddHeadingQAButton = New System.Windows.Forms.RibbonButton()
         Me.AddParagraphQAButton = New System.Windows.Forms.RibbonButton()
         Me.FinishQAButton = New System.Windows.Forms.RibbonButton()
-        Me.ProjectSizeLabel = New System.Windows.Forms.RibbonLabel()
         Me.RibbonTab1 = New System.Windows.Forms.RibbonTab()
         Me.RibbonPanel1 = New System.Windows.Forms.RibbonPanel()
         Me.PageTitleTextBox = New System.Windows.Forms.RibbonTextBox()
@@ -118,6 +117,7 @@ Partial Class Form1
         Me.StatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
+        Me.ProjectSizeLabel = New System.Windows.Forms.Label()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -126,6 +126,7 @@ Partial Class Form1
         'Ribbon1
         '
         Me.Ribbon1.AllowDrop = True
+        Me.Ribbon1.CaptionBarVisible = False
         Me.Ribbon1.Cursor = System.Windows.Forms.Cursors.Default
         Me.Ribbon1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Ribbon1.Location = New System.Drawing.Point(0, 0)
@@ -154,14 +155,13 @@ Partial Class Form1
         Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.AddHeadingQAButton)
         Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.AddParagraphQAButton)
         Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.FinishQAButton)
-        Me.Ribbon1.QuickAcessToolbar.Items.Add(Me.ProjectSizeLabel)
         Me.Ribbon1.RibbonTabFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Ribbon1.Size = New System.Drawing.Size(590, 141)
+        Me.Ribbon1.Size = New System.Drawing.Size(590, 115)
         Me.Ribbon1.TabIndex = 0
         Me.Ribbon1.Tabs.Add(Me.RibbonTab1)
         Me.Ribbon1.Tabs.Add(Me.RibbonTab2)
         Me.Ribbon1.Tabs.Add(Me.RibbonTab3)
-        Me.Ribbon1.TabsMargin = New System.Windows.Forms.Padding(12, 26, 20, 0)
+        Me.Ribbon1.TabsMargin = New System.Windows.Forms.Padding(12, 2, 20, 0)
         Me.Ribbon1.Text = "Ribbon1"
         Me.Ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue
         '
@@ -199,11 +199,6 @@ Partial Class Form1
         Me.FinishQAButton.ToolTip = "Saves the project as an HTML document to My Projects."
         Me.FinishQAButton.ToolTipTitle = "Produce Page"
         '
-        'ProjectSizeLabel
-        '
-        Me.ProjectSizeLabel.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
-        Me.ProjectSizeLabel.Text = "0 MB"
-        '
         'RibbonTab1
         '
         Me.RibbonTab1.Panels.Add(Me.RibbonPanel1)
@@ -213,6 +208,8 @@ Partial Class Form1
         '
         'RibbonPanel1
         '
+        Me.RibbonPanel1.ButtonMoreEnabled = False
+        Me.RibbonPanel1.ButtonMoreVisible = False
         Me.RibbonPanel1.Items.Add(Me.PageTitleTextBox)
         Me.RibbonPanel1.Items.Add(Me.DescriptionTextBox)
         Me.RibbonPanel1.Items.Add(Me.FooterTextBox)
@@ -237,6 +234,8 @@ Partial Class Form1
         '
         'RibbonPanel10
         '
+        Me.RibbonPanel10.ButtonMoreEnabled = False
+        Me.RibbonPanel10.ButtonMoreVisible = False
         Me.RibbonPanel10.Items.Add(Me.FinishButton)
         Me.RibbonPanel10.Items.Add(Me.PrintButton)
         Me.RibbonPanel10.Text = "Publish"
@@ -255,6 +254,7 @@ Partial Class Form1
         '
         'RibbonPanel3
         '
+        Me.RibbonPanel3.ButtonMoreVisible = False
         Me.RibbonPanel3.Items.Add(Me.DebugButton)
         Me.RibbonPanel3.Items.Add(Me.CreateTemplateButton)
         Me.RibbonPanel3.Text = "Developer"
@@ -281,6 +281,8 @@ Partial Class Form1
         '
         'RibbonPanel2
         '
+        Me.RibbonPanel2.ButtonMoreEnabled = False
+        Me.RibbonPanel2.ButtonMoreVisible = False
         Me.RibbonPanel2.Items.Add(Me.AddPhotosButton)
         Me.RibbonPanel2.Items.Add(Me.AddVideoButton)
         Me.RibbonPanel2.Items.Add(Me.AddAudioButton)
@@ -317,6 +319,8 @@ Partial Class Form1
         '
         'RibbonPanel4
         '
+        Me.RibbonPanel4.ButtonMoreEnabled = False
+        Me.RibbonPanel4.ButtonMoreVisible = False
         Me.RibbonPanel4.Items.Add(Me.AddHeadingButton)
         Me.RibbonPanel4.Items.Add(Me.AddParagraphButton)
         Me.RibbonPanel4.Items.Add(Me.AddSeperatorButton)
@@ -342,6 +346,8 @@ Partial Class Form1
         '
         'RibbonPanel5
         '
+        Me.RibbonPanel5.ButtonMoreEnabled = False
+        Me.RibbonPanel5.ButtonMoreVisible = False
         Me.RibbonPanel5.Items.Add(Me.ClearButton)
         Me.RibbonPanel5.Items.Add(Me.UndoButton)
         Me.RibbonPanel5.Text = "Remove"
@@ -368,6 +374,8 @@ Partial Class Form1
         '
         'RibbonPanel6
         '
+        Me.RibbonPanel6.ButtonMoreEnabled = False
+        Me.RibbonPanel6.ButtonMoreVisible = False
         Me.RibbonPanel6.Items.Add(Me.FontsListBoxHost)
         Me.RibbonPanel6.Items.Add(Me.FontSeparator1)
         Me.RibbonPanel6.Items.Add(Me.AddFontButton)
@@ -435,6 +443,8 @@ Partial Class Form1
         '
         'RibbonPanel7
         '
+        Me.RibbonPanel7.ButtonMoreEnabled = False
+        Me.RibbonPanel7.ButtonMoreVisible = False
         Me.RibbonPanel7.Items.Add(Me.TextColorChooser)
         Me.RibbonPanel7.Items.Add(Me.BackgroundColorChooser)
         Me.RibbonPanel7.Text = "Color Palette"
@@ -497,6 +507,8 @@ Partial Class Form1
         '
         'RibbonPanel8
         '
+        Me.RibbonPanel8.ButtonMoreEnabled = False
+        Me.RibbonPanel8.ButtonMoreVisible = False
         Me.RibbonPanel8.Items.Add(Me.OpenPresetButton)
         Me.RibbonPanel8.Items.Add(Me.SavePresetButton)
         Me.RibbonPanel8.Text = "Presets"
@@ -515,6 +527,8 @@ Partial Class Form1
         '
         'RibbonPanel9
         '
+        Me.RibbonPanel9.ButtonMoreEnabled = False
+        Me.RibbonPanel9.ButtonMoreVisible = False
         Me.RibbonPanel9.Items.Add(Me.CustomTemplateButton)
         Me.RibbonPanel9.Text = "Custom Templates"
         '
@@ -618,7 +632,7 @@ Partial Class Form1
         Me.OrbMenu.BackColor = System.Drawing.Color.White
         Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.SaveToMyProjectsToolStripMenuItem, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(170, 198)
+        Me.OrbMenu.Size = New System.Drawing.Size(170, 176)
         '
         'NewProjectToolStripMenuItem
         '
@@ -748,11 +762,11 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PreviewBrowser.ContextMenuStrip = Me.PreviewMenu
         Me.PreviewBrowser.IsWebBrowserContextMenuEnabled = False
-        Me.PreviewBrowser.Location = New System.Drawing.Point(0, 139)
+        Me.PreviewBrowser.Location = New System.Drawing.Point(0, 113)
         Me.PreviewBrowser.MinimumSize = New System.Drawing.Size(20, 20)
         Me.PreviewBrowser.Name = "PreviewBrowser"
         Me.PreviewBrowser.ScriptErrorsSuppressed = True
-        Me.PreviewBrowser.Size = New System.Drawing.Size(590, 220)
+        Me.PreviewBrowser.Size = New System.Drawing.Size(590, 246)
         Me.PreviewBrowser.TabIndex = 6
         '
         'AddVideosDialog
@@ -835,12 +849,26 @@ Partial Class Form1
         Me.DebugInfo.TabIndex = 15
         Me.DebugInfo.Visible = False
         '
+        'ProjectSizeLabel
+        '
+        Me.ProjectSizeLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProjectSizeLabel.BackColor = System.Drawing.Color.White
+        Me.ProjectSizeLabel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProjectSizeLabel.ForeColor = System.Drawing.Color.Gray
+        Me.ProjectSizeLabel.Location = New System.Drawing.Point(363, 5)
+        Me.ProjectSizeLabel.Name = "ProjectSizeLabel"
+        Me.ProjectSizeLabel.Size = New System.Drawing.Size(222, 13)
+        Me.ProjectSizeLabel.TabIndex = 16
+        Me.ProjectSizeLabel.Text = "0 MB"
+        Me.ProjectSizeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
         'Form1
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(590, 378)
+        Me.Controls.Add(Me.ProjectSizeLabel)
         Me.Controls.Add(Me.DebugInfo)
         Me.Controls.Add(Me.coverPhoto)
         Me.Controls.Add(Me.BackgroundColorPicker)
@@ -917,7 +945,6 @@ Partial Class Form1
     Friend WithEvents FinishQAButton As RibbonButton
     Friend WithEvents AddHeadingQAButton As RibbonButton
     Friend WithEvents AddParagraphQAButton As RibbonButton
-    Friend WithEvents ProjectSizeLabel As RibbonLabel
     Friend WithEvents PreviewBrowser As WebBrowser
     Friend WithEvents AboutPhotoPageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UndoButton As RibbonButton
@@ -962,4 +989,5 @@ Partial Class Form1
     Friend WithEvents RibbonPanel3 As RibbonPanel
     Friend WithEvents DebugButton As RibbonButton
     Friend WithEvents DebugInfo As TextBox
+    Friend WithEvents ProjectSizeLabel As Label
 End Class
