@@ -6,7 +6,7 @@ Public Class Studio
 
     Private Sub Ribbon1_OrbClicked(sender As Object, e As EventArgs) Handles Ribbon1.OrbClicked
         Ribbon1.OrbPressed = False
-        OrbMenu.Show(Ribbon1, 0, 24)
+        OrbMenu.Show(Ribbon1, 0, 23)
     End Sub
 
     Private Function Preview()

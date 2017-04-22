@@ -6,7 +6,7 @@ Public Class Form1
 
     Private Sub Ribbon1_OrbClicked(sender As Object, e As EventArgs) Handles Ribbon1.OrbClicked
         Ribbon1.OrbPressed = False
-        OrbMenu.Show(Ribbon1, 0, 24)
+        OrbMenu.Show(Ribbon1, 0, 23)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -45,7 +45,9 @@ Public Class Form1
             Else
                 My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
             End If
+            PreviewBrowser.AllowNavigation = True
             PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+            PreviewBrowser.AllowNavigation = False
         End If
         Return True
     End Function

@@ -522,13 +522,16 @@ Partial Class Studio
         '
         'PreviewBrowser
         '
+        Me.PreviewBrowser.AllowNavigation = False
         Me.PreviewBrowser.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PreviewBrowser.IsWebBrowserContextMenuEnabled = False
         Me.PreviewBrowser.Location = New System.Drawing.Point(0, 0)
         Me.PreviewBrowser.MinimumSize = New System.Drawing.Size(20, 20)
         Me.PreviewBrowser.Name = "PreviewBrowser"
         Me.PreviewBrowser.ScriptErrorsSuppressed = True
         Me.PreviewBrowser.Size = New System.Drawing.Size(236, 258)
         Me.PreviewBrowser.TabIndex = 0
+        Me.PreviewBrowser.WebBrowserShortcutsEnabled = False
         '
         'OpenTemplateDialog
         '

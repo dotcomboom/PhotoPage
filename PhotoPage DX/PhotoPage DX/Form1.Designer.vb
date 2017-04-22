@@ -755,6 +755,7 @@ Partial Class Form1
         '
         'PreviewBrowser
         '
+        Me.PreviewBrowser.AllowNavigation = False
         Me.PreviewBrowser.AllowWebBrowserDrop = False
         Me.PreviewBrowser.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
@@ -767,6 +768,7 @@ Partial Class Form1
         Me.PreviewBrowser.ScriptErrorsSuppressed = True
         Me.PreviewBrowser.Size = New System.Drawing.Size(590, 246)
         Me.PreviewBrowser.TabIndex = 6
+        Me.PreviewBrowser.WebBrowserShortcutsEnabled = False
         '
         'AddVideosDialog
         '
