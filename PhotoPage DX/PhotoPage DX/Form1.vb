@@ -45,9 +45,7 @@ Public Class Form1
             Else
                 My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
             End If
-            PreviewBrowser.AllowNavigation = True
             PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
-            PreviewBrowser.AllowNavigation = False
         End If
         Return True
     End Function
@@ -335,11 +333,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
-        If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
-            PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
-        End If
-    End Sub
+    'Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
+    '    If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
+    '        PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+    '    End If
+    'End Sub
 
     Private Sub RadMenuItem1_Click(sender As Object, e As EventArgs) Handles NewProjectToolStripMenuItem.Click
         If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then

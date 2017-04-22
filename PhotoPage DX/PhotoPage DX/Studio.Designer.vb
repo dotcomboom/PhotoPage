@@ -88,7 +88,6 @@ Partial Class Studio
         Me.BetaCentralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutPhotoPageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.VersionLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PreviewMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -600,19 +599,12 @@ Partial Class Studio
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VersionLabel, Me.StatusLabel})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 370)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(622, 22)
         Me.StatusStrip1.TabIndex = 11
         Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'VersionLabel
-        '
-        Me.VersionLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.VersionLabel.Name = "VersionLabel"
-        Me.VersionLabel.Size = New System.Drawing.Size(53, 17)
-        Me.VersionLabel.Text = "{version}"
         '
         'StatusLabel
         '
@@ -706,7 +698,6 @@ Partial Class Studio
     Friend WithEvents VideoClassButton As RibbonButton
     Friend WithEvents AudioClassButton As RibbonButton
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents VersionLabel As ToolStripStatusLabel
     Friend WithEvents StatusLabel As ToolStripStatusLabel
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents BetaCentralToolStripMenuItem As ToolStripMenuItem

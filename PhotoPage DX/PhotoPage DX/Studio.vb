@@ -60,8 +60,8 @@ Public Class Studio
         If OpenTemplateDialog.ShowDialog = DialogResult.OK Then
             Try
                 CodeEditor.OpenFile(OpenTemplateDialog.FileName)
-                Me.Text = "PhotoPage Studio - " & OpenTemplateDialog.SafeFileName
-                Ribbon1.Text = "PhotoPage Studio - " & OpenTemplateDialog.SafeFileName
+                Me.Text = "PhotoPage Studio " & Launcher.getVersion() & " - " & OpenTemplateDialog.SafeFileName
+                Ribbon1.Text = "PhotoPage Studio " & Launcher.getVersion() & " - " & OpenTemplateDialog.SafeFileName
             Catch ex As Exception
                 MsgBox("An error occurred while trying to open the template:" & vbNewLine & vbNewLine & ex.ToString(), MsgBoxStyle.Critical, "Guru Meditation")
             End Try
@@ -72,8 +72,8 @@ Public Class Studio
         If SaveTemplateDialog.ShowDialog = DialogResult.OK Then
             Try
                 CodeEditor.SaveToFile(SaveTemplateDialog.FileName, System.Text.Encoding.Default)
-                Me.Text = "PhotoPage Studio - " & Path.GetFileName(SaveTemplateDialog.FileName)
-                Ribbon1.Text = "PhotoPage Studio - " & Path.GetFileName(SaveTemplateDialog.FileName)
+                Me.Text = "PhotoPage Studio " & Launcher.getVersion() & " - " & Path.GetFileName(SaveTemplateDialog.FileName)
+                Ribbon1.Text = "PhotoPage Studio " & Launcher.getVersion() & " - " & Path.GetFileName(SaveTemplateDialog.FileName)
             Catch ex As Exception
                 MsgBox("An error occurred while trying to save the template:" & vbNewLine & vbNewLine & ex.ToString(), MsgBoxStyle.Critical, "Guru Meditation")
             End Try
@@ -150,7 +150,7 @@ Public Class Studio
     End Sub
 
     Private Sub Studio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        VersionLabel.Text = Launcher.getVersion()
+        Me.Text = "PhotoPage Studio " & Launcher.getVersion() & " - Untitled"
         PreviewBrowser.DocumentText = (CodeEditor.Text.Replace("[#pagetitle#]", "PhotoPage Studio").Replace("[#description#]", "Template Preview").Replace("[#content#]", "<h3 class='heading'>This is a heading</h3><p>This is a paragraph.</p><h3 class='heading'>Landscape</h3><a href='http://lorempixel.com/160/110/city/'><img src='http://lorempixel.com/160/110/city/' alt='http://lorempixel.com/160/110/city/' class='img-landscape' width=160 height=110></a><a href='http://lorempixel.com/160/110/city/'><img src='http://lorempixel.com/160/110/city/' alt='http://lorempixel.com/160/110/city/' class='img-landscape' width=160 height=110></a><a href='http://lorempixel.com/160/110/city/'><img src='http://lorempixel.com/160/110/city/' alt='http://lorempixel.com/160/110/city/' class='img-landscape' width=160 height=110></a><h3 class='heading'>Portrait</h3><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a><h3 class='heading'>Mixed</h3><a href='http://lorempixel.com/160/110/city/'><img src='http://lorempixel.com/160/110/city/' alt='http://lorempixel.com/160/110/city/' class='img-landscape' width=160 height=110></a><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a><a href='http://lorempixel.com/160/110/city/'><img src='http://lorempixel.com/160/110/city/' alt='http://lorempixel.com/160/110/city/' class='img-landscape' width=160 height=110></a><a href='http://lorempixel.com/83/110/city/'><img src='http://lorempixel.com/83/110/city/' alt='http://lorempixel.com/83/110/city/' class='img-portrait' width=83 height=110></a>").Replace("[#footer#]", "PhotoPage Studio 2017").Replace("[#fonts#]", "Arial, Verdana, sans-serif").Replace("[#color#]", "000000").Replace("[#bgcolor#]", "FFFFFF"))
     End Sub
 
