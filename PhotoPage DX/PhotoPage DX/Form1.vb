@@ -10,7 +10,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        VersionLabel.Text = Launcher.getVersion()
+        Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
         If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
             My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
             Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
@@ -245,11 +245,11 @@ Public Class Form1
     End Sub
 
     Private Sub PageTitleTextBox_TextChanged(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged
-        Me.Text = "PhotoPage - " & PageTitleTextBox.TextBoxText
+        Me.Text = "PhotoPage " & Launcher.getVersion() & " - " & PageTitleTextBox.TextBoxText
         If PageTitleTextBox.TextBoxText.Length > 0 Then
-            Me.Text = "PhotoPage - " & PageTitleTextBox.TextBoxText
+            Me.Text = "PhotoPage " & Launcher.getVersion() & " - " & PageTitleTextBox.TextBoxText
         Else
-            Me.Text = "PhotoPage - Untitled"
+            Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
         End If
     End Sub
 
@@ -280,6 +280,7 @@ Public Class Form1
     End Sub
 
     Private Sub PreviewBrowser_DragDrop(sender As System.Object, e As System.Windows.Forms.DragEventArgs) Handles Ribbon1.DragDrop
+        StatusLabel.Text = ""
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each file In files
             AddtoProject(file)
@@ -289,6 +290,7 @@ Public Class Form1
     Private Sub Label1_DragEnter(sender As Object, e As DragEventArgs) Handles Ribbon1.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
+            StatusLabel.Text = "Drop to add files"
         End If
     End Sub
 
@@ -383,7 +385,7 @@ Public Class Form1
         StatusLabel.Text = "Producing page"
         If PageTitleTextBox.TextBoxText = "" Then
             PageTitleTextBox.TextBoxText = "Untitled"
-            Me.Text = "PhotoPage - Untitled"
+            Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
         End If
         If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
             My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
@@ -595,5 +597,9 @@ Public Class Form1
 
     Private Sub DebugButton_Click(sender As Object, e As EventArgs) Handles DebugButton.Click
         DebugInfo.Visible = DebugButton.Checked
+    End Sub
+
+    Private Sub Ribbon1_DragLeave(sender As Object, e As EventArgs) Handles Ribbon1.DragLeave
+        StatusLabel.Text = ""
     End Sub
 End Class

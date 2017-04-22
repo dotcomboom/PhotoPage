@@ -113,11 +113,10 @@ Partial Class Form1
         Me.videotemplate = New System.Windows.Forms.TextBox()
         Me.audiotemplate = New System.Windows.Forms.TextBox()
         Me.StatusBar = New System.Windows.Forms.StatusStrip()
-        Me.VersionLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ProjectSizeLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
-        Me.ProjectSizeLabel = New System.Windows.Forms.Label()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -399,7 +398,7 @@ Partial Class Form1
         Me.FontList.IntegralHeight = False
         Me.FontList.ItemHeight = 14
         Me.FontList.Items.AddRange(New Object() {"Segoe UI", "Segoe", "Tahoma", "Geneva"})
-        Me.FontList.Location = New System.Drawing.Point(11, 152)
+        Me.FontList.Location = New System.Drawing.Point(0, 113)
         Me.FontList.Name = "FontList"
         Me.FontList.Size = New System.Drawing.Size(107, 64)
         Me.FontList.TabIndex = 11
@@ -468,7 +467,7 @@ Partial Class Form1
         Me.TextColorPicker.BackColor = System.Drawing.Color.White
         Me.TextColorPicker.Color = System.Drawing.Color.Empty
         Me.TextColorPicker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextColorPicker.Location = New System.Drawing.Point(196, 152)
+        Me.TextColorPicker.Location = New System.Drawing.Point(105, 113)
         Me.TextColorPicker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
         Me.TextColorPicker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.TextColorPicker.MoreColorsForeColor = System.Drawing.Color.Black
@@ -496,7 +495,7 @@ Partial Class Form1
         Me.BackgroundColorPicker.BackColor = System.Drawing.Color.White
         Me.BackgroundColorPicker.Color = System.Drawing.Color.Empty
         Me.BackgroundColorPicker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BackgroundColorPicker.Location = New System.Drawing.Point(331, 152)
+        Me.BackgroundColorPicker.Location = New System.Drawing.Point(221, 113)
         Me.BackgroundColorPicker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
         Me.BackgroundColorPicker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.BackgroundColorPicker.MoreColorsForeColor = System.Drawing.Color.Black
@@ -806,27 +805,27 @@ Partial Class Form1
         'StatusBar
         '
         Me.StatusBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.StatusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VersionLabel, Me.StatusLabel})
+        Me.StatusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel, Me.ProjectSizeLabel})
         Me.StatusBar.Location = New System.Drawing.Point(0, 356)
         Me.StatusBar.Name = "StatusBar"
         Me.StatusBar.Size = New System.Drawing.Size(590, 22)
         Me.StatusBar.TabIndex = 10
         Me.StatusBar.Text = "StatusStrip1"
         '
-        'VersionLabel
-        '
-        Me.VersionLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.VersionLabel.Name = "VersionLabel"
-        Me.VersionLabel.Size = New System.Drawing.Size(53, 17)
-        Me.VersionLabel.Text = "{version}"
-        '
         'StatusLabel
         '
         Me.StatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(522, 17)
+        Me.StatusLabel.Size = New System.Drawing.Size(541, 17)
         Me.StatusLabel.Spring = True
-        Me.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ProjectSizeLabel
+        '
+        Me.ProjectSizeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.ProjectSizeLabel.Name = "ProjectSizeLabel"
+        Me.ProjectSizeLabel.Size = New System.Drawing.Size(34, 17)
+        Me.ProjectSizeLabel.Text = "0 MB"
         '
         'coverPhoto
         '
@@ -849,26 +848,12 @@ Partial Class Form1
         Me.DebugInfo.TabIndex = 15
         Me.DebugInfo.Visible = False
         '
-        'ProjectSizeLabel
-        '
-        Me.ProjectSizeLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProjectSizeLabel.BackColor = System.Drawing.Color.White
-        Me.ProjectSizeLabel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProjectSizeLabel.ForeColor = System.Drawing.Color.Gray
-        Me.ProjectSizeLabel.Location = New System.Drawing.Point(363, 5)
-        Me.ProjectSizeLabel.Name = "ProjectSizeLabel"
-        Me.ProjectSizeLabel.Size = New System.Drawing.Size(222, 13)
-        Me.ProjectSizeLabel.TabIndex = 16
-        Me.ProjectSizeLabel.Text = "0 MB"
-        Me.ProjectSizeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
         'Form1
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(590, 378)
-        Me.Controls.Add(Me.ProjectSizeLabel)
         Me.Controls.Add(Me.DebugInfo)
         Me.Controls.Add(Me.coverPhoto)
         Me.Controls.Add(Me.BackgroundColorPicker)
@@ -978,7 +963,7 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AddPhotosButton As RibbonButton
-    Friend WithEvents VersionLabel As ToolStripStatusLabel
+    Friend WithEvents ProjectSizeLabel As ToolStripStatusLabel
     Friend WithEvents RibbonSeparator1 As RibbonSeparator
     Friend WithEvents RealTimePreviewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CoverPhotoButton As RibbonButton
@@ -989,5 +974,4 @@ Partial Class Form1
     Friend WithEvents RibbonPanel3 As RibbonPanel
     Friend WithEvents DebugButton As RibbonButton
     Friend WithEvents DebugInfo As TextBox
-    Friend WithEvents ProjectSizeLabel As Label
 End Class

@@ -18,7 +18,7 @@
             day = "0" & day
         End If
 
-        Return "Release " & year & month & day & "." & revision
+        Return year & month & day & "." & revision
     End Function
     Private Sub Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
