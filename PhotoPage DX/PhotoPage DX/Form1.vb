@@ -89,11 +89,7 @@ Public Class Form1
         Else
             If file.EndsWith(".mp4") Then
                 Try
-                    If code.Text.Replace(vbNewLine, "").EndsWith("</h1>") Or code.Text.Replace(vbNewLine, "").EndsWith("</p>") Then
-                        code.Text = code.Text & videotemplate.Text.Replace("[#video#]", Path.GetFileName(file)) & vbNewLine
-                    Else
-                        code.Text = code.Text & "<br>" & videotemplate.Text.Replace("[#video#]", Path.GetFileName(file)) & vbNewLine
-                    End If
+                    code.Text = code.Text & videotemplate.Text.Replace("[#video#]", Path.GetFileName(file)) & vbNewLine
                     My.Computer.FileSystem.CopyFile(file, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\" & Path.GetFileName(file), True)
 
                     Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
@@ -108,11 +104,7 @@ Public Class Form1
                 End Try
             ElseIf file.EndsWith(".mp3") Then
                 Try
-                    If code.Text.Replace(vbNewLine, "").EndsWith("</h1>") Or code.Text.Replace(vbNewLine, "").EndsWith("</p>") Then
-                        code.Text = code.Text & audiotemplate.Text.Replace("[#audio#]", Path.GetFileName(file)) & vbNewLine
-                    Else
-                        code.Text = code.Text & "<br>" & audiotemplate.Text.Replace("[#audio#]", Path.GetFileName(file)) & vbNewLine
-                    End If
+                    code.Text = code.Text & audiotemplate.Text.Replace("[#audio#]", Path.GetFileName(file)) & vbNewLine
                     My.Computer.FileSystem.CopyFile(file, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\" & Path.GetFileName(file), True)
 
                     Dim drInfo As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
@@ -333,11 +325,11 @@ Public Class Form1
         End If
     End Sub
 
-    'Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
-    '    If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
-    '        PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
-    '    End If
-    'End Sub
+    Private Sub PreviewBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles PreviewBrowser.DocumentCompleted
+        If Not PreviewBrowser.Url.AbsoluteUri.EndsWith(".html") Then
+            PreviewBrowser.Navigate("file://" & (My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+        End If
+    End Sub
 
     Private Sub RadMenuItem1_Click(sender As Object, e As EventArgs) Handles NewProjectToolStripMenuItem.Click
         If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then

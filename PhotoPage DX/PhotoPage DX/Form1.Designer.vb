@@ -755,7 +755,6 @@ Partial Class Form1
         '
         'PreviewBrowser
         '
-        Me.PreviewBrowser.AllowNavigation = False
         Me.PreviewBrowser.AllowWebBrowserDrop = False
         Me.PreviewBrowser.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
@@ -790,8 +789,9 @@ Partial Class Form1
         Me.videotemplate.Name = "videotemplate"
         Me.videotemplate.Size = New System.Drawing.Size(21, 20)
         Me.videotemplate.TabIndex = 8
-        Me.videotemplate.Text = "<video width=""320"" height=""180"" controls>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <source src=""[#video#]"" type=""video/" &
-    "mp4"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <br>[#video#]<br>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</video>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<br>"
+        Me.videotemplate.Text = "<div style=""padding-top: 5px; padding-bottom: 5px;"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<video width=""320"" height=""" &
+    "180"" controls>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <source src=""[#video#]"" type=""video/mp4"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <br>[#video#]<br>" &
+    "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</video>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</div>"
         Me.videotemplate.Visible = False
         '
         'audiotemplate
@@ -800,8 +800,8 @@ Partial Class Form1
         Me.audiotemplate.Name = "audiotemplate"
         Me.audiotemplate.Size = New System.Drawing.Size(21, 20)
         Me.audiotemplate.TabIndex = 9
-        Me.audiotemplate.Text = "<audio controls>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <source src=""[#audio#]"" type=""audio/mpeg"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  [#audio#]" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</au" &
-    "dio>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<br>"
+        Me.audiotemplate.Text = "<div style=""padding-top: 5px; padding-bottom: 5px;"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<audio controls>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  <source" &
+    " src=""[#audio#]"" type=""audio/mpeg"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  [#audio#]" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</audio>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</div>"
         Me.audiotemplate.Visible = False
         '
         'StatusBar
