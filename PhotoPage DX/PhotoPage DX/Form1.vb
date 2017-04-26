@@ -332,31 +332,33 @@ Public Class Form1
     End Sub
 
     Private Sub RadMenuItem1_Click(sender As Object, e As EventArgs) Handles NewProjectToolStripMenuItem.Click
-        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
-            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "", FileIO.DeleteDirectoryOption.DeleteAllContents)
-            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+        If MsgBox("Start a new project? All unsaved changes will be lost!", MsgBoxStyle.YesNo, "New Project") = MsgBoxResult.Yes Then
+            If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+                My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            End If
+            ProjectSizeLabel.Text = "0 MB"
+
+            code.Text = ""
+
+            PageTitleTextBox.TextBoxText = ""
+            DescriptionTextBox.TextBoxText = ""
+            FooterTextBox.TextBoxText = ""
+
+            FontList.Items.Clear()
+            FontList.Items.Add("Segoe UI")
+            FontList.Items.Add("Segoe")
+            FontList.Items.Add("Tahoma")
+            FontList.Items.Add("Geneva")
+
+            CustomTemplateButton.Checked = False
+
+            BackgroundColorChooser.Tag = "FFFFFF"
+            TextColorChooser.Tag = "000000"
+
+            BackgroundColorChooser.Color = Color.White
+            TextColorChooser.Color = Color.Black
         End If
-        ProjectSizeLabel.Text = "0 MB"
-
-        code.Text = ""
-
-        PageTitleTextBox.TextBoxText = ""
-        DescriptionTextBox.TextBoxText = ""
-        FooterTextBox.TextBoxText = ""
-
-        FontList.Items.Clear()
-        FontList.Items.Add("Segoe UI")
-        FontList.Items.Add("Segoe")
-        FontList.Items.Add("Tahoma")
-        FontList.Items.Add("Geneva")
-
-        CustomTemplateButton.Checked = False
-
-        BackgroundColorChooser.Tag = "FFFFFF"
-        TextColorChooser.Tag = "000000"
-
-        BackgroundColorChooser.Color = Color.White
-        TextColorChooser.Color = Color.Black
     End Sub
 
     Private Sub RadMenuItem2_Click(sender As Object, e As EventArgs) Handles MyProjectsToolStripMenuItem.Click
@@ -373,8 +375,8 @@ Public Class Form1
         studio.Show()
     End Sub
 
-    Private Sub FinishButton_Click(sender As Object, e As EventArgs) Handles FinishButton.Click, SaveToMyProjectsToolStripMenuItem.Click, FinishQAButton.Click
-        StatusLabel.Text = "Producing page"
+    Private Sub FinishButton_Click(sender As Object, e As EventArgs) Handles FinishButton.Click, FinishQAButton.Click, ToolStripMenuItem3.Click
+        StatusLabel.Text = "Saving project"
         If PageTitleTextBox.TextBoxText = "" Then
             PageTitleTextBox.TextBoxText = "Untitled"
             Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
@@ -396,6 +398,7 @@ Public Class Form1
                 My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText, FileIO.DeleteDirectoryOption.DeleteAllContents)
             Else
                 MsgBox("Change the name of the project, then try again.", MsgBoxStyle.Critical, "Guru Meditation")
+                StatusLabel.Text = ""
                 Exit Sub
             End If
         End If
@@ -408,6 +411,39 @@ Public Class Form1
                 foldername = foldername.Replace(c.ToString(), "-")
             Next
         End If
+        Try
+            Dim root = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\ppg_sys\"
+            Dim project = root & "project\"
+            Dim content = root & "content\"
+            Dim style = root & "style\"
+
+            My.Computer.FileSystem.CreateDirectory(root)
+            My.Computer.FileSystem.CreateDirectory(project)
+            My.Computer.FileSystem.CreateDirectory(content)
+            My.Computer.FileSystem.CreateDirectory(style)
+
+            My.Computer.FileSystem.WriteAllText(project & "pagetitle", PageTitleTextBox.TextBoxText, False)
+            My.Computer.FileSystem.WriteAllText(project & "description", DescriptionTextBox.TextBoxText, False)
+            My.Computer.FileSystem.WriteAllText(project & "footer", FooterTextBox.TextBoxText, False)
+
+            My.Computer.FileSystem.WriteAllText(content & "html", code.Text, False)
+            Dim historyBuilder As New System.Text.StringBuilder()
+            For Each o As Object In HistoryListBox.Items
+                historyBuilder.AppendLine(o)
+            Next
+            My.Computer.FileSystem.WriteAllText(content & "history", historyBuilder.ToString(), False)
+            Dim fontsBuilder As New System.Text.StringBuilder()
+            For Each o As Object In FontList.Items
+                fontsBuilder.AppendLine(o)
+            Next
+
+            My.Computer.FileSystem.WriteAllText(style & "fonts", fontsBuilder.ToString(), False)
+            My.Computer.FileSystem.WriteAllText(style & "color", TextColorChooser.Color.ToString, False)
+            My.Computer.FileSystem.WriteAllText(style & "bgcolor", BackgroundColorChooser.Color.ToString, False)
+
+            My.Computer.FileSystem.WriteAllText(root & "info.txt", "This folder is meant to be used internally within the PhotoPage program to hold project information. If you're uploading or sharing this project and don't wish for it to be editable by the program, exclude this folder.", False)
+        Catch ex As Exception
+        End Try
         Try
             My.Computer.FileSystem.CopyDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\", My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\")
             StatusLabel.Text = ""
@@ -593,5 +629,9 @@ Public Class Form1
 
     Private Sub Ribbon1_DragLeave(sender As Object, e As EventArgs) Handles Ribbon1.DragLeave
         StatusLabel.Text = ""
+    End Sub
+
+    Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
+
     End Sub
 End Class

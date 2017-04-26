@@ -91,7 +91,7 @@ Partial Class Form1
         Me.OrbMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.NewProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SaveToMyProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.MyProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -117,6 +117,7 @@ Partial Class Form1
         Me.ProjectSizeLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -243,7 +244,7 @@ Partial Class Form1
         '
         Me.FinishButton.Image = CType(resources.GetObject("FinishButton.Image"), System.Drawing.Image)
         Me.FinishButton.SmallImage = CType(resources.GetObject("FinishButton.SmallImage"), System.Drawing.Image)
-        Me.FinishButton.Text = "Produce Page"
+        Me.FinishButton.Text = "Save Project"
         '
         'PrintButton
         '
@@ -629,9 +630,9 @@ Partial Class Form1
         'OrbMenu
         '
         Me.OrbMenu.BackColor = System.Drawing.Color.White
-        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.SaveToMyProjectsToolStripMenuItem, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
+        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(170, 176)
+        Me.OrbMenu.Size = New System.Drawing.Size(170, 220)
         '
         'NewProjectToolStripMenuItem
         '
@@ -645,12 +646,12 @@ Partial Class Form1
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
         '
-        'SaveToMyProjectsToolStripMenuItem
+        'OpenProjectToolStripMenuItem
         '
-        Me.SaveToMyProjectsToolStripMenuItem.Image = CType(resources.GetObject("SaveToMyProjectsToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.SaveToMyProjectsToolStripMenuItem.Name = "SaveToMyProjectsToolStripMenuItem"
-        Me.SaveToMyProjectsToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.SaveToMyProjectsToolStripMenuItem.Text = "Produce Page"
+        Me.OpenProjectToolStripMenuItem.Image = CType(resources.GetObject("OpenProjectToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
+        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.OpenProjectToolStripMenuItem.Text = "Open Project"
         '
         'PrintToolStripMenuItem
         '
@@ -850,6 +851,13 @@ Partial Class Form1
         Me.DebugInfo.TabIndex = 15
         Me.DebugInfo.Visible = False
         '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(169, 22)
+        Me.ToolStripMenuItem3.Text = "Save Project"
+        '
         'Form1
         '
         Me.AllowDrop = True
@@ -925,7 +933,7 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents AddHeadingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddParagraphToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveToMyProjectsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenProjectToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents FooterTextBox As RibbonTextBox
     Friend WithEvents AddPhotosQAButton As RibbonButton
@@ -976,4 +984,5 @@ Partial Class Form1
     Friend WithEvents RibbonPanel3 As RibbonPanel
     Friend WithEvents DebugButton As RibbonButton
     Friend WithEvents DebugInfo As TextBox
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
 End Class
