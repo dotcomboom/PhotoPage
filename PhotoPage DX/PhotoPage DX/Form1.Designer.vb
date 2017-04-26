@@ -118,6 +118,7 @@ Partial Class Form1
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenProjectDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -632,7 +633,7 @@ Partial Class Form1
         Me.OrbMenu.BackColor = System.Drawing.Color.White
         Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(170, 220)
+        Me.OrbMenu.Size = New System.Drawing.Size(170, 198)
         '
         'NewProjectToolStripMenuItem
         '
@@ -858,6 +859,11 @@ Partial Class Form1
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(169, 22)
         Me.ToolStripMenuItem3.Text = "Save Project"
         '
+        'OpenProjectDialog
+        '
+        Me.OpenProjectDialog.Description = "Please select a PhotoPage project folder."
+        Me.OpenProjectDialog.ShowNewFolderButton = False
+        '
         'Form1
         '
         Me.AllowDrop = True
@@ -985,4 +991,5 @@ Partial Class Form1
     Friend WithEvents DebugButton As RibbonButton
     Friend WithEvents DebugInfo As TextBox
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents OpenProjectDialog As FolderBrowserDialog
 End Class

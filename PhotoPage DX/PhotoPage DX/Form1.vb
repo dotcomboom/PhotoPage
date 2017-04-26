@@ -412,7 +412,7 @@ Public Class Form1
             Next
         End If
         Try
-            Dim root = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\ppg_sys\"
+            Dim root = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\ppg_data\"
             Dim project = root & "project\"
             Dim content = root & "content\"
             Dim style = root & "style\"
@@ -429,7 +429,9 @@ Public Class Form1
             My.Computer.FileSystem.WriteAllText(content & "html", code.Text, False)
             Dim historyBuilder As New System.Text.StringBuilder()
             For Each o As Object In HistoryListBox.Items
+                historyBuilder.AppendLine("item----")
                 historyBuilder.AppendLine(o)
+                historyBuilder.AppendLine("----item")
             Next
             My.Computer.FileSystem.WriteAllText(content & "history", historyBuilder.ToString(), False)
             Dim fontsBuilder As New System.Text.StringBuilder()
@@ -620,7 +622,7 @@ Public Class Form1
     End Sub
 
     Private Sub OpenInBrowserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenInBrowserToolStripMenuItem.Click
-        Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html"))
+        Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp\index.html"))
     End Sub
 
     Private Sub DebugButton_Click(sender As Object, e As EventArgs) Handles DebugButton.Click
@@ -632,6 +634,18 @@ Public Class Form1
     End Sub
 
     Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
+        OpenProjectDialog.SelectedPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects"
+        If OpenProjectDialog.ShowDialog() = DialogResult.OK Then
+            Dim root = OpenProjectDialog.SelectedPath & "\ppg_data\"
+            Dim project = root & "project\"
+            Dim content = root & "content\"
+            Dim style = root & "style\"
 
+            If My.Computer.FileSystem.DirectoryExists(root) Then
+
+            Else
+                MsgBox("This project doesn't contain a PhotoPage data folder. It may have either been made in a previous version of PhotoPage without saving functionality, or the folder was removed manually.")
+            End If
+        End If
     End Sub
 End Class
