@@ -90,8 +90,9 @@ Partial Class Form1
         Me.OpenInBrowserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OrbMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.NewProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.MyProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -117,7 +118,6 @@ Partial Class Form1
         Me.ProjectSizeLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenProjectDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
@@ -642,17 +642,24 @@ Partial Class Form1
         Me.NewProjectToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.NewProjectToolStripMenuItem.Text = "New Project"
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
-        '
         'OpenProjectToolStripMenuItem
         '
         Me.OpenProjectToolStripMenuItem.Image = CType(resources.GetObject("OpenProjectToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
         Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.OpenProjectToolStripMenuItem.Text = "Open Project"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(169, 22)
+        Me.ToolStripMenuItem3.Text = "Save Project"
         '
         'PrintToolStripMenuItem
         '
@@ -851,13 +858,6 @@ Partial Class Form1
         Me.DebugInfo.Size = New System.Drawing.Size(590, 103)
         Me.DebugInfo.TabIndex = 15
         Me.DebugInfo.Visible = False
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(169, 22)
-        Me.ToolStripMenuItem3.Text = "Save Project"
         '
         'OpenProjectDialog
         '

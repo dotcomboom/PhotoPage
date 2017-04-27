@@ -434,7 +434,7 @@ Partial Class Studio
         '
         Me.CodeEditor.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.CodeEditor.AutoIndentCharsPatterns = ""
-        Me.CodeEditor.AutoScrollMinSize = New System.Drawing.Size(419, 518)
+        Me.CodeEditor.AutoScrollMinSize = New System.Drawing.Size(419, 546)
         Me.CodeEditor.BackBrush = Nothing
         Me.CodeEditor.CharHeight = 14
         Me.CodeEditor.CharWidth = 8
@@ -610,7 +610,7 @@ Partial Class Studio
         '
         Me.StatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(554, 17)
+        Me.StatusLabel.Size = New System.Drawing.Size(607, 17)
         Me.StatusLabel.Spring = True
         Me.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '

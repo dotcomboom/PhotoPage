@@ -141,6 +141,70 @@ Public Class Form1
         Return True
     End Function
 
+    Private Function buildppgp()
+        Dim SB As New System.Text.StringBuilder()
+        SB.AppendLine("[1] " & genFonts())
+        SB.AppendLine("[2] " & BackgroundColorChooser.Tag)
+        SB.AppendLine("[3] " & TextColorChooser.Tag)
+        Return SB.ToString
+    End Function
+
+    Private Function loadppgp(filename As String)
+        Dim strFileName() As String
+        strFileName = IO.File.ReadAllLines(filename)
+        For Each Line In strFileName '// loop thru Arrays.
+            If Line.StartsWith("[1] ") Then
+                FontList.Items.Clear()
+                For Each i As String In Line.Replace("[1] ", "").Replace(", sans-serif", "").Replace(",sans-serif", "").Replace("'", "").Replace(", ", ",").Split(",")
+                    FontList.Items.Add(i)
+                Next
+            End If
+            If Line.StartsWith("[2] ") Then
+                'BackgroundColorChooser.Tag = Line.Replace("[2] ", "")
+                BackgroundColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[2] ", ""))
+            End If
+            If Line.StartsWith("[3] ") Then
+                'TextColorChooser.Tag = Line.Replace("[3] ", "")
+                TextColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[3] ", ""))
+            End If
+        Next
+        Return True
+    End Function
+
+    Private Function templateCheck(template As String)
+        Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
+        Dim yay = True
+
+        If Not checkif(DescriptionTextBox, "[#description#]", template) Then
+            msg = msg & vbNewLine & "- Page Description"
+            yay = False
+        End If
+        If Not checkif(FooterTextBox, "[#footer#]", template) Then
+            msg = msg & vbNewLine & "- Page Footer"
+            yay = False
+        End If
+        If Not checkif(RibbonPanel6, "[#fonts#]", template) Then
+            msg = msg & vbNewLine & "- Font Faces"
+            yay = False
+        End If
+        If Not checkif(TextColorChooser, "[#color#]", template) Then
+            msg = msg & vbNewLine & "- Color 1"
+            yay = False
+        End If
+        If Not checkif(BackgroundColorChooser, "[#bgcolor#]", template) Then
+            msg = msg & vbNewLine & "- Color 2"
+            yay = False
+        End If
+        If Not checkif(CoverPhotoButton, "[#coverphoto#]", template) Then
+            msg = msg & vbNewLine & "- Cover Photo"
+            yay = False
+        End If
+        If Not yay Then
+            MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
+        End If
+        Return True
+    End Function
+
     Private Sub PreviewTextBoxes(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged, DescriptionTextBox.TextBoxTextChanged, FooterTextBox.TextBoxTextChanged, FontList.DrawItem, code.TextChanged
         Debug()
         Preview()
@@ -161,36 +225,7 @@ Public Class Form1
                 CustomTemplateButton.Tag = OpenTemplateDialog.FileName
                 CustomTemplateButton.Checked = True
                 Try
-                    Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
-                    Dim yay = True
-
-                    If Not checkif(DescriptionTextBox, "[#description#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Page Description"
-                        yay = False
-                    End If
-                    If Not checkif(FooterTextBox, "[#footer#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Page Footer"
-                        yay = False
-                    End If
-                    If Not checkif(RibbonPanel6, "[#fonts#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Font Faces"
-                        yay = False
-                    End If
-                    If Not checkif(TextColorChooser, "[#color#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Color 1"
-                        yay = False
-                    End If
-                    If Not checkif(BackgroundColorChooser, "[#bgcolor#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Color 2"
-                        yay = False
-                    End If
-                    If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                        msg = msg & vbNewLine & "- Cover Photo"
-                        yay = False
-                    End If
-                    If Not yay Then
-                        MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
-                    End If
+                    templateCheck(My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag))
                 Catch ex As Exception
                     MsgBox("An error occurred while performing the Feature Check: " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
                 End Try
@@ -199,36 +234,7 @@ Public Class Form1
             End If
         Else
             Try
-                Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
-                Dim yay = True
-
-                If Not checkif(DescriptionTextBox, "[#description#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Page Description"
-                    yay = False
-                End If
-                If Not checkif(FooterTextBox, "[#footer#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Page Footer"
-                    yay = False
-                End If
-                If Not checkif(RibbonPanel6, "[#fonts#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Font Faces"
-                    yay = False
-                End If
-                If Not checkif(TextColorChooser, "[#color#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Color 1"
-                    yay = False
-                End If
-                If Not checkif(BackgroundColorChooser, "[#bgcolor#]", template.Text) Then
-                    msg = msg & vbNewLine & "- Color 2"
-                    yay = False
-                End If
-                If Not checkif(CoverPhotoButton, "[#coverphoto#]", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag)) Then
-                    msg = msg & vbNewLine & "- Cover Photo"
-                    yay = False
-                End If
-                If Not yay Then
-                    MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
-                End If
+                templateCheck(template.Text)
             Catch ex As Exception
                 MsgBox("An error occurred while performing the Feature Check: " & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
             End Try
@@ -289,24 +295,7 @@ Public Class Form1
     Private Sub RadButtonElement7_Click(sender As Object, e As EventArgs) Handles OpenPresetButton.Click
         If OpenPresetDialog.ShowDialog = DialogResult.OK Then
             Try
-                Dim strFileName() As String
-                strFileName = IO.File.ReadAllLines(OpenPresetDialog.FileName)
-                For Each Line In strFileName '// loop thru Arrays.
-                    If Line.StartsWith("[1] ") Then
-                        FontList.Items.Clear()
-                        For Each i As String In Line.Replace("[1] ", "").Replace(", sans-serif", "").Replace(",sans-serif", "").Replace("'", "").Replace(", ", ",").Split(",")
-                            FontList.Items.Add(i)
-                        Next
-                    End If
-                    If Line.StartsWith("[2] ") Then
-                        'BackgroundColorChooser.Tag = Line.Replace("[2] ", "")
-                        BackgroundColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[2] ", ""))
-                    End If
-                    If Line.StartsWith("[3] ") Then
-                        'TextColorChooser.Tag = Line.Replace("[3] ", "")
-                        TextColorChooser.Color = ColorTranslator.FromHtml("#" & Line.Replace("[3] ", ""))
-                    End If
-                Next
+                loadppgp(OpenPresetDialog.FileName)
             Catch ex As Exception
             End Try
         End If
@@ -315,10 +304,9 @@ Public Class Form1
     Private Sub RadButtonElement8_Click(sender As Object, e As EventArgs) Handles SavePresetButton.Click
         If SavePresetDialog.ShowDialog = DialogResult.OK Then
             Try
+
                 Dim SW As New StreamWriter(SavePresetDialog.FileName)
-                SW.WriteLine("[1] " & genFonts())
-                SW.WriteLine("[2] " & BackgroundColorChooser.Tag)
-                SW.WriteLine("[3] " & TextColorChooser.Tag)
+                SW.Write(buildppgp())
                 SW.Close()
             Catch ex As Exception
             End Try
@@ -358,6 +346,8 @@ Public Class Form1
 
             BackgroundColorChooser.Color = Color.White
             TextColorChooser.Color = Color.Black
+
+            templateCheck(template.Text)
         End If
     End Sub
 
@@ -439,11 +429,12 @@ Public Class Form1
                 fontsBuilder.AppendLine(o)
             Next
 
-            My.Computer.FileSystem.WriteAllText(style & "fonts", fontsBuilder.ToString(), False)
-            My.Computer.FileSystem.WriteAllText(style & "color", TextColorChooser.Color.ToString, False)
-            My.Computer.FileSystem.WriteAllText(style & "bgcolor", BackgroundColorChooser.Color.ToString, False)
+            My.Computer.FileSystem.WriteAllText(style & "ppgp", buildppgp(), False)
+            If CustomTemplateButton.Checked Then
+                My.Computer.FileSystem.WriteAllText(style & "ppgt-path", CustomTemplateButton.Tag, False)
+            End If
 
-            My.Computer.FileSystem.WriteAllText(root & "info.txt", "This folder is meant to be used internally within the PhotoPage program to hold project information. If you're uploading or sharing this project and don't wish for it to be editable by the program, exclude this folder.", False)
+            My.Computer.FileSystem.WriteAllText(root & "readme.txt", "This folder is meant to be used internally within the PhotoPage program to hold project information. If you're uploading or sharing this project and don't wish for it to be editable by the program, exclude this folder.", False)
         Catch ex As Exception
         End Try
         Try
@@ -642,7 +633,61 @@ Public Class Form1
             Dim style = root & "style\"
 
             If My.Computer.FileSystem.DirectoryExists(root) Then
+                StatusLabel.Text = "Loading project"
+                Try
+                    PageTitleTextBox.TextBoxText = My.Computer.FileSystem.ReadAllText(project & "pagetitle")
+                    DescriptionTextBox.TextBoxText = My.Computer.FileSystem.ReadAllText(project & "description")
+                    FooterTextBox.TextBoxText = My.Computer.FileSystem.ReadAllText(project & "footer")
 
+                    code.Text = My.Computer.FileSystem.ReadAllText(content & "html")
+
+                    HistoryListBox.Items.Clear()
+
+                    Dim history = ""
+                    Dim line As String
+                    Dim sr As New StreamReader(content & "history")
+
+                    Do
+                        line = sr.ReadLine
+                        If line = "item----" Then
+                            history = ""
+                        ElseIf line = "----item" Then
+                            HistoryListBox.Items.Add(history)
+                        Else
+                            history = history & line
+                        End If
+                    Loop Until line Is Nothing
+
+                    loadppgp(style & "ppgp")
+                    If My.Computer.FileSystem.FileExists(style & "ppgt-path") Then
+                        Dim ppgtpath = My.Computer.FileSystem.ReadAllText(style & "ppgt-path")
+                        If My.Computer.FileSystem.FileExists(ppgtpath) Then
+                            CustomTemplateButton.Checked = True
+                            CustomTemplateButton.Tag = ppgtpath
+                            templateCheck(My.Computer.FileSystem.ReadAllText(ppgtpath))
+                        Else
+                            CustomTemplateButton.Checked = False
+                            CustomTemplateButton.Tag = ""
+                            templateCheck(template.Text)
+                        End If
+                    Else
+                        CustomTemplateButton.Checked = False
+                        CustomTemplateButton.Tag = ""
+                    End If
+
+                    If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+                        My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+
+                    My.Computer.FileSystem.CopyDirectory(OpenProjectDialog.SelectedPath, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+
+                    Preview()
+
+                    StatusLabel.Text = ""
+                Catch ex As Exception
+                    StatusLabel.Text = ""
+                    MsgBox("Error occurred when loading project:" & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+                End Try
             Else
                 MsgBox("This project doesn't contain a PhotoPage data folder. It may have either been made in a previous version of PhotoPage without saving functionality, or the folder was removed manually.")
             End If
