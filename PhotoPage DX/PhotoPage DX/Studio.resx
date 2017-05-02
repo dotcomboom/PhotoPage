@@ -609,7 +609,7 @@
   <data name="AdvancedPreviewButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADdEAAA3RAcIr3+MAAAAGYktHRAAAAAAAAPlDu38AAAAHdElNRQfVCxIPKRqxn6iV
+        YQUAAAAJcEhZcwAADdAAAA3QARBsPQcAAAAGYktHRAAAAAAAAPlDu38AAAAHdElNRQfVCxIPKRqxn6iV
         AAACkElEQVQ4T61SS0hUURi+19EygkCEiFwE1aKWtQpaFG2CCLOwRRFB9KAgaFOLFkEvCBTCEEIa05lx
         KMzSWkShlU3eSUedsXzha97P7jzuPG7jPO7M139uF8p02Q8f/+F8j/Ofw+H+LcHA1VmNFWarqVIUjBUl
         BqtJR2u+jXGabO0iwQXBwBcLuQSUogwlH1Ahx4cw+mJLgfgc02jylUXEZQKC0/fKJUWCsuyAIvcRulFI
@@ -933,7 +933,7 @@
   <data name="PhotoClassButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADdIAAA3SAW+S/o4AAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfVCwoQBxI2lLK2
+        YQUAAAAJcEhZcwAADdAAAA3QARBsPQcAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfVCwoQBxI2lLK2
         AAABpklEQVQ4T6XS6ytDcRzHcf+LP8ADYqXllja1cLJoeaCR3HLbpRa5LLZYjrlELKbZbGcurVl2ITT3
         S8nxWCnlkfJETWT7OL/DptVZmAfv+vbr/F6/X6dfxojJQHMhzWgCIBaLpRXZywPRaBQ9xjnkSep/Ffk2
         Eol8A0QroDqhHFhDg34DzcOr6KZdqOtfRW0vgxqdE3Ktg69SZeeRJIDcoETeBfW4H2anB7cPITw9X8IR
@@ -986,7 +986,7 @@
   <data name="VideoClassButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfWAQQMOiczCHkD
+        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfWAQQMOiczCHkD
         AAAANXRFWHRDb21tZW50AChjKSAyMDA0IEpha3ViIFN0ZWluZXIKCkNyZWF0ZWQgd2l0aCBUaGUgR0lN
         UJDZi28AAAFKSURBVDhPpZPNSsNQEIV9Ijc+SikVEaE7EUEQV0rVjVL/EMSi4F4Quo5YEcFNRIWKRUVD
         tOhCGskbBMb5biaKtmglA4fJzJw5mbm5Gfhp1dWlssJTRIrEPHHZKL1NCYMK/6hxKC+vbYnj908Qk6cO
@@ -1033,7 +1033,7 @@
   <data name="AudioClassButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA3SAAAN0gFvkv6OAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA3QAAAN0AEQbD0HAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
         aW5rc2NhcGUub3Jnm+48GgAAAoZJREFUOE+lk09IFGEYxqeoS5cIcr5xy6CkUirqVIeERMqD5cHDJs46
         40I4zuysXlILCtqIBAk9VFSQtErpaoWr5vpncVPXzEwRWc3/pmYERUji+n/dp++TOiRuEB0eZnif4fc9
         7/e+wwH4L21a/BdtWpR1oTjNSnyyTvrp+yDVkGwlI5JOxmULmaDPSUkXpiWL0LMpwKSSRUetCE+HDV19
@@ -1085,7 +1085,7 @@
   <data name="HeadingClassButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfWAQQPIR7HfYTI
+        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfWAQQPIR7HfYTI
         AAACMElEQVQ4T8WO3UuTURzHH7qwW/+BoGYkpQ8L3y4iesEuas5GaEudjuXmJIrJguFNs0hk7sVwy7m2
         qcuX7G0jI0KLmgvZRIe4yiwrSy+khFp0U0Tn8dtz1pEm2l3QFz485/n9Pt/D4f558nX9mYX6gZ/iF+mw
         WSbT/p6Cun7Txb4J4UPyGz5++Z6Cns09MYHumLZx8rR9m4r0Az8S859xY2wR9e0RgdIbfot7sXnQHXWY
@@ -1145,65 +1145,6 @@
   <metadata name="EditorMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="CodeEditor.ServiceColors" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdGYXN0Q29sb3JlZFRleHRCb3gsIFZlcnNpb249Mi4xNi4yMS4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWZiOGFhMTJiOTk0ZWY2MWIMAwAAAFFTeXN0
-        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
-        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACJGYXN0Q29sb3JlZFRleHRCb3hOUy5TZXJ2aWNlQ29sb3JzBgAA
-        ACg8Q29sbGFwc2VNYXJrZXJGb3JlQ29sb3I+a19fQmFja2luZ0ZpZWxkKDxDb2xsYXBzZU1hcmtlckJh
-        Y2tDb2xvcj5rX19CYWNraW5nRmllbGQqPENvbGxhcHNlTWFya2VyQm9yZGVyQ29sb3I+a19fQmFja2lu
-        Z0ZpZWxkJjxFeHBhbmRNYXJrZXJGb3JlQ29sb3I+a19fQmFja2luZ0ZpZWxkJjxFeHBhbmRNYXJrZXJC
-        YWNrQ29sb3I+a19fQmFja2luZ0ZpZWxkKDxFeHBhbmRNYXJrZXJCb3JkZXJDb2xvcj5rX19CYWNraW5n
-        RmllbGQEBAQEBAQUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAA
-        ABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5E
-        cmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAACAAAABfz///8UU3lzdGVtLkRy
-        YXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAACgAAAAAA
-        AAAAlgABAAH7/////P///woAAAAAAAAAAKQAAQAB+v////z///8KAAAAAAAAAACWAAEAAfn////8////
-        CgAAAAAAAAAAjQABAAH4/////P///woAAAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAACWAAEACw==
-</value>
-  </data>
-  <data name="CodeEditor.Text" xml:space="preserve">
-    <value>&lt;html&gt;
-
-&lt;head&gt;
-    &lt;title&gt;[#pagetitle#]&lt;/title&gt;
-    &lt;style type="text/css"&gt;
-        body {
-            font-family: [#fonts#];
-            margin: 20px;
-            background-color: [#bgcolor#];
-            color: [#color#];
-        }
-        
-        img {
-            opacity: 1.0;
-            -webkit-transition: all 0.5s;
-            transition: all 0.5s;
-            filter: alpha(opacity=100);
-        }
-        
-        img:hover {
-            opacity: 0.5;
-            filter: alpha(opacity=50);
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;center&gt;
-        &lt;h1 class="pagetitle"&gt;[#pagetitle#]&lt;/h1&gt;
-        &lt;p class="desc"&gt;[#description#]&lt;/p&gt;
-        [#content#]
-        &lt;br&gt;
-        &lt;p class="footer"&gt;[#footer#]&lt;/p&gt;
-    &lt;/center&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-
-</value>
-  </data>
   <data name="CutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1269,7 +1210,7 @@
   <data name="OpenInBrowserToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfVCwcNGxDYeWY5
+        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfVCwcNGxDYeWY5
         AAAAHXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBUaGUgR0lNUO9kJW4AAAG5SURBVDhPlZM7SxxRGIaH
         YKZbLdKYImIZRLAJAYXkB2RtbKwksYkWkiK/ICFNupDCJUm/pE8EEUU7/QEGEQkWFrs77jBz5n7Zy7z5
         vpkzs3FnV/SDh/ecM+c85wKj3LXgqvNwK2/gTr3PUn0qPynK/uHuGoFxHJ98w+XFOiztBUJjIU2jufSL
@@ -1280,6 +1221,81 @@
         otFoEg00mgTnGPhqJYFLV+AHssjOO4j80fI+UXwjbgh2936/5oF7siaXF/WAUIkK8Yh4TPDfNiNzmpgk
         HhKyFOUfBeG97qM3mwIAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="CodeEditor.ServiceColors" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdGYXN0Q29sb3JlZFRleHRCb3gsIFZlcnNpb249Mi4xNi4yMS4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWZiOGFhMTJiOTk0ZWY2MWIMAwAAAFFTeXN0
+        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
+        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACJGYXN0Q29sb3JlZFRleHRCb3hOUy5TZXJ2aWNlQ29sb3JzBgAA
+        ACg8Q29sbGFwc2VNYXJrZXJGb3JlQ29sb3I+a19fQmFja2luZ0ZpZWxkKDxDb2xsYXBzZU1hcmtlckJh
+        Y2tDb2xvcj5rX19CYWNraW5nRmllbGQqPENvbGxhcHNlTWFya2VyQm9yZGVyQ29sb3I+a19fQmFja2lu
+        Z0ZpZWxkJjxFeHBhbmRNYXJrZXJGb3JlQ29sb3I+a19fQmFja2luZ0ZpZWxkJjxFeHBhbmRNYXJrZXJC
+        YWNrQ29sb3I+a19fQmFja2luZ0ZpZWxkKDxFeHBhbmRNYXJrZXJCb3JkZXJDb2xvcj5rX19CYWNraW5n
+        RmllbGQEBAQEBAQUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAA
+        ABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5E
+        cmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAACAAAABfz///8UU3lzdGVtLkRy
+        YXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAACgAAAAAA
+        AAAAlgABAAH7/////P///woAAAAAAAAAAKQAAQAB+v////z///8KAAAAAAAAAACWAAEAAfn////8////
+        CgAAAAAAAAAAjQABAAH4/////P///woAAAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAACWAAEACw==
+</value>
+  </data>
+  <data name="CodeEditor.Text" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;[#pagetitle#]&lt;/title&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;style&gt;
+            html {
+                font-family: [#fonts#];
+                background-color: #[#bgcolor#];
+                color: #[#color#];
+                margin: 50px;
+            }
+            .title {
+                font-size: 36pt;
+            }
+            .subtitle {
+                font-size: 24pt;
+            }
+            h2 {
+                font-size: 16pt;
+            }
+            a {
+                color: teal;
+                text-decoration: none;
+            }
+            a:hover {
+                color: black;
+                font-size: 13pt;
+            }
+            p:first-of-type::first-letter {
+                font-size: 16pt;
+            }
+            img {
+                opacity: 1.0;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                filter: alpha(opacity=100);
+                outline: none;
+            }
+            img:hover {
+                opacity: 0.5;
+                filter: alpha(opacity=50);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class="title"&gt;[#pagetitle#]&lt;/div&gt;
+        &lt;div class="subtitle"&gt;[#description#]&lt;/div&gt;
+        &lt;hr&gt;
+        [#content#]
+        &lt;hr&gt;
+        &lt;center&gt;&lt;em&gt;[#footer#]&lt;/em&gt;&lt;/center&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <metadata name="OpenTemplateDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>124, 15</value>

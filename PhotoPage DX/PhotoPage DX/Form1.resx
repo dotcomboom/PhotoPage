@@ -1247,7 +1247,7 @@
   <data name="OpenProjectToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA3VAAAN1QE91ljxAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA3SAAAN0gFvkv6OAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
         aW5rc2NhcGUub3Jnm+48GgAAAnRJREFUOE+N0d1PklEcB/Dntpvu+keaL3XXTUvLG1ag+GisC6Sx5o0X
         CS1bNTerrTZNSjFN5XkKYkayQmtMWTLHhUG8qCAoIsibs1oXKG/fzjkukq3Si8/OxTm/7/md3+F4nq8i
         a7my1yyXFshaJCsj55tLrW0tJcW19mWpVHrq8HlOq9WOaTSand9IIXK5HPb395HP51EoFJhisYiJyQnw
@@ -1265,7 +1265,7 @@
   <data name="ToolStripMenuItem3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAAGYktHRAAAAAAAAPlDu38AAAAHdElNRQfVCwoNNw+eKti/
+        YQUAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAAGYktHRAAAAAAAAPlDu38AAAAHdElNRQfVCwoNNw+eKti/
         AAAAjHRFWHRDb21tZW50AE1lbnUtc2l6ZWQgaWNvbgo9PT09PT09PT09CgooYykgMjAwMyBKYWt1YiAn
         amltbWFjJyBTdGVpbmVyLCAKaHR0cDovL2ppbW1hYy5tdXNpY2hhbGwuY3oKCmNyZWF0ZWQgd2l0aCB0
         aGUgR0lNUCwKaHR0cDovL3d3dy5naW1wLm9yZ2eKx0cAAAIlSURBVDhPnZFLaxNRGIbzP/wjghTxsioo
@@ -1378,45 +1378,61 @@
     <value>17, 98</value>
   </metadata>
   <data name="template.Text" xml:space="preserve">
-    <value>&lt;html&gt;
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;[#pagetitle#]&lt;/title&gt;
+		&lt;meta charset="utf-8"&gt;
+        &lt;style&gt;
+            html {
+                font-family: [#fonts#];
+                background-color: #[#bgcolor#];
+                color: #[#color#];
+                margin: 50px;
+            }
+            .title {
+                font-size: 36pt;
+            }
+            .subtitle {
+                font-size: 24pt;
+            }
+            h2 {
+                font-size: 16pt;
+            }
+            a {
+                color: teal;
+                text-decoration: none;
+            }
+            a:hover {
+                color: black;
+                font-size: 13pt;
+            }
+            p:first-of-type::first-letter {
+                font-size: 16pt;
+            }
+            img {
+				opacity: 1.0;
+				-webkit-transition: all 0.5s;
+				transition: all 0.5s;
+				filter: alpha(opacity=100);
+				outline: none;
+			}
+			img:hover {
+				opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+        &lt;/style&gt;
+    &lt;/head&gt;
 
-&lt;head&gt;
-    &lt;title&gt;[#pagetitle#]&lt;/title&gt;
-    &lt;style type="text/css"&gt;
-        body {
-            font-family: [#fonts#];
-            margin: 20px;
-            background-color: [#bgcolor#];
-            color: [#color#];
-        }
-        
-        img {
-            opacity: 1.0;
-            -webkit-transition: all 0.5s;
-            transition: all 0.5s;
-            filter: alpha(opacity=100);
-            outline: none;
-        }
-        
-        img:hover {
-            opacity: 0.5;
-            filter: alpha(opacity=50);
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;center&gt;
-        &lt;h1 class="pagetitle"&gt;[#pagetitle#]&lt;/h1&gt;
-        &lt;p class="desc"&gt;[#description#]&lt;/p&gt;
+    &lt;body&gt;
+        &lt;div class="title"&gt;[#pagetitle#]&lt;/div&gt;
+        &lt;div class="subtitle"&gt;[#description#]&lt;/div&gt;
+        &lt;hr&gt;
         [#content#]
-        &lt;br&gt;
-        &lt;p class="footer"&gt;[#footer#]&lt;/p&gt;
-    &lt;/center&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-</value>
+        &lt;hr&gt;
+        &lt;center&gt;&lt;em&gt;[#footer#]&lt;/em&gt;&lt;/center&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <metadata name="AddVideosDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>314, 98</value>

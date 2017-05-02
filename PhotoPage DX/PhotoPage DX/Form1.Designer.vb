@@ -538,7 +538,7 @@ Partial Class Form1
         Me.CustomTemplateButton.CheckOnClick = True
         Me.CustomTemplateButton.Image = CType(resources.GetObject("CustomTemplateButton.Image"), System.Drawing.Image)
         Me.CustomTemplateButton.SmallImage = CType(resources.GetObject("CustomTemplateButton.SmallImage"), System.Drawing.Image)
-        Me.CustomTemplateButton.Text = "Enable"
+        Me.CustomTemplateButton.Text = "Select"
         '
         'HistoryListBox
         '
