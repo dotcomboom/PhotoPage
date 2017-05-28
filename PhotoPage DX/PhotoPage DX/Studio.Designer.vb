@@ -603,6 +603,7 @@ Partial Class Studio
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 370)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(622, 22)
+        Me.StatusStrip1.SizingGrip = False
         Me.StatusStrip1.TabIndex = 11
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -610,7 +611,7 @@ Partial Class Studio
         '
         Me.StatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(607, 17)
+        Me.StatusLabel.Size = New System.Drawing.Size(576, 17)
         Me.StatusLabel.Spring = True
         Me.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '

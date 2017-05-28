@@ -33,7 +33,7 @@ Partial Class About
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(-153, -168)
+        Me.PictureBox1.Location = New System.Drawing.Point(-138, -98)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(345, 533)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -42,6 +42,7 @@ Partial Class About
         '
         'Label3
         '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Location = New System.Drawing.Point(175, 46)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(142, 13)
@@ -52,6 +53,7 @@ Partial Class About
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(171, 6)
         Me.Label1.Name = "Label1"
@@ -61,19 +63,19 @@ Partial Class About
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(178, 73)
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Location = New System.Drawing.Point(190, 68)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(174, 136)
+        Me.Label2.Size = New System.Drawing.Size(174, 211)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Credits:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "   • Ribbon interface from officeribbon.codeplex.com" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "   • Code Edito" &
-    "r from github.com/PavelTorgashov/FastColoredTextBox"
+        Me.Label2.Text = resources.GetString("Label2.Text")
         '
         'About
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(353, 208)
+        Me.ClientSize = New System.Drawing.Size(366, 262)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label3)

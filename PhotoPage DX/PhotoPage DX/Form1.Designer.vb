@@ -820,6 +820,7 @@ Partial Class Form1
         Me.StatusBar.Location = New System.Drawing.Point(0, 356)
         Me.StatusBar.Name = "StatusBar"
         Me.StatusBar.Size = New System.Drawing.Size(590, 22)
+        Me.StatusBar.SizingGrip = False
         Me.StatusBar.TabIndex = 10
         Me.StatusBar.Text = "StatusStrip1"
         '

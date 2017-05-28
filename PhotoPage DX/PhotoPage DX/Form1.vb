@@ -361,7 +361,6 @@ Public Class Form1
 
     Private Sub RadMenuItem4_Click(sender As Object, e As EventArgs) Handles PhotoPageStudioToolStripMenuItem.Click, CreateTemplateButton.Click
         Dim studio As New Studio
-        studio.CodeEditor.Text = template.Text
         studio.Show()
     End Sub
 
@@ -625,6 +624,10 @@ Public Class Form1
     End Sub
 
     Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
+        OpenProject()
+    End Sub
+
+    Public Function OpenProject()
         OpenProjectDialog.SelectedPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects"
         If OpenProjectDialog.ShowDialog() = DialogResult.OK Then
             Dim root = OpenProjectDialog.SelectedPath & "\ppg_data\"
@@ -692,5 +695,6 @@ Public Class Form1
                 MsgBox("This project doesn't contain a PhotoPage data folder. It may have either been made in a previous version of PhotoPage without saving functionality, or the folder was removed manually.")
             End If
         End If
-    End Sub
+        Return True
+    End Function
 End Class
