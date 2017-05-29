@@ -265,7 +265,7 @@ Partial Class Form1
         Me.DebugButton.CheckOnClick = True
         Me.DebugButton.Image = CType(resources.GetObject("DebugButton.Image"), System.Drawing.Image)
         Me.DebugButton.SmallImage = CType(resources.GetObject("DebugButton.SmallImage"), System.Drawing.Image)
-        Me.DebugButton.Text = "Debug"
+        Me.DebugButton.Text = "Analyze"
         '
         'CreateTemplateButton
         '
