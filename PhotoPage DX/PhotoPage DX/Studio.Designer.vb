@@ -611,7 +611,7 @@ Partial Class Studio
         '
         Me.StatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(576, 17)
+        Me.StatusLabel.Size = New System.Drawing.Size(607, 17)
         Me.StatusLabel.Spring = True
         Me.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
