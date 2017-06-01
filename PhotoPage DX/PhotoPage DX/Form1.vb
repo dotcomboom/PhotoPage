@@ -3,6 +3,7 @@
 Public Class Form1
 
     Public undoing = False
+    Public dlg As DialogResult
 
     Private Sub Ribbon1_OrbClicked(sender As Object, e As EventArgs) Handles Ribbon1.OrbClicked
         Ribbon1.OrbPressed = False
@@ -624,12 +625,23 @@ Public Class Form1
     End Sub
 
     Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
-        OpenProject()
+        'OpenProject()
+        Dim lunch As New Launcher
+        lunch.Show()
+        lunch.Step1.Hide()
+        lunch.OpenPanel.Show()
+        Me.Close()
     End Sub
 
-    Public Function OpenProject()
+    Public Function OpenProject(Optional name As String = Nothing)
         OpenProjectDialog.SelectedPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects"
-        If OpenProjectDialog.ShowDialog() = DialogResult.OK Then
+        If Not name = Nothing Then
+            OpenProjectDialog.SelectedPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & name
+            dlg = DialogResult.OK
+        Else
+            dlg = OpenProjectDialog.ShowDialog()
+        End If
+        If dlg = DialogResult.OK Then
             Dim root = OpenProjectDialog.SelectedPath & "\ppg_data\"
             Dim project = root & "project\"
             Dim content = root & "content\"
@@ -678,11 +690,14 @@ Public Class Form1
                         CustomTemplateButton.Tag = ""
                     End If
 
-                    If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
-                        My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", FileIO.DeleteDirectoryOption.DeleteAllContents)
-                    End If
+                    Try
+                        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+                            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                        End If
+                    Catch
+                    End Try
 
-                    My.Computer.FileSystem.CopyDirectory(OpenProjectDialog.SelectedPath, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+                    My.Computer.FileSystem.CopyDirectory(OpenProjectDialog.SelectedPath, My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", True)
 
                     Preview()
 
