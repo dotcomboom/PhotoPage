@@ -95,4 +95,21 @@ Public Class Launcher
             Me.Close()
         End If
     End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            If MsgBox("Another instance of PhotoPage may be currently running. Please close it and try again. If no other instance of PhotoPage is currently running, click Yes to delete all temporary files.", MsgBoxStyle.YesNo, "Notice") = MsgBoxResult.Yes Then
+                My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                Form1.Show()
+                Me.Hide()
+                Form1.OpenProject()
+                Me.Close()
+            End If
+        Else
+            Form1.Show()
+            Me.Hide()
+            Form1.OpenProject()
+            Me.Close()
+        End If
+    End Sub
 End Class
