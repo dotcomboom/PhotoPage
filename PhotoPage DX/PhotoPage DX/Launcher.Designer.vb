@@ -32,12 +32,13 @@ Partial Class Launcher
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Step1 = New System.Windows.Forms.Panel()
         Me.OpenPanel = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.StatusBar.SuspendLayout()
         Me.Step1.SuspendLayout()
         Me.OpenPanel.SuspendLayout()
@@ -150,6 +151,7 @@ Partial Class Launcher
         '
         'OpenPanel
         '
+        Me.OpenPanel.Controls.Add(Me.Button8)
         Me.OpenPanel.Controls.Add(Me.Button6)
         Me.OpenPanel.Controls.Add(Me.Button5)
         Me.OpenPanel.Controls.Add(Me.ListView1)
@@ -161,6 +163,16 @@ Partial Class Launcher
         Me.OpenPanel.Size = New System.Drawing.Size(316, 208)
         Me.OpenPanel.TabIndex = 13
         Me.OpenPanel.Visible = False
+        '
+        'Button6
+        '
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Location = New System.Drawing.Point(47, 168)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 6
+        Me.Button6.Text = "Browse.."
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'Button5
         '
@@ -177,6 +189,7 @@ Partial Class Launcher
         Me.Button5.TabIndex = 5
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'ListView1
         '
@@ -224,15 +237,22 @@ Partial Class Launcher
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Button6
+        'Button8
         '
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Location = New System.Drawing.Point(47, 168)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 6
-        Me.Button6.Text = "Browse.."
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
+        Me.Button8.Location = New System.Drawing.Point(224, 155)
+        Me.Button8.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(37, 41)
+        Me.Button8.TabIndex = 8
+        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button8.UseVisualStyleBackColor = True
+        Me.Button8.Visible = False
         '
         'Launcher
         '
@@ -278,4 +298,5 @@ Partial Class Launcher
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
+    Friend WithEvents Button8 As Button
 End Class

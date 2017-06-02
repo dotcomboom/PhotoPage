@@ -112,4 +112,26 @@ Public Class Launcher
             Me.Close()
         End If
     End Sub
+
+    Private Sub ListView1_Click(sender As Object, e As EventArgs) Handles ListView1.Click
+        If ListView1.SelectedItems.Count = 1 Then
+            Button5.Show()
+            Button8.Show()
+        Else
+            Button5.Hide()
+            Button8.Hide()
+        End If
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If MsgBox("Really delete '" & ListView1.SelectedItems.Item(0).Text & "'?", MsgBoxStyle.YesNo, "Delete Project") = DialogResult.Yes Then
+            My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & ListView1.SelectedItems.Item(0).Text, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            ListView1.Items.Clear()
+            For Each item As String In My.Computer.FileSystem.GetDirectories(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\")
+                ListView1.Items.Add(Path.GetFileNameWithoutExtension(item))
+            Next
+            Button5.Hide()
+            Button8.Hide()
+        End If
+    End Sub
 End Class
