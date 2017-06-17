@@ -450,7 +450,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub RadMenuItem2_Click(sender As Object, e As EventArgs) Handles MyProjectsToolStripMenuItem.Click
+    Private Sub RadMenuItem2_Click(sender As Object, e As EventArgs)
         Process.Start(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects")
     End Sub
 
@@ -458,7 +458,7 @@ Public Class Form1
         Process.Start("https://rink.hockeyapp.net/apps/71b12a2053c44526b47386c53239f6d6/")
     End Sub
 
-    Private Sub RadMenuItem4_Click(sender As Object, e As EventArgs) Handles PhotoPageStudioToolStripMenuItem.Click, CreateTemplateButton.Click
+    Private Sub RadMenuItem4_Click(sender As Object, e As EventArgs) Handles CreateTemplateButton.Click
         Dim studio As New Studio
         studio.Show()
     End Sub

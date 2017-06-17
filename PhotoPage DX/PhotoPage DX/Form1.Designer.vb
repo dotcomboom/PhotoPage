@@ -94,9 +94,6 @@ Partial Class Form1
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MyProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PhotoPageStudioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.BetaCentralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutPhotoPageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -627,79 +624,60 @@ Partial Class Form1
         'OrbMenu
         '
         Me.OrbMenu.BackColor = System.Drawing.Color.White
-        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator6, Me.MyProjectsToolStripMenuItem, Me.PhotoPageStudioToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
+        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(170, 198)
+        Me.OrbMenu.Size = New System.Drawing.Size(169, 170)
         '
         'NewProjectToolStripMenuItem
         '
         Me.NewProjectToolStripMenuItem.Image = CType(resources.GetObject("NewProjectToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewProjectToolStripMenuItem.Name = "NewProjectToolStripMenuItem"
-        Me.NewProjectToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.NewProjectToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.NewProjectToolStripMenuItem.Text = "New Project"
         '
         'OpenProjectToolStripMenuItem
         '
         Me.OpenProjectToolStripMenuItem.Image = CType(resources.GetObject("OpenProjectToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
-        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.OpenProjectToolStripMenuItem.Text = "Open Project"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(165, 6)
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(169, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(168, 22)
         Me.ToolStripMenuItem3.Text = "Save Project"
         '
         'PrintToolStripMenuItem
         '
         Me.PrintToolStripMenuItem.Image = CType(resources.GetObject("PrintToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
-        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.PrintToolStripMenuItem.Text = "Print"
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(166, 6)
-        '
-        'MyProjectsToolStripMenuItem
-        '
-        Me.MyProjectsToolStripMenuItem.Image = CType(resources.GetObject("MyProjectsToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.MyProjectsToolStripMenuItem.Name = "MyProjectsToolStripMenuItem"
-        Me.MyProjectsToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.MyProjectsToolStripMenuItem.Text = "My Projects"
-        '
-        'PhotoPageStudioToolStripMenuItem
-        '
-        Me.PhotoPageStudioToolStripMenuItem.Image = CType(resources.GetObject("PhotoPageStudioToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.PhotoPageStudioToolStripMenuItem.Name = "PhotoPageStudioToolStripMenuItem"
-        Me.PhotoPageStudioToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.PhotoPageStudioToolStripMenuItem.Text = "PhotoPage Studio"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(165, 6)
         '
         'BetaCentralToolStripMenuItem
         '
         Me.BetaCentralToolStripMenuItem.Image = CType(resources.GetObject("BetaCentralToolStripMenuItem.Image"), System.Drawing.Image)
         Me.BetaCentralToolStripMenuItem.Name = "BetaCentralToolStripMenuItem"
-        Me.BetaCentralToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.BetaCentralToolStripMenuItem.Text = "Beta Central"
+        Me.BetaCentralToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.BetaCentralToolStripMenuItem.Text = "HockeyApp"
         '
         'AboutPhotoPageToolStripMenuItem
         '
         Me.AboutPhotoPageToolStripMenuItem.Image = CType(resources.GetObject("AboutPhotoPageToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AboutPhotoPageToolStripMenuItem.Name = "AboutPhotoPageToolStripMenuItem"
-        Me.AboutPhotoPageToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.AboutPhotoPageToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.AboutPhotoPageToolStripMenuItem.Text = "About PhotoPage"
         '
         'AddPhotosDialog
@@ -910,9 +888,7 @@ Partial Class Form1
     Friend WithEvents OrbMenu As ContextMenuStrip
     Friend WithEvents NewProjectToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents MyProjectsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BetaCentralToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PhotoPageStudioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddHeadingButton As RibbonButton
     Friend WithEvents AddParagraphButton As RibbonButton
     Friend WithEvents ClearButton As RibbonButton
@@ -970,7 +946,6 @@ Partial Class Form1
     Friend WithEvents Color2Picker As NewColorPicker
     Friend WithEvents PrintButton As RibbonButton
     Friend WithEvents PrintToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents RefreshToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
