@@ -113,7 +113,7 @@ Partial Class Studio
         Me.Ribbon1.OrbDropDown.BorderRoundness = 8
         Me.Ribbon1.OrbDropDown.Location = New System.Drawing.Point(0, 0)
         Me.Ribbon1.OrbDropDown.Name = ""
-        Me.Ribbon1.OrbDropDown.Size = New System.Drawing.Size(1, 1)
+        Me.Ribbon1.OrbDropDown.Size = New System.Drawing.Size(1, 72)
         Me.Ribbon1.OrbDropDown.TabIndex = 0
         Me.Ribbon1.OrbImage = CType(resources.GetObject("Ribbon1.OrbImage"), System.Drawing.Image)
         Me.Ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2013

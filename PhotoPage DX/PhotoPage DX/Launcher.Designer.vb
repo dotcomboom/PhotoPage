@@ -141,7 +141,6 @@ Partial Class Launcher
         Me.OpenFolderButton.TabIndex = 9
         Me.OpenFolderButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.OpenFolderButton.UseVisualStyleBackColor = True
-        Me.OpenFolderButton.Visible = False
         '
         'DeleteButton
         '

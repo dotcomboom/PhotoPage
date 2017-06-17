@@ -87,12 +87,12 @@ Public Class Launcher
         If ListView1.SelectedItems.Count = 1 Then
             OpenButton.Show()
             DeleteButton.Show()
-            OpenFolderButton.Show()
+            'OpenFolderButton.Show()
             RenameButton.Show()
         Else
             OpenButton.Hide()
             DeleteButton.Hide()
-            OpenFolderButton.Hide()
+            'OpenFolderButton.Hide()
             RenameButton.Hide()
         End If
     End Sub
@@ -111,7 +111,7 @@ Public Class Launcher
                 Next
                 OpenButton.Hide()
                 DeleteButton.Hide()
-                OpenFolderButton.Hide()
+                'OpenFolderButton.Hide()
                 RenameButton.Hide()
             End If
         End If
@@ -120,6 +120,8 @@ Public Class Launcher
     Private Sub OpenFolderButton_Click(sender As Object, e As EventArgs) Handles OpenFolderButton.Click
         If ListView1.SelectedItems.Count = 1 Then
             Process.Start(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & ListView1.SelectedItems.Item(0).Text)
+        Else
+            Process.Start(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\")
         End If
     End Sub
 
@@ -143,7 +145,7 @@ Public Class Launcher
                     Next
                     OpenButton.Hide()
                     DeleteButton.Hide()
-                    OpenFolderButton.Hide()
+                    'OpenFolderButton.Hide()
                     RenameButton.Hide()
                 End If
             End If
