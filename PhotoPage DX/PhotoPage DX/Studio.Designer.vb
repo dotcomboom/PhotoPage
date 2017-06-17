@@ -549,7 +549,7 @@ Partial Class Studio
         Me.OrbMenu.BackColor = System.Drawing.Color.White
         Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator1, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(169, 126)
+        Me.OrbMenu.Size = New System.Drawing.Size(169, 148)
         '
         'NewToolStripMenuItem
         '
@@ -587,7 +587,7 @@ Partial Class Studio
         Me.BetaCentralToolStripMenuItem.Image = CType(resources.GetObject("BetaCentralToolStripMenuItem.Image"), System.Drawing.Image)
         Me.BetaCentralToolStripMenuItem.Name = "BetaCentralToolStripMenuItem"
         Me.BetaCentralToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.BetaCentralToolStripMenuItem.Text = "Beta Central"
+        Me.BetaCentralToolStripMenuItem.Text = "HockeyApp"
         '
         'AboutPhotoPageToolStripMenuItem
         '
