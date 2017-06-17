@@ -97,6 +97,9 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.BetaCentralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutPhotoPageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EXITToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddPhotosDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SavePresetDialog = New System.Windows.Forms.SaveFileDialog()
         Me.OpenPresetDialog = New System.Windows.Forms.OpenFileDialog()
@@ -624,9 +627,9 @@ Partial Class Form1
         'OrbMenu
         '
         Me.OrbMenu.BackColor = System.Drawing.Color.White
-        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem})
+        Me.OrbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.OpenProjectToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem3, Me.PrintToolStripMenuItem, Me.ToolStripSeparator3, Me.BetaCentralToolStripMenuItem, Me.AboutPhotoPageToolStripMenuItem, Me.ToolStripSeparator6, Me.ToolStripMenuItem4, Me.EXITToolStripMenuItem})
         Me.OrbMenu.Name = "OrbMenu"
-        Me.OrbMenu.Size = New System.Drawing.Size(169, 170)
+        Me.OrbMenu.Size = New System.Drawing.Size(169, 198)
         '
         'NewProjectToolStripMenuItem
         '
@@ -679,6 +682,25 @@ Partial Class Form1
         Me.AboutPhotoPageToolStripMenuItem.Name = "AboutPhotoPageToolStripMenuItem"
         Me.AboutPhotoPageToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.AboutPhotoPageToolStripMenuItem.Text = "About PhotoPage"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(165, 6)
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Image = CType(resources.GetObject("ToolStripMenuItem4.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(168, 22)
+        Me.ToolStripMenuItem4.Text = "Main Menu"
+        '
+        'EXITToolStripMenuItem
+        '
+        Me.EXITToolStripMenuItem.Image = CType(resources.GetObject("EXITToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.EXITToolStripMenuItem.Name = "EXITToolStripMenuItem"
+        Me.EXITToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.EXITToolStripMenuItem.Text = "Exit"
         '
         'AddPhotosDialog
         '
@@ -964,4 +986,7 @@ Partial Class Form1
     Friend WithEvents DebugInfo As TextBox
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents OpenProjectDialog As FolderBrowserDialog
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents EXITToolStripMenuItem As ToolStripMenuItem
 End Class

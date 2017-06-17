@@ -2,6 +2,7 @@
 
 Public Class Form1
 
+    Public closingok = False
     Public unsaved = True
     Public undoing = False
     Public dlg As DialogResult
@@ -34,7 +35,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If unsaved Then
+        If unsaved And Not closingok Then
             If MsgBox("You have unsaved changes. Quit anyway?", MsgBoxStyle.YesNo, "Unsaved Changes") = DialogResult.No Then
                 e.Cancel = True
             End If
@@ -642,11 +643,15 @@ Public Class Form1
         StatusLabel.Text = ""
     End Sub
 
-    Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
-        'OpenProject()
-        Dim lunch As New Launcher
-        lunch.Show()
-        Me.Close()
+    Private Sub OpenProjectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click, ToolStripMenuItem4.Click
+        If unsaved Then
+            If MsgBox("You have unsaved changes. Quit anyway?", MsgBoxStyle.YesNo, "Unsaved Changes") = DialogResult.Yes Then
+                closingok = True
+                Dim lunch As New Launcher
+                lunch.Show()
+                Me.Close()
+            End If
+        End If
     End Sub
 
     Public Function OpenProject(Optional name As String = Nothing)
@@ -728,4 +733,8 @@ Public Class Form1
         End If
         Return True
     End Function
+
+    Private Sub EXITToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EXITToolStripMenuItem.Click
+        Me.Close()
+    End Sub
 End Class
