@@ -66,10 +66,10 @@ Partial Class Form1
         Me.RibbonPanel7 = New System.Windows.Forms.RibbonPanel()
         Me.TextColorChooser = New System.Windows.Forms.RibbonColorChooser()
         Me.TextColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.Color1Picker = New PhotoPageColorPicker.ColorPicker()
+        Me.Color1Picker = New PhotoPage.NewColorPicker()
         Me.BackgroundColorChooser = New System.Windows.Forms.RibbonColorChooser()
         Me.BackgroundColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.Color2Picker = New PhotoPageColorPicker.ColorPicker()
+        Me.Color2Picker = New PhotoPage.NewColorPicker()
         Me.RibbonPanel8 = New System.Windows.Forms.RibbonPanel()
         Me.OpenPresetButton = New System.Windows.Forms.RibbonButton()
         Me.SavePresetButton = New System.Windows.Forms.RibbonButton()
@@ -466,15 +466,13 @@ Partial Class Form1
         '
         'Color1Picker
         '
-        Me.Color1Picker.BackColor = System.Drawing.Color.White
-        Me.Color1Picker.Color = System.Drawing.Color.Empty
+        Me.Color1Picker.AutoSize = True
+        Me.Color1Picker.BackColor = System.Drawing.Color.Black
         Me.Color1Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Color1Picker.Location = New System.Drawing.Point(105, 113)
-        Me.Color1Picker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
-        Me.Color1Picker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Color1Picker.MoreColorsForeColor = System.Drawing.Color.Black
+        Me.Color1Picker.Location = New System.Drawing.Point(171, 113)
+        Me.Color1Picker.MinimumSize = New System.Drawing.Size(75, 94)
         Me.Color1Picker.Name = "Color1Picker"
-        Me.Color1Picker.Size = New System.Drawing.Size(119, 147)
+        Me.Color1Picker.Size = New System.Drawing.Size(75, 94)
         Me.Color1Picker.TabIndex = 12
         Me.Color1Picker.Visible = False
         '
@@ -494,15 +492,13 @@ Partial Class Form1
         '
         'Color2Picker
         '
-        Me.Color2Picker.BackColor = System.Drawing.Color.White
-        Me.Color2Picker.Color = System.Drawing.Color.Empty
+        Me.Color2Picker.AutoSize = True
+        Me.Color2Picker.BackColor = System.Drawing.Color.Black
         Me.Color2Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Color2Picker.Location = New System.Drawing.Point(221, 113)
-        Me.Color2Picker.MoreColorsBackColor = System.Drawing.Color.Gainsboro
-        Me.Color2Picker.MoreColorsFont = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Color2Picker.MoreColorsForeColor = System.Drawing.Color.Black
+        Me.Color2Picker.Location = New System.Drawing.Point(242, 113)
+        Me.Color2Picker.MinimumSize = New System.Drawing.Size(75, 94)
         Me.Color2Picker.Name = "Color2Picker"
-        Me.Color2Picker.Size = New System.Drawing.Size(119, 147)
+        Me.Color2Picker.Size = New System.Drawing.Size(75, 94)
         Me.Color2Picker.TabIndex = 13
         Me.Color2Picker.Visible = False
         '
@@ -970,8 +966,8 @@ Partial Class Form1
     Friend WithEvents FontSeparator2 As RibbonSeparator
     Friend WithEvents TextColorPickerHost As RibbonHost
     Friend WithEvents BackgroundColorPickerHost As RibbonHost
-    Friend WithEvents Color1Picker As PhotoPageColorPicker.ColorPicker
-    Friend WithEvents Color2Picker As PhotoPageColorPicker.ColorPicker
+    Friend WithEvents Color1Picker As NewColorPicker
+    Friend WithEvents Color2Picker As NewColorPicker
     Friend WithEvents PrintButton As RibbonButton
     Friend WithEvents PrintToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator

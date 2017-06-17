@@ -48,15 +48,15 @@ Partial Class AddFontDialog
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
         '
-        'CancelButton
+        'CancelBtn
         '
-        Me.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelButton.Location = New System.Drawing.Point(173, 40)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(75, 23)
-        Me.CancelButton.TabIndex = 2
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.CancelBtn.Location = New System.Drawing.Point(173, 40)
+        Me.CancelBtn.Name = "CancelBtn"
+        Me.CancelBtn.Size = New System.Drawing.Size(75, 23)
+        Me.CancelBtn.TabIndex = 2
+        Me.CancelBtn.Text = "Cancel"
+        Me.CancelBtn.UseVisualStyleBackColor = True
         '
         'AddFontDialog
         '
@@ -80,5 +80,5 @@ Partial Class AddFontDialog
 
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents OKButton As Button
-    Friend WithEvents CancelButton As Button
+    Friend WithEvents CancelBtn As Button
 End Class

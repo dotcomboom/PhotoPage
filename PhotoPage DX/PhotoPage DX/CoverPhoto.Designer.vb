@@ -23,7 +23,7 @@ Partial Class CoverPhoto
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.CancelButton = New System.Windows.Forms.Button()
+        Me.CancelBtn = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
@@ -37,15 +37,15 @@ Partial Class CoverPhoto
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
         '
-        'CancelButton
+        'CancelBtn
         '
-        Me.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelButton.Location = New System.Drawing.Point(235, 217)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(65, 23)
-        Me.CancelButton.TabIndex = 3
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.CancelBtn.Location = New System.Drawing.Point(235, 217)
+        Me.CancelBtn.Name = "CancelBtn"
+        Me.CancelBtn.Size = New System.Drawing.Size(65, 23)
+        Me.CancelBtn.TabIndex = 3
+        Me.CancelBtn.Text = "Cancel"
+        Me.CancelBtn.UseVisualStyleBackColor = True
         '
         'ListBox1
         '
@@ -64,7 +64,7 @@ Partial Class CoverPhoto
         Me.ClientSize = New System.Drawing.Size(312, 246)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.OKButton)
-        Me.Controls.Add(Me.CancelButton)
+        Me.Controls.Add(Me.CancelBtn)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -77,6 +77,6 @@ Partial Class CoverPhoto
 
     End Sub
     Friend WithEvents OKButton As Button
-    Friend WithEvents CancelButton As Button
+    Friend WithEvents CancelBtn As Button
     Friend WithEvents ListBox1 As ListBox
 End Class

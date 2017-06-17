@@ -2,6 +2,7 @@
 
 Public Class Form1
 
+    Public unsaved = True
     Public undoing = False
     Public dlg As DialogResult
 
@@ -23,7 +24,21 @@ Public Class Form1
         AddVideosDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyPictures
         AddAudioDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyPictures
         HistoryListBox.Items.Add("")
+        Color1Picker.TrackBar1.Value = 0
+        Color1Picker.TrackBar2.Value = 0
+        Color1Picker.TrackBar3.Value = 0
+        Color2Picker.TrackBar1.Value = 255
+        Color2Picker.TrackBar2.Value = 255
+        Color2Picker.TrackBar3.Value = 255
         Preview()
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If unsaved Then
+            If MsgBox("You have unsaved changes. Quit anyway?", MsgBoxStyle.YesNo, "Unsaved Changes") = DialogResult.No Then
+                e.Cancel = True
+            End If
+        End If
     End Sub
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -172,7 +187,7 @@ Public Class Form1
         Return True
     End Function
 
-    Private Function templateCheck(template As String)
+    Private Sub templateCheck(template As String)
         Dim msg = "The following features are unused in the template and have been disabled:" & vbNewLine
         Dim yay = True
 
@@ -203,15 +218,98 @@ Public Class Form1
         If Not yay Then
             MsgBox(msg, MsgBoxStyle.Information, "Feature Check")
         End If
-        Return True
-    End Function
+    End Sub
 
-    Private Sub PreviewTextBoxes(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged, DescriptionTextBox.TextBoxTextChanged, FooterTextBox.TextBoxTextChanged, FontList.DrawItem, code.TextChanged
+    Private Sub SaveProject()
+        StatusLabel.Text = "Saving project"
+        If PageTitleTextBox.TextBoxText = "" Then
+            PageTitleTextBox.TextBoxText = "Untitled"
+            Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
+        End If
+        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
+            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
+            If (di.Attributes And FileAttributes.Hidden) <> FileAttributes.Hidden Then
+                di.Attributes = di.Attributes Or FileAttributes.Hidden
+            End If
+        End If
+        If CustomTemplateButton.Checked = False Then
+            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", template.Text.Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+        Else
+            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
+        End If
+        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText) Then
+            If MsgBox("A project with that name already exists. Overwrite it?", MsgBoxStyle.YesNo, "Conflict") = DialogResult.Yes Then
+                My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            Else
+                MsgBox("Change the name of the project, then try again.", MsgBoxStyle.Critical, "Guru Meditation")
+                StatusLabel.Text = ""
+                Exit Sub
+            End If
+        End If
+        Dim foldername As String = PageTitleTextBox.TextBoxText
+        If PageTitleTextBox.TextBoxText = "" Then
+            foldername = "Untitled"
+        Else
+            Dim invalid As String = New String(Path.GetInvalidFileNameChars()) & New String(Path.GetInvalidPathChars())
+            For Each c As Char In invalid
+                foldername = foldername.Replace(c.ToString(), "-")
+            Next
+        End If
+        Try
+            Dim root = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\ppg_data\"
+            Dim project = root & "project\"
+            Dim content = root & "content\"
+            Dim style = root & "style\"
+
+            My.Computer.FileSystem.CreateDirectory(root)
+            My.Computer.FileSystem.CreateDirectory(project)
+            My.Computer.FileSystem.CreateDirectory(content)
+            My.Computer.FileSystem.CreateDirectory(style)
+
+            My.Computer.FileSystem.WriteAllText(project & "pagetitle", PageTitleTextBox.TextBoxText, False)
+            My.Computer.FileSystem.WriteAllText(project & "description", DescriptionTextBox.TextBoxText, False)
+            My.Computer.FileSystem.WriteAllText(project & "footer", FooterTextBox.TextBoxText, False)
+
+            My.Computer.FileSystem.WriteAllText(content & "html", code.Text, False)
+            Dim historyBuilder As New System.Text.StringBuilder()
+            For Each o As Object In HistoryListBox.Items
+                historyBuilder.AppendLine("item----")
+                historyBuilder.AppendLine(o)
+                historyBuilder.AppendLine("----item")
+            Next
+            My.Computer.FileSystem.WriteAllText(content & "history", historyBuilder.ToString(), False)
+            Dim fontsBuilder As New System.Text.StringBuilder()
+            For Each o As Object In FontList.Items
+                fontsBuilder.AppendLine(o)
+            Next
+
+            My.Computer.FileSystem.WriteAllText(style & "ppgp", buildppgp(), False)
+            If CustomTemplateButton.Checked Then
+                My.Computer.FileSystem.WriteAllText(style & "ppgt-path", CustomTemplateButton.Tag, False)
+            End If
+
+            My.Computer.FileSystem.WriteAllText(root & "readme.txt", "This folder is meant to be used internally within the PhotoPage program to hold project information. If you're uploading or sharing this project and don't wish for it to be editable by the program, exclude this folder.", False)
+        Catch ex As Exception
+        End Try
+        Try
+            My.Computer.FileSystem.CopyDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\", My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\")
+            StatusLabel.Text = ""
+            unsaved = False
+            MsgBox("Successfully produced page!", MsgBoxStyle.Information, "Success")
+            Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\"))
+        Catch ex As Exception
+            StatusLabel.Text = ""
+            MsgBox("Page creation unsuccessful:" & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
+        End Try
+    End Sub
+
+    Private Sub PreviewTextBoxes(sender As Object, e As EventArgs) Handles PageTitleTextBox.TextBoxTextChanged, FooterTextBox.TextBoxTextChanged, FontList.DrawItem, DescriptionTextBox.TextBoxTextChanged, code.TextChanged
         Debug()
         Preview()
     End Sub
 
-    Private Sub RadButtonElement1_Click(sender As Object, e As EventArgs) Handles AddPhotosButton.Click, AddPhotosQAButton.Click, ToolStripMenuItem2.Click
+    Private Sub RadButtonElement1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click, AddPhotosQAButton.Click, AddPhotosButton.Click
         If AddPhotosDialog.ShowDialog = DialogResult.OK Then
             For Each file As [String] In AddPhotosDialog.FileNames
                 AddtoProject(file)
@@ -252,7 +350,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub AddHeadingButton_Click(sender As Object, e As EventArgs) Handles AddHeadingButton.Click, AddHeadingToolStripMenuItem.Click, AddHeadingQAButton.Click
+    Private Sub AddHeadingButton_Click(sender As Object, e As EventArgs) Handles AddHeadingToolStripMenuItem.Click, AddHeadingQAButton.Click, AddHeadingButton.Click
         Dim input As String
         input = InputBox("Please enter some text for the heading:", "Add Heading")
         If input <> "" Then
@@ -261,7 +359,7 @@ Public Class Form1
         Refresh()
     End Sub
 
-    Private Sub AddParagraphButton_Click(sender As Object, e As EventArgs) Handles AddParagraphButton.Click, AddParagraphToolStripMenuItem.Click, AddParagraphQAButton.Click
+    Private Sub AddParagraphButton_Click(sender As Object, e As EventArgs) Handles AddParagraphToolStripMenuItem.Click, AddParagraphQAButton.Click, AddParagraphButton.Click
         Dim paragraphDialog As New AddParagraph
         If paragraphDialog.ShowDialog() = DialogResult.OK Then
             code.Text = code.Text & "<p class='paragraph'>" & paragraphDialog.ParagraphTextBox.Text.Replace(vbNewLine, "<br>") & "</p>" & vbNewLine
@@ -365,87 +463,8 @@ Public Class Form1
         studio.Show()
     End Sub
 
-    Private Sub FinishButton_Click(sender As Object, e As EventArgs) Handles FinishButton.Click, FinishQAButton.Click, ToolStripMenuItem3.Click
-        StatusLabel.Text = "Saving project"
-        If PageTitleTextBox.TextBoxText = "" Then
-            PageTitleTextBox.TextBoxText = "Untitled"
-            Me.Text = "PhotoPage " & Launcher.getVersion() & " - Untitled"
-        End If
-        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp") Then
-            My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
-            Dim di As New DirectoryInfo(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp")
-            If (di.Attributes And FileAttributes.Hidden) <> FileAttributes.Hidden Then
-                di.Attributes = di.Attributes Or FileAttributes.Hidden
-            End If
-        End If
-        If CustomTemplateButton.Checked = False Then
-            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", template.Text.Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
-        Else
-            My.Computer.FileSystem.WriteAllText(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\index.html", My.Computer.FileSystem.ReadAllText(CustomTemplateButton.Tag).Replace("[#pagetitle#]", PageTitleTextBox.TextBoxText).Replace("[#description#]", DescriptionTextBox.TextBoxText).Replace("[#content#]", code.Text).Replace("[#footer#]", FooterTextBox.TextBoxText).Replace("[#fonts#]", genFonts()).Replace("[#color#]", TextColorChooser.Tag).Replace("[#bgcolor#]", BackgroundColorChooser.Tag).Replace("[#coverphoto#]", coverPhoto.Text), False)
-        End If
-        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText) Then
-            If MsgBox("A project with that name already exists. Overwrite it?", MsgBoxStyle.YesNo, "Conflict") = MsgBoxResult.Yes Then
-                My.Computer.FileSystem.DeleteDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & PageTitleTextBox.TextBoxText, FileIO.DeleteDirectoryOption.DeleteAllContents)
-            Else
-                MsgBox("Change the name of the project, then try again.", MsgBoxStyle.Critical, "Guru Meditation")
-                StatusLabel.Text = ""
-                Exit Sub
-            End If
-        End If
-        Dim foldername As String = PageTitleTextBox.TextBoxText
-        If PageTitleTextBox.TextBoxText = "" Then
-            foldername = "Untitled"
-        Else
-            Dim invalid As String = New String(Path.GetInvalidFileNameChars()) & New String(Path.GetInvalidPathChars())
-            For Each c As Char In invalid
-                foldername = foldername.Replace(c.ToString(), "-")
-            Next
-        End If
-        Try
-            Dim root = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\ppg_data\"
-            Dim project = root & "project\"
-            Dim content = root & "content\"
-            Dim style = root & "style\"
-
-            My.Computer.FileSystem.CreateDirectory(root)
-            My.Computer.FileSystem.CreateDirectory(project)
-            My.Computer.FileSystem.CreateDirectory(content)
-            My.Computer.FileSystem.CreateDirectory(style)
-
-            My.Computer.FileSystem.WriteAllText(project & "pagetitle", PageTitleTextBox.TextBoxText, False)
-            My.Computer.FileSystem.WriteAllText(project & "description", DescriptionTextBox.TextBoxText, False)
-            My.Computer.FileSystem.WriteAllText(project & "footer", FooterTextBox.TextBoxText, False)
-
-            My.Computer.FileSystem.WriteAllText(content & "html", code.Text, False)
-            Dim historyBuilder As New System.Text.StringBuilder()
-            For Each o As Object In HistoryListBox.Items
-                historyBuilder.AppendLine("item----")
-                historyBuilder.AppendLine(o)
-                historyBuilder.AppendLine("----item")
-            Next
-            My.Computer.FileSystem.WriteAllText(content & "history", historyBuilder.ToString(), False)
-            Dim fontsBuilder As New System.Text.StringBuilder()
-            For Each o As Object In FontList.Items
-                fontsBuilder.AppendLine(o)
-            Next
-
-            My.Computer.FileSystem.WriteAllText(style & "ppgp", buildppgp(), False)
-            If CustomTemplateButton.Checked Then
-                My.Computer.FileSystem.WriteAllText(style & "ppgt-path", CustomTemplateButton.Tag, False)
-            End If
-
-            My.Computer.FileSystem.WriteAllText(root & "readme.txt", "This folder is meant to be used internally within the PhotoPage program to hold project information. If you're uploading or sharing this project and don't wish for it to be editable by the program, exclude this folder.", False)
-        Catch ex As Exception
-        End Try
-        Try
-            My.Computer.FileSystem.CopyDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PPGDXTemp" & "\", My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\")
-            StatusLabel.Text = ""
-            MsgBox("Successfully produced page!", MsgBoxStyle.Information, "Success")
-            Process.Start((My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & foldername & "\"))
-        Catch ex As Exception
-            StatusLabel.Text = ""
-            MsgBox("Page creation unsuccessful:" & vbNewLine & vbNewLine & ex.ToString, MsgBoxStyle.Critical, "Guru Meditation")
-        End Try
+    Private Sub FinishButton_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click, FinishQAButton.Click, FinishButton.Click
+        SaveProject()
     End Sub
 
     Private Sub AboutPhotoPageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutPhotoPageToolStripMenuItem.Click
@@ -456,6 +475,7 @@ Public Class Form1
         If Not undoing Then
             HistoryListBox.Items.Add(code.Text)
         End If
+        unsaved = True
     End Sub
 
     Private Sub UndoButton_Click(sender As Object, e As EventArgs) Handles UndoButton.Click
@@ -486,7 +506,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub AddVideoButton_Click(sender As Object, e As EventArgs) Handles AddVideoButton.Click, ToolStripMenuItem1.Click
+    Private Sub AddVideoButton_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click, AddVideoButton.Click
         If AddVideosDialog.ShowDialog = DialogResult.OK Then
             For Each file As [String] In AddVideosDialog.FileNames
                 AddtoProject(file)
@@ -494,7 +514,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub AddAudioButton_Click(sender As Object, e As EventArgs) Handles AddAudioButton.Click, AddPhotosToolStripMenuItem.Click
+    Private Sub AddAudioButton_Click(sender As Object, e As EventArgs) Handles AddPhotosToolStripMenuItem.Click, AddAudioButton.Click
         If AddAudioDialog.ShowDialog = DialogResult.OK Then
             For Each file As [String] In AddAudioDialog.FileNames
                 AddtoProject(file)
@@ -554,14 +574,12 @@ Public Class Form1
         Preview()
     End Sub
 
-    Private Sub TextColorPicker_ColorSelected() Handles Color1Picker.ColorSelected
-        TextColorChooser.CloseDropDown()
-        TextColorChooser.Color = Color1Picker.Color
+    Private Sub TextColorPicker_ColorSelected() Handles Color1Picker.BackColorChanged
+        TextColorChooser.Color = Color.FromArgb(Color1Picker.TrackBar1.Value, Color1Picker.TrackBar2.Value, Color1Picker.TrackBar3.Value)
     End Sub
 
-    Private Sub BackgroundColorPicker_ColorSelected() Handles Color2Picker.ColorSelected
-        BackgroundColorChooser.CloseDropDown()
-        BackgroundColorChooser.Color = Color2Picker.Color
+    Private Sub BackgroundColorPicker_ColorSelected() Handles Color2Picker.BackColorChanged
+        BackgroundColorChooser.Color = Color.FromArgb(Color2Picker.TrackBar1.Value, Color2Picker.TrackBar2.Value, Color2Picker.TrackBar3.Value)
     End Sub
 
     Private Sub FontList_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles FontList.DrawItem
@@ -578,7 +596,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintButton.Click, PrintToolStripMenuItem.Click
+    Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem.Click, PrintButton.Click
         PreviewBrowser.ShowPrintDialog()
     End Sub
 
@@ -628,8 +646,6 @@ Public Class Form1
         'OpenProject()
         Dim lunch As New Launcher
         lunch.Show()
-        lunch.Step1.Hide()
-        lunch.OpenPanel.Show()
         Me.Close()
     End Sub
 

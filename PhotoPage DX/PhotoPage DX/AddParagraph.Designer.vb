@@ -23,7 +23,7 @@ Partial Class AddParagraph
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.ParagraphTextBox = New System.Windows.Forms.TextBox()
-        Me.CancelButton = New System.Windows.Forms.Button()
+        Me.CancelBtn = New System.Windows.Forms.Button()
         Me.OKButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -38,15 +38,15 @@ Partial Class AddParagraph
         Me.ParagraphTextBox.Size = New System.Drawing.Size(337, 198)
         Me.ParagraphTextBox.TabIndex = 0
         '
-        'CancelButton
+        'CancelBtn
         '
-        Me.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelButton.Location = New System.Drawing.Point(274, 216)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(75, 23)
-        Me.CancelButton.TabIndex = 1
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.CancelBtn.Location = New System.Drawing.Point(274, 216)
+        Me.CancelBtn.Name = "CancelBtn"
+        Me.CancelBtn.Size = New System.Drawing.Size(75, 23)
+        Me.CancelBtn.TabIndex = 1
+        Me.CancelBtn.Text = "Cancel"
+        Me.CancelBtn.UseVisualStyleBackColor = True
         '
         'OKButton
         '
@@ -65,7 +65,7 @@ Partial Class AddParagraph
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(361, 248)
         Me.Controls.Add(Me.OKButton)
-        Me.Controls.Add(Me.CancelButton)
+        Me.Controls.Add(Me.CancelBtn)
         Me.Controls.Add(Me.ParagraphTextBox)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -81,6 +81,6 @@ Partial Class AddParagraph
     End Sub
 
     Friend WithEvents ParagraphTextBox As TextBox
-    Friend WithEvents CancelButton As Button
+    Friend WithEvents CancelBtn As Button
     Friend WithEvents OKButton As Button
 End Class
