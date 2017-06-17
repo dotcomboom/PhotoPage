@@ -129,7 +129,7 @@ Public Class Launcher
             dialog.TextBox1.Text = ListView1.SelectedItems.Item(0).Text
             If dialog.ShowDialog() = DialogResult.OK Then
                 If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & dialog.TextBox1.Text) Then
-                    MsgBox("There is already a project with the name '" & dialog.TextBox1.Text & ".'")
+                    MsgBox("There is already a project with the name '" & dialog.TextBox1.Text & ".'", MsgBoxStyle.Critical, "Guru Meditation")
                 Else
                     Try
                         My.Computer.FileSystem.RenameDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\" & ListView1.SelectedItems.Item(0).Text, dialog.TextBox1.Text)

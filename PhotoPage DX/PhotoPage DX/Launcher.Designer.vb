@@ -35,8 +35,9 @@ Partial Class Launcher
         Me.BrowseButton = New System.Windows.Forms.Button()
         Me.OpenButton = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.StatusBar.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -54,7 +55,7 @@ Partial Class Launcher
         '
         Me.StatusBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
         Me.StatusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel2})
-        Me.StatusBar.Location = New System.Drawing.Point(0, 316)
+        Me.StatusBar.Location = New System.Drawing.Point(0, 326)
         Me.StatusBar.Name = "StatusBar"
         Me.StatusBar.Size = New System.Drawing.Size(296, 22)
         Me.StatusBar.SizingGrip = False
@@ -110,12 +111,13 @@ Partial Class Launcher
         '
         'RenameButton
         '
+        Me.RenameButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.RenameButton.FlatAppearance.BorderSize = 0
         Me.RenameButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.RenameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.RenameButton.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RenameButton.Image = CType(resources.GetObject("RenameButton.Image"), System.Drawing.Image)
-        Me.RenameButton.Location = New System.Drawing.Point(12, 170)
+        Me.RenameButton.Location = New System.Drawing.Point(22, 81)
         Me.RenameButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RenameButton.Name = "RenameButton"
         Me.RenameButton.Size = New System.Drawing.Size(44, 41)
@@ -126,12 +128,13 @@ Partial Class Launcher
         '
         'OpenFolderButton
         '
+        Me.OpenFolderButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.OpenFolderButton.FlatAppearance.BorderSize = 0
         Me.OpenFolderButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.OpenFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.OpenFolderButton.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OpenFolderButton.Image = CType(resources.GetObject("OpenFolderButton.Image"), System.Drawing.Image)
-        Me.OpenFolderButton.Location = New System.Drawing.Point(12, 121)
+        Me.OpenFolderButton.Location = New System.Drawing.Point(19, 32)
         Me.OpenFolderButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.OpenFolderButton.Name = "OpenFolderButton"
         Me.OpenFolderButton.Size = New System.Drawing.Size(52, 41)
@@ -142,12 +145,13 @@ Partial Class Launcher
         '
         'DeleteButton
         '
+        Me.DeleteButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DeleteButton.FlatAppearance.BorderSize = 0
         Me.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DeleteButton.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeleteButton.Image = CType(resources.GetObject("DeleteButton.Image"), System.Drawing.Image)
-        Me.DeleteButton.Location = New System.Drawing.Point(22, 219)
+        Me.DeleteButton.Location = New System.Drawing.Point(29, 130)
         Me.DeleteButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DeleteButton.Name = "DeleteButton"
         Me.DeleteButton.Size = New System.Drawing.Size(28, 41)
@@ -158,23 +162,26 @@ Partial Class Launcher
         '
         'BrowseButton
         '
+        Me.BrowseButton.BackColor = System.Drawing.Color.White
+        Me.BrowseButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.BrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BrowseButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.BrowseButton.Location = New System.Drawing.Point(228, 99)
+        Me.BrowseButton.Location = New System.Drawing.Point(16, 5)
         Me.BrowseButton.Name = "BrowseButton"
         Me.BrowseButton.Size = New System.Drawing.Size(56, 23)
         Me.BrowseButton.TabIndex = 6
         Me.BrowseButton.Text = "Browse.."
-        Me.BrowseButton.UseVisualStyleBackColor = True
+        Me.BrowseButton.UseVisualStyleBackColor = False
         '
         'OpenButton
         '
+        Me.OpenButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.OpenButton.FlatAppearance.BorderSize = 0
         Me.OpenButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.OpenButton.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OpenButton.Image = CType(resources.GetObject("OpenButton.Image"), System.Drawing.Image)
-        Me.OpenButton.Location = New System.Drawing.Point(12, 268)
+        Me.OpenButton.Location = New System.Drawing.Point(20, 179)
         Me.OpenButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.OpenButton.Name = "OpenButton"
         Me.OpenButton.Size = New System.Drawing.Size(48, 41)
@@ -185,43 +192,48 @@ Partial Class Launcher
         '
         'ListView1
         '
+        Me.ListView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ListView1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
         Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ListView1.ForeColor = System.Drawing.Color.White
         Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(70, 128)
+        Me.ListView1.Location = New System.Drawing.Point(70, 109)
         Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(214, 181)
+        Me.ListView1.Size = New System.Drawing.Size(214, 214)
         Me.ListView1.TabIndex = 4
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.List
         '
-        'Label2
+        'Panel1
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(19, 104)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(165, 13)
-        Me.Label2.TabIndex = 12
-        Me.Label2.Text = "Or pick up where you left off..."
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.OpenFolderButton)
+        Me.Panel1.Controls.Add(Me.RenameButton)
+        Me.Panel1.Controls.Add(Me.DeleteButton)
+        Me.Panel1.Controls.Add(Me.OpenButton)
+        Me.Panel1.Controls.Add(Me.BrowseButton)
+        Me.Panel1.Location = New System.Drawing.Point(-11, 104)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(307, 234)
+        Me.Panel1.TabIndex = 13
         '
         'Launcher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(296, 338)
-        Me.Controls.Add(Me.Label2)
+        Me.ClientSize = New System.Drawing.Size(296, 348)
         Me.Controls.Add(Me.ListView1)
-        Me.Controls.Add(Me.RenameButton)
         Me.Controls.Add(Me.StatusBar)
-        Me.Controls.Add(Me.OpenFolderButton)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.DeleteButton)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.OpenButton)
-        Me.Controls.Add(Me.BrowseButton)
+        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -231,6 +243,7 @@ Partial Class Launcher
         Me.Text = "PhotoPage"
         Me.StatusBar.ResumeLayout(False)
         Me.StatusBar.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -248,5 +261,5 @@ Partial Class Launcher
     Friend WithEvents RenameButton As Button
     Friend WithEvents ListView1 As ListView
     Friend WithEvents ToolStripStatusLabel3 As ToolStripDropDownButton
-    Friend WithEvents Label2 As Label
+    Friend WithEvents Panel1 As Panel
 End Class
