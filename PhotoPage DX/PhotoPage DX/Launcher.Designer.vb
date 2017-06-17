@@ -186,7 +186,7 @@ Partial Class Launcher
         'ListView1
         '
         Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.ListView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(70, 128)
         Me.ListView1.MultiSelect = False
