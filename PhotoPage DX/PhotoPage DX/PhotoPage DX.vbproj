@@ -111,10 +111,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastColoredTextBox">
-      <HintPath>..\..\..\..\..\Downloads\FastColoredTextBox-master\FastColoredTextBox-master\Binary\FastColoredTextBox.dll</HintPath>
-    </Reference>
-    <Reference Include="PhotoPageColorPicker">
-      <HintPath>..\..\RockAirColorPicker\RockAirColorPicker\bin\Debug\PhotoPageColorPicker.dll</HintPath>
+      <HintPath>..\..\DLLs\FastColoredTextBox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -123,7 +120,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.Ribbon35">
-      <HintPath>..\..\..\..\..\Downloads\Binaries\System.Windows.Forms.Ribbon35.dll</HintPath>
+      <HintPath>..\..\DLLs\System.Windows.Forms.Ribbon35.dll</HintPath>
     </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />

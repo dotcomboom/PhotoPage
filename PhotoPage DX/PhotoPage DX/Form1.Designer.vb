@@ -65,11 +65,7 @@ Partial Class Form1
         Me.DownFontButton = New System.Windows.Forms.RibbonButton()
         Me.RibbonPanel7 = New System.Windows.Forms.RibbonPanel()
         Me.TextColorChooser = New System.Windows.Forms.RibbonColorChooser()
-        Me.TextColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.Color1Picker = New PhotoPage.NewColorPicker()
         Me.BackgroundColorChooser = New System.Windows.Forms.RibbonColorChooser()
-        Me.BackgroundColorPickerHost = New System.Windows.Forms.RibbonHost()
-        Me.Color2Picker = New PhotoPage.NewColorPicker()
         Me.RibbonPanel8 = New System.Windows.Forms.RibbonPanel()
         Me.OpenPresetButton = New System.Windows.Forms.RibbonButton()
         Me.SavePresetButton = New System.Windows.Forms.RibbonButton()
@@ -119,6 +115,11 @@ Partial Class Form1
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
         Me.OpenProjectDialog = New System.Windows.Forms.FolderBrowserDialog()
+        Me.RibbonPanel11 = New System.Windows.Forms.RibbonPanel()
+        Me.Color2Picker = New PhotoPage.NewColorPicker()
+        Me.Color1Picker = New PhotoPage.NewColorPicker()
+        Me.TextColorPickerHost = New System.Windows.Forms.RibbonHost()
+        Me.BackgroundColorPickerHost = New System.Windows.Forms.RibbonHost()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -205,6 +206,7 @@ Partial Class Form1
         Me.RibbonTab1.Panels.Add(Me.RibbonPanel1)
         Me.RibbonTab1.Panels.Add(Me.RibbonPanel10)
         Me.RibbonTab1.Panels.Add(Me.RibbonPanel3)
+        Me.RibbonTab1.Panels.Add(Me.RibbonPanel11)
         Me.RibbonTab1.Text = "Project"
         '
         'RibbonPanel1
@@ -460,22 +462,6 @@ Partial Class Form1
         Me.TextColorChooser.Tag = "000000"
         Me.TextColorChooser.Text = "Color 1"
         '
-        'TextColorPickerHost
-        '
-        Me.TextColorPickerHost.HostedControl = Me.Color1Picker
-        '
-        'Color1Picker
-        '
-        Me.Color1Picker.AutoSize = True
-        Me.Color1Picker.BackColor = System.Drawing.Color.Black
-        Me.Color1Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Color1Picker.Location = New System.Drawing.Point(171, 113)
-        Me.Color1Picker.MinimumSize = New System.Drawing.Size(75, 94)
-        Me.Color1Picker.Name = "Color1Picker"
-        Me.Color1Picker.Size = New System.Drawing.Size(75, 94)
-        Me.Color1Picker.TabIndex = 12
-        Me.Color1Picker.Visible = False
-        '
         'BackgroundColorChooser
         '
         Me.BackgroundColorChooser.Color = System.Drawing.Color.White
@@ -485,22 +471,6 @@ Partial Class Form1
         Me.BackgroundColorChooser.Style = System.Windows.Forms.RibbonButtonStyle.DropDown
         Me.BackgroundColorChooser.Tag = "FFFFFF"
         Me.BackgroundColorChooser.Text = "Color 2"
-        '
-        'BackgroundColorPickerHost
-        '
-        Me.BackgroundColorPickerHost.HostedControl = Me.Color2Picker
-        '
-        'Color2Picker
-        '
-        Me.Color2Picker.AutoSize = True
-        Me.Color2Picker.BackColor = System.Drawing.Color.Black
-        Me.Color2Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Color2Picker.Location = New System.Drawing.Point(242, 113)
-        Me.Color2Picker.MinimumSize = New System.Drawing.Size(75, 94)
-        Me.Color2Picker.Name = "Color2Picker"
-        Me.Color2Picker.Size = New System.Drawing.Size(75, 94)
-        Me.Color2Picker.TabIndex = 13
-        Me.Color2Picker.Visible = False
         '
         'RibbonPanel8
         '
@@ -861,6 +831,44 @@ Partial Class Form1
         Me.OpenProjectDialog.Description = "Please select a PhotoPage project folder."
         Me.OpenProjectDialog.ShowNewFolderButton = False
         '
+        'RibbonPanel11
+        '
+        Me.RibbonPanel11.ButtonMoreEnabled = False
+        Me.RibbonPanel11.ButtonMoreVisible = False
+        Me.RibbonPanel11.Text = "Experiments"
+        '
+        'Color2Picker
+        '
+        Me.Color2Picker.AutoSize = True
+        Me.Color2Picker.BackColor = System.Drawing.Color.Black
+        Me.Color2Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Color2Picker.Location = New System.Drawing.Point(242, 113)
+        Me.Color2Picker.MinimumSize = New System.Drawing.Size(75, 94)
+        Me.Color2Picker.Name = "Color2Picker"
+        Me.Color2Picker.Size = New System.Drawing.Size(75, 94)
+        Me.Color2Picker.TabIndex = 13
+        Me.Color2Picker.Visible = False
+        '
+        'Color1Picker
+        '
+        Me.Color1Picker.AutoSize = True
+        Me.Color1Picker.BackColor = System.Drawing.Color.Black
+        Me.Color1Picker.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Color1Picker.Location = New System.Drawing.Point(171, 113)
+        Me.Color1Picker.MinimumSize = New System.Drawing.Size(75, 94)
+        Me.Color1Picker.Name = "Color1Picker"
+        Me.Color1Picker.Size = New System.Drawing.Size(75, 94)
+        Me.Color1Picker.TabIndex = 12
+        Me.Color1Picker.Visible = False
+        '
+        'TextColorPickerHost
+        '
+        Me.TextColorPickerHost.HostedControl = Me.Color1Picker
+        '
+        'BackgroundColorPickerHost
+        '
+        Me.BackgroundColorPickerHost.HostedControl = Me.Color2Picker
+        '
         'Form1
         '
         Me.AllowDrop = True
@@ -989,4 +997,5 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents EXITToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RibbonPanel11 As RibbonPanel
 End Class

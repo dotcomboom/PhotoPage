@@ -737,4 +737,12 @@ Public Class Form1
     Private Sub EXITToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EXITToolStripMenuItem.Click
         Me.Close()
     End Sub
+
+    Private Sub BackgroundColorPicker_ColorSelected(sender As Object, e As EventArgs) Handles Color2Picker.BackColorChanged
+
+    End Sub
+
+    Private Sub TextColorPicker_ColorSelected(sender As Object, e As EventArgs) Handles Color1Picker.BackColorChanged
+
+    End Sub
 End Class

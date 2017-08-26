@@ -7,7 +7,6 @@
         ComboBox1.ItemHeight = 20
         Dim objFontFamily As FontFamily
         Dim objFontCollection As System.Drawing.Text.FontCollection
-        Dim tempFont As Font
         objFontCollection = New System.Drawing.Text.InstalledFontCollection()
         For Each objFontFamily In objFontCollection.Families
             ComboBox1.Items.Add(objFontFamily.Name)
@@ -27,6 +26,7 @@
             Dim _FontName As String = ComboBox1.Items(e.Index)
             Dim _font As Font
             Dim _fontfamily = New FontFamily(_FontName)
+            _font = Nothing
             If _fontfamily.IsStyleAvailable(FontStyle.Regular) Then
                 _font = New Font(_fontfamily, 11.25, FontStyle.Regular)
             ElseIf _fontfamily.IsStyleAvailable(FontStyle.Bold) Then
