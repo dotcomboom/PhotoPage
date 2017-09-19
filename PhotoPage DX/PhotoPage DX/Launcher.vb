@@ -26,7 +26,7 @@ Public Class Launcher
     Private Sub Launcher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "PhotoPage " & getVersion()
         ToolStripStatusLabel1.Text = "PhotoPage " & getVersion()
-        If My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\") Then
+        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\") Then
             My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\")
         End If
         For Each item As String In My.Computer.FileSystem.GetDirectories(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\PhotoPage Projects\")
