@@ -749,4 +749,40 @@ Public Class Form1
     Private Sub TextColorPicker_ColorSelected(sender As Object, e As EventArgs) Handles Color1Picker.BackColorChanged
 
     End Sub
+
+    Private Sub FontList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FontList.SelectedIndexChanged
+        UpFontButton.Enabled = False
+        DownFontButton.Enabled = False
+        AddFontButton.Enabled = True
+        RemoveFontButton.Enabled = True
+        If FontList.SelectedIndex > 0 Then
+            UpFontButton.Enabled = True
+        End If
+        If FontList.SelectedIndex < FontList.Items.Count - 1 Then
+            DownFontButton.Enabled = True
+        End If
+    End Sub
+
+    Private Sub listBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles FontList.MouseDown
+        If Me.FontList.SelectedItem Is Nothing Then
+            Return
+        End If
+        Me.FontList.DoDragDrop(Me.FontList.SelectedItem, DragDropEffects.Move)
+    End Sub
+
+    Private Sub listBox1_DragOver(sender As Object, e As DragEventArgs) Handles FontList.DragOver
+        e.Effect = DragDropEffects.Move
+    End Sub
+
+    Private Sub listBox1_DragDrop(sender As Object, e As DragEventArgs) Handles FontList.DragDrop
+        Dim point As Point = FontList.PointToClient(New Point(e.X, e.Y))
+        Dim index As Integer = Me.FontList.IndexFromPoint(point)
+        If index < 0 Then
+            index = Me.FontList.Items.Count - 1
+        End If
+        Dim data As Object = e.Data.GetData(GetType(String))
+        Me.FontList.Items.Remove(data)
+        Me.FontList.Items.Insert(index, data)
+    End Sub
+
 End Class

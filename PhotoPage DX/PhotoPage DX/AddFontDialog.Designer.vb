@@ -24,7 +24,6 @@ Partial Class AddFontDialog
     Private Sub InitializeComponent()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.CancelButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -48,23 +47,12 @@ Partial Class AddFontDialog
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
         '
-        'CancelBtn
-        '
-        Me.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelBtn.Location = New System.Drawing.Point(173, 40)
-        Me.CancelBtn.Name = "CancelBtn"
-        Me.CancelBtn.Size = New System.Drawing.Size(75, 23)
-        Me.CancelBtn.TabIndex = 2
-        Me.CancelBtn.Text = "Cancel"
-        Me.CancelBtn.UseVisualStyleBackColor = True
-        '
         'AddFontDialog
         '
         Me.AcceptButton = Me.OKButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(258, 226)
-        Me.Controls.Add(Me.CancelButton)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.ComboBox1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

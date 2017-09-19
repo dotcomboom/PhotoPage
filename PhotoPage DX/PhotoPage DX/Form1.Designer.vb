@@ -60,7 +60,6 @@ Partial Class Form1
         Me.FontSeparator1 = New System.Windows.Forms.RibbonSeparator()
         Me.AddFontButton = New System.Windows.Forms.RibbonButton()
         Me.RemoveFontButton = New System.Windows.Forms.RibbonButton()
-        Me.FontSeparator2 = New System.Windows.Forms.RibbonSeparator()
         Me.UpFontButton = New System.Windows.Forms.RibbonButton()
         Me.DownFontButton = New System.Windows.Forms.RibbonButton()
         Me.RibbonPanel7 = New System.Windows.Forms.RibbonPanel()
@@ -119,6 +118,9 @@ Partial Class Form1
         Me.coverPhoto = New System.Windows.Forms.TextBox()
         Me.DebugInfo = New System.Windows.Forms.TextBox()
         Me.OpenProjectDialog = New System.Windows.Forms.FolderBrowserDialog()
+        Me.FontSeparator2 = New System.Windows.Forms.RibbonSeparator()
+        Me.RibbonSeparator2 = New System.Windows.Forms.RibbonSeparator()
+        Me.FontSeperator2 = New System.Windows.Forms.RibbonSeparator()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -381,7 +383,7 @@ Partial Class Form1
         Me.RibbonPanel6.Items.Add(Me.FontSeparator1)
         Me.RibbonPanel6.Items.Add(Me.AddFontButton)
         Me.RibbonPanel6.Items.Add(Me.RemoveFontButton)
-        Me.RibbonPanel6.Items.Add(Me.FontSeparator2)
+        Me.RibbonPanel6.Items.Add(Me.FontSeperator2)
         Me.RibbonPanel6.Items.Add(Me.UpFontButton)
         Me.RibbonPanel6.Items.Add(Me.DownFontButton)
         Me.RibbonPanel6.Text = "Preferred Fonts"
@@ -393,6 +395,7 @@ Partial Class Form1
         '
         'FontList
         '
+        Me.FontList.AllowDrop = True
         Me.FontList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.FontList.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FontList.FormattingEnabled = True
@@ -419,28 +422,29 @@ Partial Class Form1
         '
         'RemoveFontButton
         '
+        Me.RemoveFontButton.Enabled = False
         Me.RemoveFontButton.Image = CType(resources.GetObject("RemoveFontButton.Image"), System.Drawing.Image)
         Me.RemoveFontButton.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
         Me.RemoveFontButton.SmallImage = CType(resources.GetObject("RemoveFontButton.SmallImage"), System.Drawing.Image)
         Me.RemoveFontButton.Text = "Remove"
         '
-        'FontSeparator2
-        '
-        Me.FontSeparator2.DrawBackground = False
-        '
         'UpFontButton
         '
+        Me.UpFontButton.Enabled = False
         Me.UpFontButton.Image = CType(resources.GetObject("UpFontButton.Image"), System.Drawing.Image)
         Me.UpFontButton.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
         Me.UpFontButton.SmallImage = CType(resources.GetObject("UpFontButton.SmallImage"), System.Drawing.Image)
         Me.UpFontButton.Text = "Up"
+        Me.UpFontButton.Visible = False
         '
         'DownFontButton
         '
+        Me.DownFontButton.Enabled = False
         Me.DownFontButton.Image = CType(resources.GetObject("DownFontButton.Image"), System.Drawing.Image)
         Me.DownFontButton.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
         Me.DownFontButton.SmallImage = CType(resources.GetObject("DownFontButton.SmallImage"), System.Drawing.Image)
         Me.DownFontButton.Text = "Down"
+        Me.DownFontButton.Visible = False
         '
         'RibbonPanel7
         '
@@ -861,6 +865,14 @@ Partial Class Form1
         Me.OpenProjectDialog.Description = "Please select a PhotoPage project folder."
         Me.OpenProjectDialog.ShowNewFolderButton = False
         '
+        'FontSeparator2
+        '
+        Me.FontSeparator2.DrawBackground = False
+        '
+        'FontSeperator2
+        '
+        Me.FontSeperator2.Visible = False
+        '
         'Form1
         '
         Me.AllowDrop = True
@@ -961,7 +973,6 @@ Partial Class Form1
     Friend WithEvents RemoveFontButton As RibbonButton
     Friend WithEvents UpFontButton As RibbonButton
     Friend WithEvents DownFontButton As RibbonButton
-    Friend WithEvents FontSeparator2 As RibbonSeparator
     Friend WithEvents TextColorPickerHost As RibbonHost
     Friend WithEvents BackgroundColorPickerHost As RibbonHost
     Friend WithEvents Color1Picker As NewColorPicker
@@ -989,4 +1000,7 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents EXITToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FontSeparator2 As RibbonSeparator
+    Friend WithEvents FontSeperator2 As RibbonSeparator
+    Friend WithEvents RibbonSeparator2 As RibbonSeparator
 End Class
