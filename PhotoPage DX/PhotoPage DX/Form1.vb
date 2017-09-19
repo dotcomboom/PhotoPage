@@ -540,24 +540,28 @@ Public Class Form1
         If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
             Dim newIndex As Integer = FontList.SelectedIndex - 1
             If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
-                Dim selected As Object = FontList.SelectedItem
-                FontList.Items.Remove(selected)
-                FontList.Items.Insert(newIndex, selected)
-                FontList.SetSelected(newIndex, True)
+                If FontList.SelectedIndex > 0 Then
+                    Dim selected As Object = FontList.SelectedItem
+                    FontList.Items.Remove(selected)
+                    FontList.Items.Insert(newIndex, selected)
+                    FontList.SetSelected(newIndex, True)
+                End If
             End If
-        End If
+            End If
         Preview()
     End Sub
 
     Private Sub DownFontButton_Click(sender As Object, e As EventArgs) Handles DownFontButton.Click
         Try
             If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
-                Dim newIndex As Integer = FontList.SelectedIndex + 1
-                If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
-                    Dim selected As Object = FontList.SelectedItem
-                    FontList.Items.Remove(selected)
-                    FontList.Items.Insert(newIndex, selected)
-                    FontList.SetSelected(newIndex, True)
+                If FontList.SelectedIndex < FontList.Items.Count - 1 Then
+                    Dim newIndex As Integer = FontList.SelectedIndex + 1
+                    If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
+                        Dim selected As Object = FontList.SelectedItem
+                        FontList.Items.Remove(selected)
+                        FontList.Items.Insert(newIndex, selected)
+                        FontList.SetSelected(newIndex, True)
+                    End If
                 End If
             End If
         Catch ex As Exception
