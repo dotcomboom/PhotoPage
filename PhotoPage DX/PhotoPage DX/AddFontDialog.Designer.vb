@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class AddFontDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class AddFontDialog
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.OKButton = New System.Windows.Forms.Button()
@@ -31,7 +31,7 @@ Partial Class AddFontDialog
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
         Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 12)
+        Me.ComboBox1.Location = New System.Drawing.Point(12, 7)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(148, 203)
         Me.ComboBox1.TabIndex = 0
@@ -40,7 +40,7 @@ Partial Class AddFontDialog
         '
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.OKButton.Enabled = False
-        Me.OKButton.Location = New System.Drawing.Point(173, 11)
+        Me.OKButton.Location = New System.Drawing.Point(85, 208)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(75, 23)
         Me.OKButton.TabIndex = 1
@@ -52,7 +52,7 @@ Partial Class AddFontDialog
         Me.AcceptButton = Me.OKButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(258, 226)
+        Me.ClientSize = New System.Drawing.Size(172, 238)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.ComboBox1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

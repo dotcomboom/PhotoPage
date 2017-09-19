@@ -536,38 +536,38 @@ Public Class Form1
         Preview()
     End Sub
 
-    Private Sub UpFontButton_Click(sender As Object, e As EventArgs) Handles UpFontButton.Click
-        If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
-            Dim newIndex As Integer = FontList.SelectedIndex - 1
-            If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
-                If FontList.SelectedIndex > 0 Then
-                    Dim selected As Object = FontList.SelectedItem
-                    FontList.Items.Remove(selected)
-                    FontList.Items.Insert(newIndex, selected)
-                    FontList.SetSelected(newIndex, True)
-                End If
-            End If
-            End If
-        Preview()
-    End Sub
+    'Private Sub UpFontButton_Click(sender As Object, e As EventArgs) Handles UpFontButton.Click
+    '    If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
+    '        Dim newIndex As Integer = FontList.SelectedIndex - 1
+    '        If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
+    '            If FontList.SelectedIndex > 0 Then
+    '                Dim selected As Object = FontList.SelectedItem
+    '                FontList.Items.Remove(selected)
+    '                FontList.Items.Insert(newIndex, selected)
+    '                FontList.SetSelected(newIndex, True)
+    '            End If
+    '        End If
+    '        End If
+    '    Preview()
+    'End Sub
 
-    Private Sub DownFontButton_Click(sender As Object, e As EventArgs) Handles DownFontButton.Click
-        Try
-            If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
-                If FontList.SelectedIndex < FontList.Items.Count - 1 Then
-                    Dim newIndex As Integer = FontList.SelectedIndex + 1
-                    If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
-                        Dim selected As Object = FontList.SelectedItem
-                        FontList.Items.Remove(selected)
-                        FontList.Items.Insert(newIndex, selected)
-                        FontList.SetSelected(newIndex, True)
-                    End If
-                End If
-            End If
-        Catch ex As Exception
-        End Try
-        Preview()
-    End Sub
+    'Private Sub DownFontButton_Click(sender As Object, e As EventArgs)
+    '    Try
+    '        If Not FontList.SelectedItem Is Nothing OrElse FontList.SelectedIndex < 0 Then
+    '            If FontList.SelectedIndex < FontList.Items.Count - 1 Then
+    '                Dim newIndex As Integer = FontList.SelectedIndex + 1
+    '                If Not newIndex < 0 OrElse newIndex >= FontList.Items.Count Then
+    '                    Dim selected As Object = FontList.SelectedItem
+    '                    FontList.Items.Remove(selected)
+    '                    FontList.Items.Insert(newIndex, selected)
+    '                    FontList.SetSelected(newIndex, True)
+    '                End If
+    '            End If
+    '        End If
+    '    Catch ex As Exception
+    '    End Try
+    '    Preview()
+    'End Sub
 
     Private Sub BackgroundColorChooser_ColorChanged(sender As Object, e As EventArgs) Handles BackgroundColorChooser.ColorChanged
         BackgroundColorChooser.Tag = System.Drawing.ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(BackgroundColorChooser.Color.ToArgb())).Replace("#", "")
@@ -751,16 +751,16 @@ Public Class Form1
     End Sub
 
     Private Sub FontList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FontList.SelectedIndexChanged
-        UpFontButton.Enabled = False
-        DownFontButton.Enabled = False
+        'UpFontButton.Enabled = False
+        'DownFontButton.Enabled = False
         AddFontButton.Enabled = True
         RemoveFontButton.Enabled = True
-        If FontList.SelectedIndex > 0 Then
-            UpFontButton.Enabled = True
-        End If
-        If FontList.SelectedIndex < FontList.Items.Count - 1 Then
-            DownFontButton.Enabled = True
-        End If
+        'If FontList.SelectedIndex > 0 Then
+        '    UpFontButton.Enabled = True
+        'End If
+        'If FontList.SelectedIndex < FontList.Items.Count - 1 Then
+        '    DownFontButton.Enabled = True
+        'End If
     End Sub
 
     Private Sub listBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles FontList.MouseDown

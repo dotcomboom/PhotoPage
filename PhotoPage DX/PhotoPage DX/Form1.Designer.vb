@@ -60,8 +60,7 @@ Partial Class Form1
         Me.FontSeparator1 = New System.Windows.Forms.RibbonSeparator()
         Me.AddFontButton = New System.Windows.Forms.RibbonButton()
         Me.RemoveFontButton = New System.Windows.Forms.RibbonButton()
-        Me.UpFontButton = New System.Windows.Forms.RibbonButton()
-        Me.DownFontButton = New System.Windows.Forms.RibbonButton()
+        Me.FontSeperator2 = New System.Windows.Forms.RibbonSeparator()
         Me.RibbonPanel7 = New System.Windows.Forms.RibbonPanel()
         Me.TextColorChooser = New System.Windows.Forms.RibbonColorChooser()
         Me.TextColorPickerHost = New System.Windows.Forms.RibbonHost()
@@ -120,7 +119,6 @@ Partial Class Form1
         Me.OpenProjectDialog = New System.Windows.Forms.FolderBrowserDialog()
         Me.FontSeparator2 = New System.Windows.Forms.RibbonSeparator()
         Me.RibbonSeparator2 = New System.Windows.Forms.RibbonSeparator()
-        Me.FontSeperator2 = New System.Windows.Forms.RibbonSeparator()
         Me.PreviewMenu.SuspendLayout()
         Me.OrbMenu.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -384,8 +382,6 @@ Partial Class Form1
         Me.RibbonPanel6.Items.Add(Me.AddFontButton)
         Me.RibbonPanel6.Items.Add(Me.RemoveFontButton)
         Me.RibbonPanel6.Items.Add(Me.FontSeperator2)
-        Me.RibbonPanel6.Items.Add(Me.UpFontButton)
-        Me.RibbonPanel6.Items.Add(Me.DownFontButton)
         Me.RibbonPanel6.Text = "Preferred Fonts"
         '
         'FontsListBoxHost
@@ -428,23 +424,9 @@ Partial Class Form1
         Me.RemoveFontButton.SmallImage = CType(resources.GetObject("RemoveFontButton.SmallImage"), System.Drawing.Image)
         Me.RemoveFontButton.Text = "Remove"
         '
-        'UpFontButton
+        'FontSeperator2
         '
-        Me.UpFontButton.Enabled = False
-        Me.UpFontButton.Image = CType(resources.GetObject("UpFontButton.Image"), System.Drawing.Image)
-        Me.UpFontButton.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
-        Me.UpFontButton.SmallImage = CType(resources.GetObject("UpFontButton.SmallImage"), System.Drawing.Image)
-        Me.UpFontButton.Text = "Up"
-        Me.UpFontButton.Visible = False
-        '
-        'DownFontButton
-        '
-        Me.DownFontButton.Enabled = False
-        Me.DownFontButton.Image = CType(resources.GetObject("DownFontButton.Image"), System.Drawing.Image)
-        Me.DownFontButton.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact
-        Me.DownFontButton.SmallImage = CType(resources.GetObject("DownFontButton.SmallImage"), System.Drawing.Image)
-        Me.DownFontButton.Text = "Down"
-        Me.DownFontButton.Visible = False
+        Me.FontSeperator2.Visible = False
         '
         'RibbonPanel7
         '
@@ -869,10 +851,6 @@ Partial Class Form1
         '
         Me.FontSeparator2.DrawBackground = False
         '
-        'FontSeperator2
-        '
-        Me.FontSeperator2.Visible = False
-        '
         'Form1
         '
         Me.AllowDrop = True
@@ -971,8 +949,6 @@ Partial Class Form1
     Friend WithEvents FontSeparator1 As RibbonSeparator
     Friend WithEvents AddFontButton As RibbonButton
     Friend WithEvents RemoveFontButton As RibbonButton
-    Friend WithEvents UpFontButton As RibbonButton
-    Friend WithEvents DownFontButton As RibbonButton
     Friend WithEvents TextColorPickerHost As RibbonHost
     Friend WithEvents BackgroundColorPickerHost As RibbonHost
     Friend WithEvents Color1Picker As NewColorPicker

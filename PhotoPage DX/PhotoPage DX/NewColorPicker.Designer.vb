@@ -71,7 +71,7 @@ Partial Class NewColorPicker
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.Silver
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
